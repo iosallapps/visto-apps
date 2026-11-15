@@ -1,0 +1,51 @@
+{
+ "slug": "topoxy", "name": "TopoXY", "site": "https://topoxyapp.com", "updated": "2026-11-15",
+ "platforms": ["ios", "android"],
+ "src": {"ios": "~/Developer/TopoX (1.74)", "android": "~/Developer/TopoXY Android App/topox_android (0.2.2)"},
+ "services": ["admob", "ump", "firebase_analytics", "crashlytics", "revenuecat", "apple_store", "google_play", "mapbox_terrain", "apple_maps", "osm_tiles", "esri_tiles"],
+ "_services_src": "iOS project.pbxproj SPM + Services/{AdMob,Analytics,RevenueCat,Elevation}; MapType.swift MKMapType; Android pubspec.yaml + lib tile URLs (tile.openstreetmap.org, server.arcgisonline.com)",
+ "permissions": ["location", "tracking", "ad_id", "notifications", "files"],
+ "_permissions_src": "Info.plist NSLocationWhenInUse + NSUserTracking; NotificationsManager.swift; StereoViewProfessional .fileImporter; AndroidManifest FINE/COARSE_LOCATION, AD_ID, POST_NOTIFICATIONS; coord_import.dart FilePicker",
+ "local_data": {
+  "en": "Coordinates, points and calculations you enter stay on your device.",
+  "ro": "Coordonatele, punctele și calculele introduse rămân pe dispozitiv."
+ },
+ "local_detail": {
+  "en": "Coordinates you type or import, converted points, pins on the map, measurements and app settings are stored only on your device (iOS app storage, Android shared preferences). We have no server that receives them and we cannot see them. On iOS, Settings, Delete All Data removes them; deleting the app removes everything. When you open directions, the point's coordinates are handed to the navigation app you pick (Apple Maps, Google Maps or Waze), which then applies its own privacy policy.",
+  "ro": "Coordonatele scrise sau importate, punctele convertite, pinii de pe hartă, măsurătorile și setările se păstrează doar pe dispozitiv (stocarea aplicației pe iOS, preferințele partajate pe Android). Nu avem server care să le primească și nu le putem vedea. Pe iOS, Setări, Șterge toate datele le elimină; ștergerea aplicației elimină tot. Când deschizi navigarea, coordonatele punctului sunt transmise aplicației de navigare alese (Apple Maps, Google Maps sau Waze), care aplică propria politică de confidențialitate."
+ },
+ "_local_src": "SettingsViewProfessional.clearAllData; NavigationOptionsSheet.swift comgooglemaps/waze URLs; Android shared_preferences",
+ "service_notes": [
+  {"en": "Apple Maps draws the map on iOS; on Android the map comes from OpenStreetMap and satellite imagery from Esri. Elevation on both comes from Mapbox, only when you use slope or terrain tools.",
+   "ro": "Pe iOS harta este Apple Maps; pe Android harta vine de la OpenStreetMap, iar imaginile din satelit de la Esri. Altitudinea vine, pe ambele, de la Mapbox, doar când folosești instrumentele de pantă sau teren."},
+  {"en": "On iOS RevenueCat also receives the Firebase app instance ID, so that purchases can be counted in the statistics.",
+   "ro": "Pe iOS, RevenueCat primește și ID-ul instalării Firebase, ca achizițiile să poată fi numărate în statistici."},
+  {"en": "Crash reports are sent once the consent step has run, on the basis of our legitimate interest in a working app; they contain no coordinates.",
+   "ro": "Rapoartele de erori se trimit după pasul de consimțământ, pe baza interesului nostru legitim ca aplicația să funcționeze; nu conțin coordonate."}
+ ],
+ "privacy_choices_path": {
+  "en": "in the app, Settings, Privacy Choices, Update Privacy Choices (shown where the consent form applies).",
+  "ro": "în aplicație, Setări, Opțiuni de confidențialitate, Actualizează opțiunile (apare acolo unde se aplică formularul)."
+ },
+ "consent_notes": [
+  {"en": "For users in Italy, ad personalisation is always off.", "ro": "Pentru utilizatorii din Italia, personalizarea reclamelor este mereu oprită."}
+ ],
+ "purchases": {
+  "subscriptions": true, "trial": true, "lifetime": true,
+  "what": {
+   "en": "TopoXY is free to download. TopoXY Pro unlocks the paid features and removes ads, as a weekly, monthly or yearly subscription or a one-time lifetime purchase. What is free and what is Pro is shown in the app.",
+   "ro": "TopoXY se descarcă gratuit. TopoXY Pro deblochează funcțiile plătite și elimină reclamele, ca abonament săptămânal, lunar sau anual ori ca achiziție unică pe viață. Ce e gratuit și ce e Pro apare în aplicație."
+  }
+ },
+ "_purchases_src": "TopoX.storekit: weekly/monthly with 3-day free trial, yearly, lifetime + lifetime.offer",
+ "what": {
+  "en": "TopoXY converts coordinates between GPS (WGS84) and six national grids (Romania Stereo70 and others listed in the app), shows points on a map, measures distance, bearing, area and perimeter, and estimates elevation and slope.",
+  "ro": "TopoXY convertește coordonate între GPS (WGS84) și șase sisteme naționale (Stereo70 pentru România și celelalte listate în aplicație), afișează puncte pe hartă, măsoară distanțe, azimut, arii și perimetre și estimează altitudinea și panta."
+ },
+ "disclaimers": [
+  {"en": "Conversions use standard published EPSG transformations without national correction grids, so results can differ from official values by about 1 to 4 metres depending on the country (the app shows the expected accuracy). Elevation and slope are estimates from Mapbox terrain data. GPS position depends on your device.",
+   "ro": "Conversiile folosesc transformări EPSG standard publicate, fără grilele naționale de corecție, deci rezultatele pot diferi de valorile oficiale cu aproximativ 1 până la 4 metri, în funcție de țară (aplicația arată precizia estimată). Altitudinea și panta sunt estimări din datele de teren Mapbox. Poziția GPS depinde de dispozitiv."},
+  {"en": "TopoXY is a working aid, not a certified surveying instrument. Do not use it alone for cadastre, property boundaries, construction, legal documents or navigation where an error could cause harm; check results with a licensed surveyor or official sources.",
+   "ro": "TopoXY este un instrument de lucru, nu un aparat de măsurare autorizat. Nu îl folosi singur pentru cadastru, limite de proprietate, construcții, documente legale sau navigare unde o eroare poate produce pagube; verifică rezultatele cu un topograf autorizat sau cu surse oficiale."}
+ ]
+}
