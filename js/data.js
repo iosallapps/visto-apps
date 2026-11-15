@@ -1,0 +1,245 @@
+// Site content. App names, subtitles, categories and store links come from the live
+// App Store listings (checked 2026-11-15). Descriptions only claim what each app does.
+
+window.VISTO = {
+  email: "iosallapps@gmail.com",
+  appStoreDeveloper: "https://apps.apple.com/us/developer/id1827010077",
+
+  // Filter categories on the Apps page, in display order.
+  categories: [
+    { id: "productivity", icon: "folder", label: { en: "Productivity", ro: "Productivitate" } },
+    { id: "utilities", icon: "layers", label: { en: "Utilities", ro: "Utilitare" } },
+    { id: "lifestyle", icon: "heart", label: { en: "Lifestyle", ro: "Stil de viață" } },
+    { id: "professional", icon: "briefcase", label: { en: "Professional", ro: "Profesional" } }
+  ],
+
+  // The eight apps shown on Home and About, in the mockup order.
+  featured: ["kupfra", "pdfino", "darc", "agrondo", "luris", "appsrank", "topoxy", "kipply"],
+  // The three large cards in the Home hero.
+  hero: ["kupfra", "pdfino", "darc"],
+
+  apps: [
+    {
+      slug: "kupfra", name: "Kupfra", category: "professional",
+      colors: ["#f2853a", "#7a2f6e"],
+      store: "https://apps.apple.com/us/app/kupfra-construction-calculator/id6827716801",
+      subtitle: { en: "Construction Calculator", ro: "Calculator construcții" },
+      text: {
+        en: "Calculators for concrete, tiles, stairs and electrical work, built on real building standards.",
+        ro: "Calcule pentru beton, gresie, scări și instalații electrice, după standardele reale de construcții."
+      }
+    },
+    {
+      slug: "pdfino", name: "Pdfino", category: "productivity",
+      colors: ["#ea4646", "#8c2470"],
+      store: "https://apps.apple.com/us/app/pdfino-compress-pdf-file-size/id6748689545",
+      subtitle: { en: "Compress PDF File Size", ro: "Comprimă fișiere PDF" },
+      text: {
+        en: "Reduce PDF file size quickly, then scan, sign, merge and fill forms on your iPhone.",
+        ro: "Micșorează PDF-urile rapid, apoi scanează, semnează, unește și completează formulare pe iPhone."
+      }
+    },
+    {
+      slug: "darc", name: "Darc", category: "utilities",
+      colors: ["#8a45f5", "#35208f"],
+      store: "https://apps.apple.com/us/app/darc-dark-mode-for-safari/id6819036330",
+      subtitle: { en: "Dark Mode for Safari", ro: "Mod întunecat în Safari" },
+      text: {
+        en: "A comfortable dark mode for every site in Safari, with light themes too.",
+        ro: "Un mod întunecat confortabil pentru orice site din Safari, plus teme luminoase."
+      }
+    },
+    {
+      slug: "agrondo", name: "Agrondo", category: "professional",
+      colors: ["#2fbf6a", "#0e5a58"],
+      store: "https://apps.apple.com/us/app/agrondo-field-area-measure/id6775927132",
+      subtitle: { en: "Field Area Measure", ro: "Măsurare teren" },
+      text: {
+        en: "Measure field areas on the satellite map and keep records for every parcel.",
+        ro: "Măsori terenuri pe harta satelit și ții evidența fiecărei parcele."
+      }
+    },
+    {
+      slug: "luris", name: "Luris", category: "lifestyle",
+      colors: ["#2b8cff", "#1a3aa8"],
+      store: "https://apps.apple.com/us/app/luris-step-fitness-tracker/id6813596103",
+      subtitle: { en: "Step & Fitness Tracker", ro: "Pedometru și alergare" },
+      text: {
+        en: "Track your steps, walks, runs and rides with GPS, and follow a training plan.",
+        ro: "Urmărești pașii, plimbările, alergările și turele cu bicicleta prin GPS, cu un plan de antrenament."
+      }
+    },
+    {
+      slug: "appsrank", name: "AppsRank", category: "utilities",
+      colors: ["#9150ff", "#3a2496"],
+      store: "https://apps.apple.com/us/app/appsrank-ranking-tracker/id6762045370",
+      subtitle: { en: "Ranking Tracker", ro: "Clasament App Store" },
+      text: {
+        en: "Follow app rankings on the App Store charts in more than 160 countries, every day.",
+        ro: "Urmărești zilnic clasamentele aplicațiilor din App Store, în peste 160 de țări."
+      }
+    },
+    {
+      slug: "topoxy", name: "TopoXY", category: "professional",
+      colors: ["#20c45a", "#0d6450"],
+      store: "https://apps.apple.com/us/app/topoxy-coordinate-converter/id6758582908",
+      subtitle: { en: "Coordinate Converter", ro: "Conversie Stereo 70" },
+      text: {
+        en: "Convert coordinates between WGS84, Stereo 70, PUWG, UTM and other national grids, offline.",
+        ro: "Convertești coordonate între WGS84, Stereo 70, PUWG, UTM și alte sisteme naționale, offline."
+      }
+    },
+    {
+      slug: "kipply", name: "Kipply", category: "lifestyle",
+      colors: ["#3a9dff", "#1d4ed0"],
+      store: "https://apps.apple.com/us/app/kipply-smart-phone-cleaner/id6756061280",
+      subtitle: { en: "Smart Phone Cleaner", ro: "Curățare poze" },
+      text: {
+        en: "Free up space by clearing duplicate, similar and unwanted photos with a swipe.",
+        ro: "Faci spațiu ștergând pozele duplicate, asemănătoare și nedorite cu o glisare."
+      }
+    },
+    {
+      slug: "serenity", name: "Serenity", category: "lifestyle",
+      colors: ["#8c55dd", "#2b2a70"],
+      store: "https://apps.apple.com/us/app/serenity-ai-mood-journal/id6761684674",
+      subtitle: { en: "AI Mood Journal", ro: "Jurnal personal AI" },
+      text: {
+        en: "Log your mood in one tap, write with thoughtful prompts and see what lifts you.",
+        ro: "Notezi starea cu o atingere, scrii pornind de la întrebări bine alese și vezi ce te ajută."
+      }
+    },
+    {
+      slug: "shelfready", name: "ShelfReady", category: "productivity",
+      colors: ["#c99a6c", "#5e3d36"],
+      store: "https://apps.apple.com/us/app/shelfready-product-photos/id6818769240",
+      subtitle: { en: "Product Photos", ro: "Poze de produs" },
+      text: {
+        en: "Turn a quick photo into a clean product shot on a white background, in seconds.",
+        ro: "Transformi o poză rapidă într-o fotografie de produs pe fundal alb, în câteva secunde."
+      }
+    }
+  ]
+};
+
+// Romanian strings. English lives in the HTML itself; site.js remembers it on load,
+// so there is one copy of every English sentence.
+window.VISTO_RO = {
+  "meta.home.title": "Visto Apps | Studio de aplicații mobile",
+  "meta.home.desc": "Visto Apps creează aplicații mobile gândite atent, care fac treburile de zi cu zi mai simple.",
+  "meta.apps.title": "Aplicațiile noastre | Visto Apps",
+  "meta.apps.desc": "Toate aplicațiile Visto Apps: practice, sigure și gândite atent, pentru viața de zi cu zi și pentru meserii.",
+  "meta.about.title": "Despre noi | Visto Apps",
+  "meta.about.desc": "Visto Apps este un studio independent de aplicații mobile, concentrat pe idei utile.",
+  "meta.contact.title": "Contact | Visto Apps",
+  "meta.contact.desc": "Scrie-ne pentru întrebări, sugestii sau colaborări.",
+  "meta.privacy.title": "Politica de confidențialitate | Visto Apps",
+  "meta.terms.title": "Termeni de utilizare | Visto Apps",
+  "meta.404.title": "Pagina nu există | Visto Apps",
+
+  "nav.home": "Acasă",
+  "nav.apps": "Aplicații",
+  "nav.about": "Despre",
+  "nav.contact": "Contact",
+  "nav.search": "Caută aplicații",
+  "nav.menu": "Meniu",
+  "nav.lang": "Limba",
+  "footer.tagline": "Aplicații mobile<br>gândite atent.",
+  "footer.privacy": "Confidențialitate",
+  "footer.terms": "Termeni de utilizare",
+  "footer.legal": "Apple, logo-ul Apple și iPhone sunt mărci comerciale ale Apple Inc.",
+
+  "home.kicker": "Studio de aplicații mobile",
+  "home.title": "Idei de zi cu zi.<br><em>Aplicații</em> remarcabile.",
+  "home.lede": "Creăm aplicații mobile gândite atent, care fac treburile de zi cu zi<br class=\"br-wide\"> mai simple, mai inteligente și mai plăcute.",
+  "home.stat.apps": "Aplicații",
+  "home.stat.downloads": "Descărcări",
+  "home.stat.rating": "Notă medie",
+  "home.stat.platforms": "iOS și<br>Android",
+  "home.explore": "Vezi aplicațiile",
+  "home.apps.kicker": "Aplicațiile noastre",
+  "home.apps.title": "O colecție de aplicații utile, în creștere.",
+  "home.apps.all": "Vezi toate",
+  "home.approach.kicker": "Abordarea noastră",
+  "home.approach.title": "Tehnologia ar trebui<br>să fie <em>ușoară</em>.",
+  "home.approach.1.title": "Utile prin design",
+  "home.approach.1.text": "Pornim de la nevoi reale<br>și soluții practice.",
+  "home.approach.2.title": "Gândite și rafinate",
+  "home.approach.2.text": "Experiențe simple și intuitive,<br>cu atenție la detalii.",
+  "home.approach.3.title": "Îmbunătățite constant",
+  "home.approach.3.text": "Ținem aplicațiile la zi și le facem<br>mai bune în timp.",
+
+  "apps.kicker": "Aplicațiile noastre",
+  "apps.title": "O colecție de aplicații<br><em>utile</em>, în creștere.",
+  "apps.lede": "Aplicații mobile practice, sigure și gândite atent,<br class=\"br-wide\"> pentru viața de zi cu zi și pentru meserii.",
+  "apps.all": "Toate aplicațiile",
+  "apps.empty": "Nicio aplicație nu se potrivește căutării.",
+  "apps.search": "Caută după nume sau funcție",
+  "apps.cta.title": "Găsește aplicația potrivită.",
+  "apps.cta.text": "Descoperă toată colecția și vezi cum îți pot face aplicațiile noastre<br class=\"br-wide\"> treburile de zi cu zi mai ușoare.",
+  "apps.cta.button": "Vezi aplicațiile",
+  "app.open": "Deschide în App Store",
+
+  "about.kicker": "Despre Visto Apps",
+  "about.title": "Tehnologie făcută pentru<br>viața de <em>zi cu zi</em>.",
+  "about.lede": "Creăm aplicații mobile practice, sigure și gândite atent,<br class=\"br-wide\"> care fac treburile de zi cu zi mai simple,<br class=\"br-wide\"> mai inteligente și mai plăcute.",
+  "about.story.kicker": "Povestea noastră",
+  "about.story.title": "Un studio de aplicații mobile<br>concentrat pe idei utile.",
+  "about.story.text": "Visto Apps este un studio independent care proiectează și dezvoltă aplicații de calitate pentru nevoi reale, de zi cu zi. Scopul nostru e simplu: să transformăm idei practice în aplicații ușor de folosit, sigure și cu adevărat utile.",
+  "about.philosophy.kicker": "Filozofia noastră",
+  "about.philosophy.title": "Utile prin design.<br><em>Atente</em> din fire.",
+  "about.p1.title": "Simple",
+  "about.p1.text": "Experiențe curate<br>și intuitive.",
+  "about.p2.title": "Practice",
+  "about.p2.text": "Soluții reale pentru<br>treburile de zi cu zi.",
+  "about.p3.title": "Sigure",
+  "about.p3.text": "Aplicații pe care<br>te poți baza.",
+  "about.build.kicker": "Cum construim",
+  "about.build.title": "De la idee la o aplicație utilă.",
+  "about.step1.title": "Găsim nevoi reale",
+  "about.step1.text": "Ne concentrăm pe probleme practice și idei utile.",
+  "about.step2.title": "Proiectăm cu grijă",
+  "about.step2.text": "Experiențe curate, intuitive și ușor de folosit.",
+  "about.step3.title": "Construim și rafinăm",
+  "about.step3.text": "Dezvoltăm, testăm și îmbunătățim continuu.",
+  "about.step4.title": "Ascultăm și evoluăm",
+  "about.step4.text": "Ținem cont de părerile voastre și facem aplicațiile mai bune în timp.",
+  "about.portfolio.kicker": "Portofoliul nostru",
+  "about.cta.title": "Hai să creăm ceva util.",
+  "about.cta.text": "Ai o întrebare, o idee sau o sugestie? Ne-ar plăcea să ne scrii.",
+  "about.cta.button": "Contactează-ne",
+
+  "contact.kicker": "Contactează Visto Apps",
+  "contact.title": "Hai să <em>vorbim</em>.",
+  "contact.lede": "Ai o întrebare, o sugestie sau o idee de colaborare?<br>Ne-ar plăcea să ne scrii.",
+  "contact.email.title": "Email",
+  "contact.support.title": "Suport",
+  "contact.support.text": "Ajutor pentru aplicațiile noastre",
+  "contact.support.subject": "Suport",
+  "contact.collab.title": "Colaborări",
+  "contact.collab.text": "Parteneriate și oportunități",
+  "contact.collab.subject": "Colaborare",
+  "contact.card.title": "Scrie-ne un mesaj",
+  "contact.card.text": "Trimite-ne un email și îți răspundem cât de repede putem. Spune-ne despre ce aplicație e vorba și, dacă e o problemă, ce model de telefon ai.",
+  "contact.card.button": "Trimite un email",
+  "contact.card.copy": "Copiază adresa",
+  "contact.card.copied": "Adresă copiată",
+  "contact.g1.title": "Răspuns rapid",
+  "contact.g1.text": "Încercăm să răspundem<br>cât mai repede.",
+  "contact.g2.title": "Confidențialitatea contează",
+  "contact.g2.text": "Informațiile tale<br>sunt în siguranță.",
+  "contact.g3.title": "Suport real",
+  "contact.g3.text": "Ajutor pentru aplicații<br>și funcții.",
+  "contact.g4.title": "Părerea ta contează",
+  "contact.g4.text": "Ideile tale ne ajută<br>să ne îmbunătățim.",
+
+  "privacy.title": "Politica de confidențialitate",
+  "privacy.updated": "Actualizată pe 15 noiembrie 2026",
+  "privacy.body": "<p>Acest site prezintă aplicațiile Visto Apps. Nu folosește cookie-uri, nu are statistici de trafic sau reclame și nu îți cere date personale. Fonturile și imaginile sunt găzduite pe același server, așa că vizita ta nu este trimisă altor companii.</p><p>Singura preferință salvată este limba aleasă (engleză sau română), în browserul tău, și o poți șterge oricând din setările browserului.</p><p>Dacă ne scrii pe email, folosim adresa și mesajul tău doar ca să-ți răspundem. Fiecare aplicație are propria politică de confidențialitate, legată din pagina ei din App Store.</p><p>Pentru întrebări despre datele tale, scrie-ne la adresa de pe pagina de contact.</p>",
+  "terms.title": "Termeni de utilizare",
+  "terms.updated": "Actualizați pe 15 noiembrie 2026",
+  "terms.body": "<p>Conținutul acestui site, inclusiv textele, logo-ul Visto Apps și imaginile, aparține Visto Apps și este oferit doar pentru informare.</p><p>Aplicațiile se descarcă și se cumpără prin App Store, sub termenii Apple și termenii fiecărei aplicații, afișați în pagina ei. Prețurile și disponibilitatea pot diferi de la o țară la alta.</p><p>Apple, logo-ul Apple, iPhone și App Store sunt mărci comerciale ale Apple Inc.</p>",
+  "404.title": "Pagina nu <em>există</em>.",
+  "404.text": "Linkul poate fi vechi sau greșit. Aplicațiile sunt la un click distanță.",
+  "404.button": "Vezi aplicațiile"
+};

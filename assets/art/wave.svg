@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="w1" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#3fd8ff" stop-opacity="0"/>
+      <stop offset=".08" stop-color="#3fd8ff"/>
+      <stop offset=".42" stop-color="#4f6bff"/>
+      <stop offset=".62" stop-color="#7b5cff"/>
+      <stop offset=".82" stop-color="#ff7a59"/>
+      <stop offset=".93" stop-color="#ff6fd8"/>
+      <stop offset="1" stop-color="#ff6fd8" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="w2" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#5ab8ff" stop-opacity="0"/>
+      <stop offset=".15" stop-color="#5ab8ff" stop-opacity=".7"/>
+      <stop offset=".55" stop-color="#6f5cff" stop-opacity=".5"/>
+      <stop offset=".85" stop-color="#ff8a6a" stop-opacity=".8"/>
+      <stop offset="1" stop-color="#ff8a6a" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="glow" x="-10%" y="-60%" width="120%" height="220%">
+      <feGaussianBlur stdDeviation="9"/>
+    </filter>
+    <filter id="soft" x="-10%" y="-60%" width="120%" height="220%">
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+  </defs>
+  <path d="M0 190 C120 60 220 70 330 170 S520 330 640 320 S900 210 1010 140 S1150 110 1200 150" fill="none" stroke="url(#w1)" stroke-width="22" filter="url(#glow)" opacity=".75"/>
+  <path d="M0 190 C120 60 220 70 330 170 S520 330 640 320 S900 210 1010 140 S1150 110 1200 150" fill="none" stroke="url(#w1)" stroke-width="3" filter="url(#soft)"/>
+  <path d="M0 230 C140 110 240 120 350 210 S540 360 660 350 S920 250 1030 180 S1160 150 1200 190" fill="none" stroke="url(#w2)" stroke-width="1.5" opacity=".7"/>
+</svg>
