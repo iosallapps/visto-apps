@@ -220,7 +220,7 @@
     return '<a class="hero-card" style="' + appStyle(a) + '" data-pos="' + i + '" href="' + a.store + '" target="_blank" rel="noopener" aria-label="' + appLinkLabel(a) + '">' +
       '<span class="hero-card__head"><img class="app-icon" src="assets/icons/' + a.slug + '.webp" width="64" height="64" alt="">' +
       '<span><span class="hero-card__name">' + esc(a.name) + '</span><span class="hero-card__sub">' + esc(t(a.subtitle)) + "</span></span></span>" +
-      '<img class="hero-card__phone" src="assets/phones/' + a.slug + "-hero-" + lang + '.webp" width="900" height="' + PHONE_H + '" alt="">' +
+      '<span class="hero-card__shot"><img class="hero-card__phone" src="assets/phones/' + a.slug + "-hero-" + lang + '.webp" width="900" height="' + PHONE_H + '" alt=""></span>' +
       "</a>";
   }
   function tile(a) {
@@ -236,7 +236,7 @@
         '<span class="arrow-dot">' + icon("arrow") + "</span></span>" +
       '<span class="app-card__text">' + esc(t(a.text)) + "</span>" +
       '<span class="chip">' + icon(c.icon) + esc(t(c.label)) + "</span>" +
-      '<img class="app-card__phone" src="assets/phones/' + a.slug + "-" + lang + '.webp" width="900" height="' + PHONE_H + '" alt="" loading="lazy">' +
+      '<span class="app-card__shot"><img class="app-card__phone" src="assets/phones/' + a.slug + "-" + lang + '.webp" width="900" height="' + PHONE_H + '" alt="" loading="lazy"></span>' +
       "</a></li>";
   }
   var PHONE_H = 1139;
