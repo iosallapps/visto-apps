@@ -1,0 +1,161 @@
+{
+ "slug": "sayloud",
+ "name": "Sayloud",
+ "site": "https://sayloudapp.com",
+ "updated": "2026-11-15",
+ "platforms": ["ios"],
+ "src": {
+  "ios": "~/Developer/SpeechApp-sdk, branch sdk-stack 999a14c plus ~60 uncommitted files (monetization rewrite), read 2026-11-15. NOT origin/main: origin/main (712de0c) has no Firebase, AdMob, RevenueCat or Sayloud naming. Xcode target and bundle are still called Speechie; the app is not released and its App Store Connect name is still SpeechNote AI."
+ },
+ "services": ["admob", "ump", "firebase_analytics", "crashlytics", "revenuecat", "apple_store", "openai_tts", "elevenlabs_tts"],
+ "_services_src": "Speechie.xcodeproj/project.pbxproj SPM products: FirebaseAnalytics, FirebaseCrashlytics, GoogleMobileAds (UserMessagingPlatform ships with it, AdConsentService.swift), RevenueCat, SwiftSoup, ZIPFoundation (no FirebasePerformance / RemoteConfig / Sentry). Cloud voices: Core/Services/TTS/OpenAITTSProvider.swift (POST api.openai.com/v1/audio/speech, model gpt-4o-mini-tts) and ElevenLabsTTSProvider.swift (api.elevenlabs.io/v1, model eleven_multilingual_v2), AppConstants.swift TTS. Only hosts in the code (grep https://): api.openai.com, api.elevenlabs.io, sayloudapp.com (legal links in an SFSafariViewController, Core/Services/Browser/InAppBrowser.swift). No Inworld and no server of ours anywhere in the code. OPEN: Config/Secrets.xcconfig has REVENUECAT_API_KEY and the four ADMOB_* keys set but OPENAI_API_KEY and ELEVENLABS_API_KEY empty, so in this checkout the cloud path is inert (VoiceCatalog.resolve returns providerUnavailable and falls back to an Apple voice); the policy names both providers because the code sends there as soon as a key is present.",
+ "permissions": ["microphone", "speech", "camera", "photos_add", "files", "notifications", "tracking"],
+ "_permissions_src": "Config/Speechie-Shared.xcconfig INFOPLIST_KEY_NSMicrophoneUsageDescription, NSSpeechRecognitionUsageDescription, NSCameraUsageDescription, NSPhotoLibraryAddUsageDescription (PermissionsService.swift requestAuthorization(for: .addOnly); the app never reads photos), NSUserTrackingUsageDescription; UNUserNotificationCenter local notifications only (Core/Services/Notifications/NotificationService.swift, trigger nil, ImportNotificationInteractor.swift; no registerForRemoteNotifications, entitlements only hold the app group); .fileImporter for documents and audio; Info.plist CFBundleDocumentTypes (pdf, epub, txt, rtf, rtfd).",
+ "extra_services": {
+  "openai_tts": {
+   "name": "OpenAI (cloud voices)",
+   "who": "OpenAI",
+   "link": "https://openai.com/policies/privacy-policy",
+   "en": {
+    "data": "The text of the passage being read, in pieces of at most 500 characters, the voice and the model, plus your IP address. The app sends no name, account or device ID with it.",
+    "why": "Making the audio for the OpenAI voices (Pro, and a short daily allowance for free users). Never used for built-in Apple voices."
+   },
+   "ro": {
+    "data": "Textul pasajului citit, în bucăți de cel mult 500 de caractere, vocea și modelul, plus adresa IP. Aplicația nu trimite nume, cont sau ID de dispozitiv împreună cu el.",
+    "why": "Generarea sunetului pentru vocile OpenAI (Pro și o alocare zilnică scurtă pentru utilizatorii gratuiți). Niciodată pentru vocile Apple încorporate."
+   },
+   "basis": ["contract"],
+   "ret": {"en": "Set by OpenAI (see its policy). The audio is also kept on your device so the passage replays offline.", "ro": "Stabilită de OpenAI (vezi politica sa). Sunetul se păstrează și pe dispozitiv, ca pasajul să poată fi redat fără conexiune."},
+   "transfer": true
+  },
+  "elevenlabs_tts": {
+   "name": "ElevenLabs (cloud voices)",
+   "who": "ElevenLabs",
+   "link": "https://elevenlabs.io/privacy-policy",
+   "en": {
+    "data": "The text of the passage being read, in pieces of at most 500 characters, the voice and the model, plus your IP address. The app sends no name, account or device ID with it.",
+    "why": "Making the audio for the ElevenLabs voices (Pro). Never used for built-in Apple voices."
+   },
+   "ro": {
+    "data": "Textul pasajului citit, în bucăți de cel mult 500 de caractere, vocea și modelul, plus adresa IP. Aplicația nu trimite nume, cont sau ID de dispozitiv împreună cu el.",
+    "why": "Generarea sunetului pentru vocile ElevenLabs (Pro). Niciodată pentru vocile Apple încorporate."
+   },
+   "basis": ["contract"],
+   "ret": {"en": "Set by ElevenLabs (see its policy). The audio is also kept on your device so the passage replays offline.", "ro": "Stabilită de ElevenLabs (vezi politica sa). Sunetul se păstrează și pe dispozitiv, ca pasajul să poată fi redat fără conexiune."},
+   "transfer": true
+  }
+ },
+ "extra_permissions": {
+  "microphone": {
+   "en": ["Microphone", "Transcribe, and the Prompter's voice follow and video recording. The audio is turned into text on the device and is not sent anywhere."],
+   "ro": ["Microfon", "Transcribe, plus urmărirea vocii și înregistrarea video din Prompter. Sunetul este transformat în text pe dispozitiv și nu este trimis nicăieri."]
+  },
+  "speech": {
+   "en": ["Speech recognition", "Apple's recogniser, run on the device. If a language is only recognised on Apple's servers, the app reports it unavailable instead of sending audio."],
+   "ro": ["Recunoaștere vocală", "Recunoscătorul Apple, rulat pe dispozitiv. Dacă o limbă este recunoscută doar pe serverele Apple, aplicația o raportează indisponibilă în loc să trimită sunet."]
+  },
+  "camera": {
+   "en": ["Camera", "To scan printed pages (text is recognised on the device, images are not uploaded) and to film you in the Prompter when you turn on Record video."],
+   "ro": ["Cameră", "Pentru scanarea paginilor tipărite (textul este recunoscut pe dispozitiv, imaginile nu sunt încărcate) și pentru a te filma în Prompter când pornești Înregistrare video."]
+  },
+  "photos_add": {
+   "en": ["Photo library (add only)", "To save the videos you record in the Prompter. Sayloud never reads your photos."],
+   "ro": ["Fototecă (doar adăugare)", "Pentru a salva videoclipurile înregistrate în Prompter. Sayloud nu îți citește niciodată pozele."]
+  },
+  "notifications": {
+   "en": ["Notifications", "Local alerts posted by the app itself, for example when a link you saved for import has been fetched. No push server is involved."],
+   "ro": ["Notificări", "Alerte locale generate de aplicație, de exemplu când un link salvat pentru import a fost descărcat. Nu există server de notificări."]
+  }
+ },
+ "local_data": {
+  "en": "Your documents, pasted text, transcripts, scripts, recordings and settings stay on your device.",
+  "ro": "Documentele, textele lipite, transcrierile, scripturile, înregistrările și setările rămân pe dispozitiv."
+ },
+ "local_detail": {
+  "en": "Documents you import (PDF, EPUB, RTF, text), web pages you import, scanned pages, pasted text, transcripts, Prompter scripts, custom pronunciations and settings are stored only in the app's storage on your device. We have no server that receives them and we cannot see them. Speech recognition for Transcribe and the Prompter's voice follow runs on the device. Title, Summary, Key points and Clean up in the transcript editor use Apple Intelligence on the device where it is available. Audio made by cloud voices is saved on the device so the passage plays again without a connection; Settings, Storage, Delete downloaded audio removes it. You can delete any document in the Library, and deleting the app removes everything. Videos you record in the Prompter are saved to your Photos library, which you manage in Photos. The widget shows what you were listening to, read from storage shared between the app and the widget on your device.",
+  "ro": "Documentele importate (PDF, EPUB, RTF, text), paginile web importate, paginile scanate, textele lipite, transcrierile, scripturile Prompter, pronunțiile personalizate și setările sunt păstrate doar în spațiul aplicației de pe dispozitiv. Nu avem server care să le primească și nu le putem vedea. Recunoașterea vocală pentru Transcribe și urmărirea vocii din Prompter rulează pe dispozitiv. Titlul, Rezumatul, Punctele cheie și Curățarea din editorul de transcrieri folosesc Apple Intelligence pe dispozitiv, unde este disponibil. Sunetul generat de vocile din cloud este salvat pe dispozitiv, ca pasajul să poată fi redat din nou fără conexiune; Setări, Stocare, Șterge fișierele audio descărcate îl elimină. Poți șterge orice document din Bibliotecă, iar ștergerea aplicației elimină tot. Videoclipurile înregistrate în Prompter sunt salvate în Fototecă, pe care o gestionezi din Poze. Widgetul arată ce ascultai, citit din spațiul comun dintre aplicație și widget, de pe dispozitiv."
+ },
+ "_local_src": "Docs/Transcribe.md (on-device recogniser, FoundationModels assistant, Library documents); Docs/SpeechRecognition.md and LegacySpeechRecognitionService.swift:127 requiresOnDeviceRecognition = true, :55 supportsOnDeviceRecognition guard (unavailable instead of server); AnalyzerSpeechRecognitionService (SpeechAnalyzer iOS 26+, on-device); Features/Transcribe/Services/FoundationModelsTranscriptAssistant.swift; AppConstants.Cache (audioTTLDays 30, maxDiskCacheMB 500) and SettingsView.storageSection ('Delete downloaded audio', ro 'Șterge fișierele audio descărcate'); WidgetSyncService + APP_GROUP_ID group.iosallapps.SpeechApp; ScanTextRecognizer.swift (Vision, on-device); no CloudKit / iCloud / HealthKit / GameKit in the code (grep).",
+ "service_notes": [
+  {
+   "en": "Cloud voices are the one feature that sends your text out: the passage being read goes over HTTPS straight from your device to OpenAI or ElevenLabs, depending on the voice you pick. Built-in Apple voices never leave the device. Free users can try cloud voices for a short daily allowance; Pro has a larger one.",
+   "ro": "Vocile din cloud sunt singura funcție care trimite textul tău în afară: pasajul citit merge prin HTTPS direct de pe dispozitiv la OpenAI sau ElevenLabs, în funcție de vocea aleasă. Vocile Apple încorporate nu părăsesc niciodată dispozitivul. Utilizatorii gratuiți pot încerca vocile din cloud o scurtă alocare zilnică; Pro are una mai mare."
+  },
+  {
+   "en": "When you import a web page by its link, the app downloads that page straight from the website, like a browser would, so the site sees your IP address. We never receive the link or the page.",
+   "ro": "Când imporți o pagină web după link, aplicația descarcă pagina direct de pe site, ca un browser, deci site-ul vede adresa ta IP. Noi nu primim niciodată linkul sau pagina."
+  },
+  {
+   "en": "Privacy Policy, Terms and Support links inside the app open sayloudapp.com in an in-app browser.",
+   "ro": "Linkurile către Politica de confidențialitate, Termeni și Asistență din aplicație deschid sayloudapp.com într-un browser din aplicație."
+  },
+  {
+   "en": "RevenueCat also receives the Firebase app instance ID, but only once usage statistics are allowed, so that purchases can be counted in the statistics.",
+   "ro": "RevenueCat primește și ID-ul instalării Firebase, dar numai după ce statisticile de utilizare sunt permise, ca achizițiile să poată fi numărate în statistici."
+  },
+  {
+   "en": "Crash reports are sent once the consent step has run, on the basis of our legitimate interest in a working app; they contain no document text.",
+   "ro": "Rapoartele de erori se trimit după pasul de consimțământ, pe baza interesului nostru legitim ca aplicația să funcționeze; nu conțin textul documentelor."
+  },
+  {
+   "en": "Usage statistics are events such as screens opened, buttons tapped and purchase steps. They carry no document titles, text or links.",
+   "ro": "Statisticile de utilizare sunt evenimente precum ecrane deschise, butoane atinse și pași ai achiziției. Nu conțin titluri de documente, text sau linkuri."
+  }
+ ],
+ "_service_notes_src": "TTSInteractor.gateNotice + AppConstants.TTS.freeDailyTrialMinutes (10) and maxDailyCharsPro; VoiceCatalog tiers (both providers .pro); Core/Services/Parsing/WebParsingService.swift URLSession.shared; InAppBrowser.swift SFSafariViewController; RevenueCatSubscriptionBackend.linkAnalytics (guards on MeasurementGate.isCollecting); MeasurementGate.refresh(): setCrashReportingEnabled(reportsCrashes()) as soon as verdict != pending, i.e. also after a refusal; FirebaseEventMapper.swift + AnalyticsEvents/AppConstants+Events parameter keys (action, ad_type, cache_hit, currency, days_since_install, duration_sec, from_provider, item_id, latency_ms, permission_*, placement, plan, preset, provider, reason, result, screen_name, session_type, source, step_*, tab_name, tier, trial_*, trigger, value, wait_ms; document_id is dropped; no title/text/url).",
+ "privacy_choices_path": {
+  "en": "in the app, Settings, Support, Privacy choices (shown where Google's consent form applies).",
+  "ro": "în aplicație, Setări, Asistență, Alegeri de confidențialitate (apare acolo unde se aplică formularul Google)."
+ },
+ "_consent_src": "SettingsView.supportSection row 'Privacy choices' (ro 'Alegeri de confidențialitate') shown when AdConsentService.isPrivacyOptionsRequired; startup order AdStartupSequence.run: UMP gather, then ATT, then MobileAds.start, nothing for subscribers; MeasurementGate default-deny + TCF purposes 1 and 8/9 (ConsentRegime.measurementAllowed) so analytics stay off after a refusal; LaunchCoordinator: consent on the splash, ATT on Welcome's Continue.",
+ "purchases": {
+  "subscriptions": true,
+  "trial": false,
+  "lifetime": true,
+  "what": {
+   "en": "Sayloud is free to download, with ads, the built-in voices and monthly limits on transcription and Prompter sessions. Sayloud Pro removes ads and unlocks the cloud voices, unlimited transcription and Prompter sessions and longer files, as an auto-renewing subscription (weekly, monthly, and yearly in some offers) or as a one-time lifetime purchase (also sold at a discount in some offers). The limits that apply to you are shown in the app.",
+   "ro": "Sayloud se descarcă gratuit, cu reclame, vocile încorporate și limite lunare la transcriere și sesiunile Prompter. Sayloud Pro elimină reclamele și deblochează vocile din cloud, transcrierea și sesiunile Prompter nelimitate și fișierele mai lungi, ca abonament cu reînnoire automată (săptămânal, lunar și, în unele oferte, anual) sau ca achiziție unică pe viață (vândută uneori și cu reducere). Limitele care ți se aplică apar în aplicație."
+  }
+ },
+ "_purchases_src": "UNCOMMITTED AppConstants+Store.swift (one paid level `pro`; offering default = weekly + monthly + lifetime, special_offer and welcome_offer = yearly + lifetime.offer), AppConstants+Paywall.swift, UserTier.swift (isPaid), Config/Speechie.storekit and ~/Developer/ASO/SpeechNote/pricing/create_products.py (weekly 7.99, monthly 14.99, yearly 29.99, lifetime 49.99, lifetime offer 34.99; trial None on every subscription; no trial wording in PaywallViewModel); free limits AppConstants.Transcribe.freeSecondsPerMonth 600 and Prompter.freeSessionsPerMonth 2; ads off for tier pro (AdSlotPolicy.showsBanner, AdMobService.isSubscriber). HEAD 999a14c still has the older Plus/Pro x monthly/annual model: re-check if the monetization rewrite is not what ships. RevenueCat entitlement id `pro` (AppConstants.Store.proEntitlementId).",
+ "what": {
+  "en": "Sayloud reads PDFs, EPUBs, web articles, scanned pages and pasted text aloud with the current word highlighted, using built-in Apple voices on the device and optional cloud voices. It turns live speech and audio or video files into text on the device (Transcribe), and runs a teleprompter whose script follows your voice and can record video (Prompter). It also has a library, custom pronunciations and a widget.",
+  "ro": "Sayloud citește cu voce tare PDF-uri, EPUB-uri, articole web, pagini scanate și text lipit, cu cuvântul curent evidențiat, folosind voci Apple încorporate pe dispozitiv și voci opționale din cloud. Transformă în text, pe dispozitiv, vorbirea live și fișierele audio sau video (Transcribe) și oferă un teleprompter al cărui script urmărește vocea ta și poate înregistra video (Prompter). Are și o bibliotecă, pronunții personalizate și un widget."
+ },
+ "disclaimers": [
+  {
+   "en": "Transcriptions, text recognition from scans and pronunciations are made automatically and can contain mistakes. Check them before you rely on them.",
+   "ro": "Transcrierile, recunoașterea textului din scanări și pronunțiile sunt generate automat și pot conține greșeli. Verifică-le înainte să te bazezi pe ele."
+  },
+  {
+   "en": "You keep all rights to what you import or create in Sayloud, and you confirm that you have the rights needed to import, read aloud, transcribe or record it, including any copyright in books, articles and other documents.",
+   "ro": "Păstrezi toate drepturile asupra a ceea ce imporți sau creezi în Sayloud și confirmi că ai drepturile necesare pentru a importa, citi cu voce tare, transcrie sau înregistra conținutul, inclusiv drepturile de autor asupra cărților, articolelor și altor documente."
+  },
+  {
+   "en": "The voices are synthetic and are not the voices of real people. You must not use Sayloud, or audio made with it, to impersonate a real person, to suggest that a real person said something they did not say, or to mislead or defraud anyone. Cloud voices have daily limits that are shown in the app; when one is reached, Sayloud keeps reading with a built-in voice.",
+   "ro": "Vocile sunt sintetice și nu sunt vocile unor persoane reale. Nu ai voie să folosești Sayloud sau sunetul creat cu el pentru a te da drept o persoană reală, pentru a sugera că o persoană reală a spus ceva ce nu a spus sau pentru a induce în eroare ori a înșela pe cineva. Vocile din cloud au limite zilnice afișate în aplicație; când una este atinsă, Sayloud continuă să citească cu o voce încorporată."
+  },
+  {
+   "en": "You must be at least 13 years old to use Sayloud. Sayloud is an independent app made by Darius Cirjan. It is not affiliated with, sponsored by or endorsed by any other company, brand or product that uses the same or a similar name, including makers of audio equipment, speakers or radio receivers.",
+   "ro": "Trebuie să ai cel puțin 13 ani ca să folosești Sayloud. Sayloud este o aplicație independentă făcută de Darius Cirjan. Nu este afiliată, sponsorizată sau susținută de nicio altă companie, marcă sau produs care folosește același nume sau unul asemănător, inclusiv producători de echipamente audio, boxe sau receptoare radio."
+  }
+ ],
+ "website": {
+  "en": "sayloudapp.com is hosted on GitHub Pages (GitHub, Inc., USA), which records the IP address of visitors in server logs for security. The site sets no cookies, uses no analytics, ads or third-party scripts or fonts, and stores nothing in your browser.",
+  "ro": "sayloudapp.com este găzduit pe GitHub Pages (GitHub, Inc., SUA), care înregistrează adresa IP a vizitatorilor în jurnalele serverului, pentru securitate. Site-ul nu setează cookie-uri, nu folosește statistici, reclame sau scripturi ori fonturi terțe și nu păstrează nimic în browserul tău."
+ },
+ "overrides": {
+  "privacy.rights": {
+   "en": "<p>You have the right to access, correct and delete your data, to restrict or object to processing (including to object at any time to processing based on legitimate interest), to data portability, and to withdraw consent at any time without affecting earlier processing.</p><p>Because the app has no account, we usually cannot tell which data at Google, RevenueCat, OpenAI or ElevenLabs is yours. Write to <a href=\"mailto:iosallapps@gmail.com\">iosallapps@gmail.com</a> and include, if you can, your purchase receipt or the Apple order number, and we will forward the request to the provider. You can always delete all data on the device by deleting the app.</p><p>You can complain to the supervisory authority where you live or work, or to ours: Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal (ANSPDCP), <a href=\"https://www.dataprotection.ro\" rel=\"noopener\">dataprotection.ro</a>. The list of EU authorities: <a href=\"https://www.edpb.europa.eu/about-edpb/about-edpb/members_en\" rel=\"noopener\">edpb.europa.eu</a>.</p>",
+   "ro": "<p>Ai dreptul de acces, rectificare și ștergere, de restricționare și de opoziție (inclusiv opoziție oricând la prelucrarea bazată pe interes legitim), la portabilitate și dreptul de a-ți retrage oricând consimțământul, fără a afecta prelucrarea anterioară.</p><p>Pentru că aplicația nu are cont, de obicei nu putem ști care date de la Google, RevenueCat, OpenAI sau ElevenLabs sunt ale tale. Scrie la <a href=\"mailto:iosallapps@gmail.com\">iosallapps@gmail.com</a> și, dacă poți, include chitanța achiziției sau numărul comenzii Apple, iar noi trimitem cererea furnizorului. Poți șterge oricând toate datele de pe dispozitiv ștergând aplicația.</p><p>Poți depune plângere la autoritatea de supraveghere din țara în care locuiești sau lucrezi, ori la a noastră: Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal (ANSPDCP), <a href=\"https://www.dataprotection.ro\" rel=\"noopener\">dataprotection.ro</a>. Lista autorităților din UE: <a href=\"https://www.edpb.europa.eu/about-edpb/about-edpb/members_en\" rel=\"noopener\">edpb.europa.eu</a>.</p>"
+  },
+  "terms.ip": {
+   "en": "<p>The app, its name, logo, design and code belong to Darius Cirjan. These Terms give you no rights to them other than the license to use the app. Content you import or create stays yours.</p>",
+   "ro": "<p>Aplicația, numele, sigla, designul și codul ei aparțin lui Darius Cirjan. Acești Termeni nu îți dau alte drepturi asupra lor decât licența de folosire a aplicației. Conținutul pe care îl imporți sau îl creezi rămâne al tău.</p>"
+  },
+  "terms.changes": {
+   "en": "<p>We may update these Terms when the app changes. The date at the top shows the latest version; important changes are announced in the store update notes. Changes do not apply to a subscription period you already paid for.</p>",
+   "ro": "<p>Putem actualiza acești Termeni când aplicația se schimbă. Data de sus arată ultima versiune; schimbările importante sunt anunțate în notele de actualizare din magazin. Schimbările nu se aplică unei perioade de abonament deja plătite.</p>"
+  }
+ }
+}

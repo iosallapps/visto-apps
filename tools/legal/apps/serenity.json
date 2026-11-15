@@ -1,0 +1,321 @@
+{
+ "slug": "serenity",
+ "name": "Serenity: AI Mood Journal",
+ "site": "https://serenityjournalapp.com",
+ "updated": "2026-11-15",
+ "platforms": [
+  "ios"
+ ],
+ "src": {
+  "ios": "~/Developer/Serenity (Moodly/, 1.13 build 7, local main 24 commits ahead of origin/main which is 1.12; live App Store version is 1.12)"
+ },
+ "services": [
+  "admob",
+  "ump",
+  "firebase_analytics",
+  "crashlytics",
+  "revenuecat",
+  "apple_store",
+  "groq",
+  "cloudflare_worker",
+  "apple_speech",
+  "apple_adservices"
+ ],
+ "_services_src": "project.pbxproj + Package.resolved (firebase-ios-sdk 12.14: Analytics, Crashlytics, RemoteConfig; purchases-ios-spm 5.85; google-mobile-ads 12.14; UMP 3.1); Core/Config/APIConfig.swift chatEndpoint, Server/groq-proxy/worker.js (Cloudflare Worker, Groq upstream, KV quota); Features/VoiceJournal/VoiceJournalManager.swift:242 SFSpeechAudioBufferRecognitionRequest without requiresOnDeviceRecognition; Core/Services/ASAAttributionService.swift (AdServices, api-adservices.apple.com); Core/Ads/*; Core/Services/ConsentManager.swift. No CloudKit/HealthKit/location/Mapbox/Game Center/camera found (no entitlements file, no imports).",
+ "extra_services": {
+  "firebase_analytics": {
+   "name": "Google Analytics for Firebase (with Remote Config)",
+   "who": "Google Ireland Ltd / Google LLC",
+   "link": "https://firebase.google.com/support/privacy",
+   "en": {
+    "data": "A random app instance ID, events such as screens and features used, voice-note duration, paywall and purchase steps, badges unlocked, notification taps, app version, device model, OS, language and country derived from the IP address. If you turned on Crisis Detection, an event records that a check flagged an entry: a level, a score, the number of signals and the app language, never the text. Apple Search Ads campaign numbers, when the install came from an ad. Remote Config reads the paywall layout settings. Moods, entry text, notes, tags and search words are not sent.",
+    "why": "Understanding which features are used and measuring the paywall, so we can improve the app."
+   },
+   "ro": {
+    "data": "Un ID aleatoriu al instalării, evenimente precum ecranele și funcțiile folosite, durata notelor vocale, pașii paywall-ului și ai achiziției, insignele deblocate, atingerile pe notificări, versiunea aplicației, modelul dispozitivului, sistemul, limba și țara dedusă din adresa IP. Dacă ai pornit Detectarea crizelor, un eveniment notează că o verificare a marcat o intrare: un nivel, un scor, numărul de semnale și limba aplicației, niciodată textul. Numerele campaniei Apple Search Ads, când instalarea a venit dintr-o reclamă. Remote Config citește setările de aspect ale paywall-ului. Stările, textul intrărilor, notițele, etichetele și cuvintele căutate nu se trimit.",
+    "why": "Înțelegerea funcțiilor folosite și măsurarea paywall-ului, ca să îmbunătățim aplicația."
+   },
+   "basis": [
+    "consent",
+    "legit"
+   ],
+   "basis_text": {
+    "en": "EEA, UK and Switzerland: consent given in Google's consent form, art. 6(1)(a) GDPR, and it stays off if you turn off Anonymous Analytics in Settings. Elsewhere: legitimate interest in improving the app, art. 6(1)(f) GDPR, with the same switch. Crisis Detection events are sent only if you turned that feature on.",
+    "ro": "SEE, Regatul Unit și Elveția: consimțământul dat în formularul Google, art. 6 alin. (1) lit. a GDPR, iar statisticile rămân oprite dacă dezactivezi Statistici anonime în Setări. În rest: interes legitim de a îmbunătăți aplicația, art. 6 alin. (1) lit. f GDPR, cu același comutator. Evenimentele Detectării crizelor se trimit doar dacă ai pornit funcția."
+   },
+   "ret": {
+    "en": "At most 14 months for event data.",
+    "ro": "Cel mult 14 luni pentru datele de evenimente."
+   },
+   "transfer": true
+  },
+  "crashlytics": {
+   "name": "Firebase Crashlytics",
+   "who": "Google Ireland Ltd / Google LLC",
+   "link": "https://firebase.google.com/support/privacy",
+   "en": {
+    "data": "Crash reports: stack trace, device model, OS and app version, and the device's vendor identifier (identifierForVendor), which stays the same for all apps of this developer on the device.",
+    "why": "Finding and fixing crashes. Reports start only when analytics collection is allowed, as above."
+   },
+   "ro": {
+    "data": "Rapoarte de erori: stiva apelurilor, modelul dispozitivului, versiunea sistemului și a aplicației și identificatorul de furnizor al dispozitivului (identifierForVendor), același pentru toate aplicațiile acestui dezvoltator de pe dispozitiv.",
+    "why": "Găsirea și repararea erorilor. Rapoartele pornesc doar când colectarea statisticilor este permisă, ca mai sus."
+   },
+   "basis": [
+    "consent",
+    "legit"
+   ],
+   "basis_text": {
+    "en": "Same switch as analytics: consent, art. 6(1)(a) GDPR, in the EEA, UK and Switzerland; legitimate interest in a working app, art. 6(1)(f) GDPR, elsewhere.",
+    "ro": "Același comutator ca la statistici: consimțământ, art. 6 alin. (1) lit. a GDPR, în SEE, Regatul Unit și Elveția; interes legitim ca aplicația să funcționeze, art. 6 alin. (1) lit. f GDPR, în rest."
+   },
+   "ret": {
+    "en": "90 days.",
+    "ro": "90 de zile."
+   },
+   "transfer": true
+  },
+  "groq": {
+   "name": "Groq (AI text generation)",
+   "who": "Groq, Inc. (USA)",
+   "link": "https://groq.com/privacy-policy",
+   "en": {
+    "data": "Serenity Pro only. For an AI prompt: the mood you picked, the app language and, if you gave them in onboarding, your goal (for example managing anxiety or processing heavy emotions) and how predictable your mood is. For a Mirror reflection after you save an entry: that entry's mood and its first 200 characters, plus the mood and the first 50 characters of each of your last 7 entries. No entry is sent in full. Groq also sees the IP address of our server, not yours.",
+    "why": "Writing the personalised prompt or the short reflection. The free version uses a built-in library and sends nothing to AI."
+   },
+   "ro": {
+    "data": "Doar Serenity Pro. Pentru un prompt AI: starea aleasă, limba aplicației și, dacă le-ai dat la început, scopul tău (de exemplu gestionarea anxietății sau procesarea emoțiilor grele) și cât de previzibilă e starea ta. Pentru o reflecție Mirror după ce salvezi o intrare: starea acelei intrări și primele 200 de caractere, plus starea și primele 50 de caractere din ultimele 7 intrări. Nicio intrare nu se trimite integral. Groq vede adresa IP a serverului nostru, nu a ta.",
+    "why": "Scrierea promptului personalizat sau a reflecției scurte. Versiunea gratuită folosește o bibliotecă integrată și nu trimite nimic către AI."
+   },
+   "basis": [
+    "contract"
+   ],
+   "basis_text": {
+    "en": "Contract, art. 6(1)(b) GDPR: the AI features are part of Serenity Pro. Mood and entry excerpts can reveal health information (art. 9 GDPR); they are sent only for Serenity Pro AI features, never for the free version.",
+    "ro": "Contract, art. 6 alin. (1) lit. b GDPR: funcțiile AI fac parte din Serenity Pro. Starea și fragmentele din intrări pot dezvălui informații despre sănătate (art. 9 GDPR); se trimit doar pentru funcțiile AI din Serenity Pro, niciodată în versiunea gratuită."
+   },
+   "ret": {
+    "en": "Governed by Groq's own terms and policy; we do not control how long Groq keeps requests.",
+    "ro": "Stabilită de termenii și politica proprie Groq; noi nu controlăm cât timp păstrează Groq cererile."
+   },
+   "transfer": true
+  },
+  "cloudflare_worker": {
+   "name": "Cloudflare Workers (our AI relay)",
+   "who": "Cloudflare, Inc. (USA), running code written by us",
+   "link": "https://www.cloudflare.com/privacypolicy/",
+   "en": {
+    "data": "Every AI request passes through a small relay we run on Cloudflare. It receives the request described above over HTTPS, your IP address, and a random install number that the app made up. It checks the size, forwards the text to Groq and returns Groq's answer. It does not log or store the text. It stores only a counter per install number per month, to enforce a monthly limit of requests.",
+    "why": "Keeping our Groq key out of the app and limiting abuse. Not used for anything else."
+   },
+   "ro": {
+    "data": "Fiecare cerere AI trece printr-un releu mic pe care îl rulăm pe Cloudflare. Primește cererea descrisă mai sus prin HTTPS, adresa ta IP și un număr aleatoriu de instalare generat de aplicație. Verifică dimensiunea, trimite textul către Groq și returnează răspunsul. Nu înregistrează și nu stochează textul. Stochează doar un contor pe număr de instalare și pe lună, pentru limita lunară de cereri.",
+    "why": "Păstrarea cheii Groq în afara aplicației și limitarea abuzurilor. Nu se folosește pentru altceva."
+   },
+   "basis": [
+    "contract",
+    "legit"
+   ],
+   "basis_text": {
+    "en": "Contract, art. 6(1)(b) GDPR (it delivers the AI feature) and legitimate interest in preventing abuse, art. 6(1)(f) GDPR.",
+    "ro": "Contract, art. 6 alin. (1) lit. b GDPR (livrează funcția AI) și interes legitim de a preveni abuzurile, art. 6 alin. (1) lit. f GDPR."
+   },
+   "ret": {
+    "en": "The request text is not stored. Counters expire after about 40 days. Cloudflare's own request logs follow its policy.",
+    "ro": "Textul cererii nu se stochează. Contoarele expiră după aproximativ 40 de zile. Jurnalele proprii ale Cloudflare urmează politica sa."
+   },
+   "transfer": true
+  },
+  "apple_speech": {
+   "name": "Apple speech recognition",
+   "who": "Apple Inc.",
+   "link": "https://www.apple.com/legal/privacy/data/en/dictation-and-privacy/",
+   "en": {
+    "data": "When you record a voice entry, the audio is transcribed by Apple's speech recognition. Depending on your device and language, Apple may process the audio on its servers. The recording itself is saved only on your device.",
+    "why": "Turning what you say into text for your entry."
+   },
+   "ro": {
+    "data": "Când înregistrezi o intrare vocală, sunetul este transcris de recunoașterea vocală Apple. În funcție de dispozitiv și de limbă, Apple poate prelucra sunetul pe serverele sale. Înregistrarea în sine se salvează doar pe dispozitivul tău.",
+    "why": "Transformarea a ceea ce spui în text pentru intrarea ta."
+   },
+   "basis": [
+    "contract"
+   ],
+   "basis_text": {
+    "en": "Contract, art. 6(1)(b) GDPR, and your permission to use the microphone and speech recognition. Apple acts under its own policy.",
+    "ro": "Contract, art. 6 alin. (1) lit. b GDPR, și permisiunea ta pentru microfon și recunoaștere vocală. Apple acționează conform propriei politici."
+   },
+   "ret": {
+    "en": "Set by Apple.",
+    "ro": "Stabilită de Apple."
+   },
+   "transfer": false
+  },
+  "apple_adservices": {
+   "name": "Apple Search Ads attribution (AdServices)",
+   "who": "Apple Inc.",
+   "link": "https://www.apple.com/legal/privacy/data/en/apple-advertising/",
+   "en": {
+    "data": "Once, after the first launch, the app asks iOS for an attribution token and sends it to Apple, which answers whether the install came from an Apple Search Ads campaign and which one. The token holds no personal data and needs no tracking permission. The answer is passed on to analytics only if analytics is allowed.",
+    "why": "Measuring whether our App Store ads work."
+   },
+   "ro": {
+    "data": "O singură dată, după prima lansare, aplicația cere iOS un token de atribuire și îl trimite către Apple, care răspunde dacă instalarea a venit dintr-o campanie Apple Search Ads și din care. Tokenul nu conține date personale și nu cere permisiunea de urmărire. Răspunsul ajunge la statistici doar dacă statisticile sunt permise.",
+    "why": "Măsurarea eficienței reclamelor noastre din App Store."
+   },
+   "basis": [
+    "legit"
+   ],
+   "ret": {
+    "en": "Set by Apple.",
+    "ro": "Stabilită de Apple."
+   },
+   "transfer": false
+  }
+ },
+ "permissions": [
+  "microphone",
+  "speech",
+  "photos",
+  "faceid",
+  "notifications",
+  "tracking"
+ ],
+ "_permissions_src": "Info.plist NSMicrophoneUsageDescription, NSSpeechRecognitionUsageDescription, NSPhotoLibraryUsageDescription, NSFaceIDUsageDescription, NSUserTrackingUsageDescription; NotificationManager (local UNUserNotificationCenter, no registerForRemoteNotifications); JournalView PhotosPicker",
+ "extra_permissions": {
+  "microphone": {
+   "en": [
+    "Microphone",
+    "Only while you record a voice entry. The recording is saved on your device."
+   ],
+   "ro": [
+    "Microfon",
+    "Doar cât înregistrezi o intrare vocală. Înregistrarea se salvează pe dispozitiv."
+   ]
+  },
+  "speech": {
+   "en": [
+    "Speech recognition",
+    "To transcribe a voice entry. See Apple speech recognition above for what Apple may process."
+   ],
+   "ro": [
+    "Recunoaștere vocală",
+    "Pentru transcrierea unei intrări vocale. Vezi mai sus recunoașterea vocală Apple pentru ce poate prelucra Apple."
+   ]
+  },
+  "photos": {
+   "en": [
+    "Photos",
+    "Only the photos you pick to attach to an entry. They are stored on your device and are not uploaded."
+   ],
+   "ro": [
+    "Fotografii",
+    "Doar fotografiile pe care le alegi pentru o intrare. Se păstrează pe dispozitiv și nu se încarcă nicăieri."
+   ]
+  },
+  "faceid": {
+   "en": [
+    "Face ID or Touch ID",
+    "Optional app lock. The check is done by iOS; the app never receives your face or fingerprint data."
+   ],
+   "ro": [
+    "Face ID sau Touch ID",
+    "Blocare opțională a aplicației. Verificarea o face iOS; aplicația nu primește niciodată datele feței sau amprentei tale."
+   ]
+  },
+  "notifications": {
+   "en": [
+    "Notifications",
+    "Local reminders scheduled on the device. No push server is involved."
+   ],
+   "ro": [
+    "Notificări",
+    "Mementouri locale programate pe dispozitiv. Nu există server de notificări."
+   ]
+  }
+ },
+ "local_data": {
+  "en": "Your journal stays on your iPhone: entries, moods, notes, gratitude entries, photos, voice recordings and settings.",
+  "ro": "Jurnalul tău rămâne pe iPhone: intrări, stări, notițe, intrări de recunoștință, fotografii, înregistrări vocale și setări."
+ },
+ "local_detail": {
+  "en": "Entries, the mood you pick, notes, gratitude entries, tags, photos, voice recordings and their transcripts, streaks, insights and settings are stored only in the app's own database and files on your iPhone, with iOS Data Protection. There is no Serenity account and no cloud sync: we have no copy and cannot read them. Insights, patterns and the crisis check are computed on the device. Moods and entries can reveal your state of mind and sometimes health information, which the law treats as especially sensitive; that is why they stay on the device, and the only things that can leave it are listed in the table below. In the app, Settings, Export My Data gives you a copy, Clear All History removes your entries, and Settings, Delete All My Data erases everything; deleting the app removes it all too.",
+  "ro": "Intrările, starea pe care o alegi, notițele, intrările de recunoștință, etichetele, fotografiile, înregistrările vocale și transcrierile lor, seriile, analizele și setările se păstrează doar în baza de date și în fișierele proprii ale aplicației de pe iPhone, cu iOS Data Protection. Nu există cont Serenity și nici sincronizare în cloud: nu avem nicio copie și nu le putem citi. Analizele, tiparele și verificarea de criză se calculează pe dispozitiv. Stările și intrările pot dezvălui starea ta psihică și uneori informații despre sănătate, pe care legea le tratează ca deosebit de sensibile; de aceea rămân pe dispozitiv, iar singurele lucruri care îl pot părăsi sunt cele din tabelul de mai jos. În aplicație, Setări, Exportă datele mele îți dă o copie, Șterge tot istoricul îți elimină intrările, iar Setări, Șterge toate datele mele șterge totul; ștergerea aplicației elimină și ea tot."
+ },
+ "_local_src": "SerenityApp.swift makeModelContainer (SwiftData, ModelConfiguration without cloudKitDatabase, no entitlements file); SettingsView.swift:134-146 (Export My Data, Clear All History, Delete All My Data); RO labels from Localizable.xcstrings (Exportă datele mele, Șterge tot istoricul, Șterge toate datele mele)",
+ "service_notes": [
+  {
+   "en": "AI is a Serenity Pro feature. The free version writes prompts from a built-in library and sends no mood, goal or entry text to any AI service. In Serenity Pro, an AI prompt is requested when you pick a mood and a Mirror reflection is requested after you save an entry. The request goes from the app over HTTPS to our relay on Cloudflare, which forwards it to Groq. The relay does not store the text; Groq processes it under its own terms, and we have not verified how long Groq keeps requests. If you do not want any text from your journal to reach an AI service, do not use Serenity Pro's AI features. The app has no separate AI switch yet.",
+   "ro": "AI este o funcție Serenity Pro. Versiunea gratuită scrie prompturile dintr-o bibliotecă integrată și nu trimite nicio stare, niciun scop și niciun text de intrare către vreun serviciu AI. În Serenity Pro, un prompt AI se cere când alegi o stare, iar o reflecție Mirror se cere după ce salvezi o intrare. Cererea pleacă din aplicație prin HTTPS către releul nostru de pe Cloudflare, care o trimite la Groq. Releul nu stochează textul; Groq îl prelucrează conform propriilor termeni, iar noi nu am verificat cât timp păstrează Groq cererile. Dacă nu vrei ca niciun text din jurnalul tău să ajungă la un serviciu AI, nu folosi funcțiile AI din Serenity Pro. Aplicația nu are încă un comutator separat pentru AI."
+  },
+  {
+   "en": "Crisis Detection is off until you turn it on. It then checks each saved entry on your device and shows support resources. The words are never sent anywhere; only the analytics event described above, and only if analytics is allowed.",
+   "ro": "Detectarea crizelor este oprită până o pornești. Apoi verifică pe dispozitiv fiecare intrare salvată și arată resurse de sprijin. Cuvintele nu se trimit nicăieri; doar evenimentul de statistici descris mai sus, și doar dacă statisticile sunt permise."
+  },
+  {
+   "en": "RevenueCat also receives the Firebase app instance ID, so that purchases can be counted in the statistics, when analytics is allowed.",
+   "ro": "RevenueCat primește și ID-ul instalării Firebase, ca achizițiile să poată fi numărate în statistici, când statisticile sunt permise."
+  },
+  {
+   "en": "Ads are shown only in the free version, never together with crisis resources. Nothing you write is used for ads.",
+   "ro": "Reclamele apar doar în versiunea gratuită, niciodată împreună cu resursele pentru criză. Nimic din ce scrii nu este folosit pentru reclame."
+  }
+ ],
+ "privacy_choices_path": {
+  "en": "in the app, Settings, Ad Privacy Settings (shown where the consent form applies). Anonymous Analytics, in Settings, switches analytics and crash reports off at any time, in every country.",
+  "ro": "în aplicație, Setări, Setări de confidențialitate pentru reclame (apare acolo unde se aplică formularul). Statistici anonime, tot în Setări, oprește oricând statisticile și rapoartele de erori, în orice țară."
+ },
+ "_consent_src": "Core/Ads/AdPrivacySettingsRow.swift; SettingsView.swift:120 (Anonymous Analytics); Localizable.xcstrings RO: Setări de confidențialitate pentru reclame, Statistici anonime; ConsentManager.swift (userChoice false always wins; allowed needs UMP TCF purposes in EEA/UK/CH); AdStartupSequence (UMP, then ATT, then ads)",
+ "consent_notes": [],
+ "purchases": {
+  "subscriptions": true,
+  "trial": true,
+  "lifetime": true,
+  "what": {
+   "en": "Serenity is free to download. Serenity Pro removes ads and the free limits, and writes your prompts and reflections with AI. It is offered as a weekly, monthly or yearly subscription, or a one-time lifetime purchase, at the price shown in the app for your region. Some plans have a free trial for eligible new subscribers (the weekly plan shows a 3-day trial on its card), and a welcome or special offer at a reduced price may be shown from time to time. What is free and what is Pro is shown in the app.",
+   "ro": "Serenity se descarcă gratuit. Serenity Pro elimină reclamele și limitele versiunii gratuite și scrie cu AI prompturile și reflecțiile tale. Se oferă ca abonament săptămânal, lunar sau anual ori ca achiziție unică pe viață, la prețul afișat în aplicație pentru regiunea ta. Unele planuri au o perioadă de probă gratuită pentru abonații noi eligibili (planul săptămânal arată pe card o probă de 3 zile), iar uneori poate apărea o ofertă de bun venit sau specială, la preț redus. Ce e gratuit și ce e Pro apare în aplicație."
+  }
+ },
+ "_purchases_src": "PaywallViewModel.swift PaywallCards (weekly with trial, lifetime), PricingPlan.swift (weekly, monthly), SpecialOfferCatalog.swift (yearly, lifetime, lifetime.offer, welcome_offer); trial days come from the store product (storekit 3-day shown on the weekly card); ASO listing 1.13 en.md for plan wording; PremiumFeatureManager free limits",
+ "what": {
+  "en": "Serenity is a mood journal and diary for iPhone. You pick a mood, get a journaling prompt, write or speak your entry, and see insights, streaks and a mood calendar built from your entries. It can lock the app with Face ID, remind you to write, and, if you turn it on, check entries for signs of crisis and show support resources.",
+  "ro": "Serenity este un jurnal de stări și un jurnal personal pentru iPhone. Alegi o stare, primești un prompt de jurnal, scrii sau dictezi intrarea și vezi analize, serii și un calendar al stărilor construite din intrările tale. Poate bloca aplicația cu Face ID, te poate reaminti să scrii și, dacă o pornești, poate verifica intrările pentru semne de criză și arăta resurse de sprijin."
+ },
+ "disclaimers": [
+  {
+   "en": "Serenity is a journaling and self-reflection tool. It is not a medical device, does not diagnose, treat or prevent any condition, and is not a substitute for professional mental health care. Insights, AI prompts and reflections are general suggestions and can be wrong.",
+   "ro": "Serenity este un instrument de jurnal și autoreflecție. Nu este un dispozitiv medical, nu diagnostichează, nu tratează și nu previne nicio afecțiune și nu înlocuiește îngrijirea profesională a sănătății mintale. Analizele, prompturile AI și reflecțiile sunt sugestii generale și pot fi greșite."
+  },
+  {
+   "en": "Crisis Detection is an optional aid that looks for certain words and patterns in English and Romanian. It can miss a crisis or flag one that is not. If you or someone else is in danger, contact your local emergency services or a crisis line right away; the app lists resources by region.",
+   "ro": "Detectarea crizelor este un ajutor opțional care caută anumite cuvinte și tipare în engleză și română. Poate rata o criză sau poate marca una care nu este. Dacă tu sau altcineva ești în pericol, contactează imediat serviciile de urgență locale sau o linie de criză; aplicația listează resurse pe regiuni."
+  }
+ ],
+ "_disclaimers_src": "CrisisDetectionEngine.swift (consent-gated, en/ro), CrisisDetectionConsent.swift; ASO listing 1.13 'WHEN DAYS FEEL HEAVY'",
+ "website": {
+  "en": "serenityjournalapp.com is hosted on GitHub Pages (GitHub, Inc., USA), which records the IP address of visitors in server logs for security. The site sets no cookies, stores nothing in your browser and uses no analytics or ads.",
+  "ro": "serenityjournalapp.com este găzduit pe GitHub Pages (GitHub, Inc., SUA), care înregistrează adresa IP a vizitatorilor în jurnalele serverului, pentru securitate. Site-ul nu setează cookie-uri, nu stochează nimic în browser și nu folosește statistici sau reclame."
+ },
+ "overrides": {
+  "privacy.glance": {
+   "en": "<ul><li>No account. Serenity does not ask for your name, email or phone number.</li><li>Your journal stays on your iPhone: entries, moods, photos, voice recordings and notes. We have no copy of it, and nothing is synced to iCloud.</li><li>The free version sends nothing from your journal to any AI service. In Serenity Pro, AI prompts and reflections send your mood, a goal you gave in onboarding and short excerpts of entries (never a full entry) through a small relay we run on Cloudflare to Groq, a US company.</li><li>Voice entries are transcribed by Apple's speech recognition, which may use Apple's servers.</li><li>The free version shows ads from Google AdMob. Personalised ads only with your consent; in the EEA, UK and Switzerland no ad loads before you answer the consent form. Serenity Pro removes ads. Nothing you write is used for ads.</li><li>Usage statistics and crash reports (Google Firebase) are pseudonymous, follow your consent choice where the law requires it and can be turned off in Settings, Anonymous Analytics. They never contain your moods or text.</li><li>We do not sell personal data for money. The only server of ours that touches your data is the AI relay, which does not store it.</li></ul>",
+   "ro": "<ul><li>Fără cont. Serenity nu îți cere numele, emailul sau telefonul.</li><li>Jurnalul rămâne pe iPhone: intrări, stări, fotografii, înregistrări vocale și notițe. Nu avem nicio copie, iar nimic nu se sincronizează în iCloud.</li><li>Versiunea gratuită nu trimite nimic din jurnal către vreun serviciu AI. În Serenity Pro, prompturile și reflecțiile AI trimit starea ta, un scop dat la început și fragmente scurte din intrări (niciodată o intrare întreagă) printr-un releu mic rulat de noi pe Cloudflare, către Groq, o companie din SUA.</li><li>Intrările vocale sunt transcrise de recunoașterea vocală Apple, care poate folosi serverele Apple.</li><li>Versiunea gratuită afișează reclame Google AdMob. Reclame personalizate doar cu acordul tău; în SEE, Regatul Unit și Elveția nicio reclamă nu se încarcă înainte să răspunzi la formularul de consimțământ. Serenity Pro elimină reclamele. Nimic din ce scrii nu este folosit pentru reclame.</li><li>Statisticile și rapoartele de erori (Google Firebase) sunt pseudonime, urmează alegerea ta de consimțământ acolo unde legea o cere și pot fi oprite în Setări, Statistici anonime. Nu conțin niciodată stările sau textul tău.</li><li>Nu vindem date personale pe bani. Singurul server al nostru care atinge datele tale este releul AI, care nu le stochează.</li></ul>"
+  },
+  "privacy.retention": {
+   "en": "<p>Data on your device stays until you delete it in the app (Settings, Clear All History or Delete All My Data) or delete the app. We keep no copy of your journal. The AI relay stores no request text; it keeps only a per-install request counter that expires after about 40 days. Data held by the other services above is kept for the period listed in the table. Emails you send us are kept as long as needed to answer, and at most 2 years.</p>",
+   "ro": "<p>Datele de pe dispozitiv rămân până le ștergi din aplicație (Setări, Șterge tot istoricul sau Șterge toate datele mele) sau ștergi aplicația. Nu păstrăm nicio copie a jurnalului. Releul AI nu stochează textul cererilor; păstrează doar un contor de cereri pe instalare, care expiră după aproximativ 40 de zile. Datele aflate la celelalte servicii de mai sus se păstrează cât scrie în tabel. Emailurile trimise nouă se păstrează cât e nevoie pentru răspuns, cel mult 2 ani.</p>"
+  },
+  "privacy.rights": {
+   "en": "<p>You have the right to access, correct and delete your data, to restrict or object to processing (including to object at any time to processing based on legitimate interest), to data portability, and to withdraw consent at any time without affecting earlier processing.</p><p>Your journal is only on your device, so you already hold it: Settings, Export My Data gives you a copy and Delete All My Data erases it. Because the app has no account, we usually cannot tell which data at Google or RevenueCat is yours. Write to <a href=\"mailto:iosallapps@gmail.com\">iosallapps@gmail.com</a> and include, if you can, the date of your install or purchase and the country, and we will forward the request to the provider.</p><p>You can complain to the supervisory authority where you live or work, or to ours: Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal (ANSPDCP), <a href=\"https://www.dataprotection.ro\" rel=\"noopener\">www.dataprotection.ro</a>. The list of EU authorities: <a href=\"https://www.edpb.europa.eu/about-edpb/about-edpb/members_en\" rel=\"noopener\">edpb.europa.eu</a>.</p>",
+   "ro": "<p>Ai dreptul de acces, rectificare și ștergere, de restricționare și de opoziție (inclusiv opoziție oricând la prelucrarea bazată pe interes legitim), la portabilitate și dreptul de a-ți retrage oricând consimțământul, fără a afecta prelucrarea anterioară.</p><p>Jurnalul este doar pe dispozitivul tău, deci îl ai deja: Setări, Exportă datele mele îți dă o copie, iar Șterge toate datele mele îl șterge. Pentru că aplicația nu are cont, de obicei nu putem ști care date de la Google sau RevenueCat sunt ale tale. Scrie la <a href=\"mailto:iosallapps@gmail.com\">iosallapps@gmail.com</a> și, dacă poți, include data instalării sau a achiziției și țara, iar noi trimitem cererea furnizorului.</p><p>Poți depune plângere la autoritatea de supraveghere din țara în care locuiești sau lucrezi, ori la a noastră: Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal (ANSPDCP), <a href=\"https://www.dataprotection.ro\" rel=\"noopener\">www.dataprotection.ro</a>. Lista autorităților din UE: <a href=\"https://www.edpb.europa.eu/about-edpb/about-edpb/members_en\" rel=\"noopener\">edpb.europa.eu</a>.</p>"
+  },
+  "terms.ip": {
+   "en": "<p>The app, its name, design and code belong to Darius Cirjan. What you write, record and attach in your journal stays yours; we do not claim any right to it and we never receive a copy.</p>",
+   "ro": "<p>Aplicația, numele, designul și codul ei aparțin lui Darius Cirjan. Ce scrii, înregistrezi și atașezi în jurnal rămâne al tău; nu pretindem niciun drept asupra lui și nu primim niciodată o copie.</p>"
+  },
+  "terms.changes": {
+   "en": "<p>We may update these Terms when the app changes. The date at the top shows the latest version; important changes are announced in the store update notes. Changes do not apply to a subscription period you already paid for. These Terms are published in English.</p>",
+   "ro": "<p>Putem actualiza acești Termeni când aplicația se schimbă. Data de sus arată ultima versiune; schimbările importante sunt anunțate în notele de actualizare din magazin. Schimbările nu se aplică unei perioade de abonament deja plătite. Acești Termeni sunt publicați în engleză.</p>"
+  }
+ }
+}
