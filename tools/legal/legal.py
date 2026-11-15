@@ -355,8 +355,8 @@ def privacy(c):
     us_en = ["We do not sell personal information for money."]
     us_ro = ["Nu vindem informații personale pe bani."]
     if c.ads:
-        us_en.append("When you allow personalised ads, Google AdMob uses your advertising identifier for ads based on activity in other apps. Some US state laws (for example California) call this \"sharing\" or \"targeted advertising\". You can opt out at any time: refuse tracking on iOS (Settings, Privacy & Security, Tracking), delete or reset the advertising ID on Android, or email us and we will treat it as an opt-out request.")
-        us_ro.append("Când permiți reclame personalizate, Google AdMob folosește identificatorul de publicitate pentru reclame bazate pe activitatea din alte aplicații. Unele legi din statele SUA (de exemplu California) numesc asta „partajare” sau „publicitate țintită”. Poți refuza oricând: refuză urmărirea pe iOS (Setări, Confidențialitate și securitate, Urmărire), șterge sau resetează ID-ul de publicitate pe Android, sau scrie-ne și tratăm mesajul ca cerere de renunțare.")
+        us_en.append("When you allow personalised ads, Google AdMob uses your advertising identifier for ads based on activity in other apps. Some US state laws (for example California) call this \"sharing\" or \"targeted advertising\". You can opt out at any time: refuse tracking on iOS (Settings, Privacy & Security, Tracking)" + (", delete or reset the advertising ID on Android" if c.android else "") + ", or email us and we will treat it as an opt-out request.")
+        us_ro.append("Când permiți reclame personalizate, Google AdMob folosește identificatorul de publicitate pentru reclame bazate pe activitatea din alte aplicații. Unele legi din statele SUA (de exemplu California) numesc asta „partajare” sau „publicitate țintită”. Poți refuza oricând: refuză urmărirea pe iOS (Setări, Confidențialitate și securitate, Urmărire)" + (", șterge sau resetează ID-ul de publicitate pe Android" if c.android else "") + ", sau scrie-ne și tratăm mesajul ca cerere de renunțare.")
     us_en.append(f"Residents of California and other US states with privacy laws can ask to know, correct or delete their personal information, and will not be treated differently for doing so. Categories collected in the last 12 months are the ones in the table above (identifiers, internet activity, approximate location from IP, purchase records). Requests: {mail()}.")
     us_ro.append(f"Rezidenții din California și din alte state SUA cu legi de confidențialitate pot cere să afle, să corecteze sau să șteargă informațiile personale, fără a fi tratați diferit pentru asta. Categoriile colectate în ultimele 12 luni sunt cele din tabel (identificatori, activitate online, locație aproximativă din IP, evidența achizițiilor). Cereri: {mail()}.")
     out.append(S("us", "United States", ul(us_en), "Statele Unite", ul(us_ro)))
@@ -391,6 +391,14 @@ def platform_list(self, lang):
     return "Android" if self.android else "iOS"
 
 
+def platform_text(self, t):
+    """Drop Android-only clauses from shared wording on iOS-only apps."""
+    if not self.android:
+        for x in ("; Android advertising ID", "; ID-ul de publicitate Android"):
+            t = t.replace(x, "")
+    return t
+
+
 def services_table(self, lang):
     s = STR[lang]
     rows = []
@@ -405,7 +413,7 @@ def services_table(self, lang):
         tr = (" " + {"en": "Outside the EEA.", "ro": "În afara SEE."}[lang]) if sv["transfer"] else ""
         rows.append(
             f'<tr><th scope="row">{link(sv["link"], sv["name"])}<br><small>{e(sv["who"])}</small></th>'
-            f'<td data-label="{s["data"]}">{e(sv[lang]["data"])}</td>'
+            f'<td data-label="{s["data"]}">{e(platform_text(self, sv[lang]["data"]))}</td>'
             f'<td data-label="{s["purpose"]}">{e(sv[lang]["why"])}</td>'
             f'<td data-label="{s["basis"]}">{e(bases)}</td>'
             f'<td data-label="{s["ret"]}">{e(sv["ret"][lang])}{tr}</td></tr>')

@@ -1,0 +1,300 @@
+{
+ "slug": "luris",
+ "name": "Luris",
+ "site": "https://lurisapp.com",
+ "updated": "2026-11-15",
+ "platforms": [
+  "ios"
+ ],
+ "src": {
+  "ios": "~/Developer/Luris (main b17e2eb, version 1.1 build 8; live App Store build is 1.0, see report)"
+ },
+ "services": [
+  "healthkit",
+  "game_center",
+  "admob",
+  "ump",
+  "firebase_analytics",
+  "firebase_remote_config",
+  "crashlytics",
+  "revenuecat",
+  "apple_store",
+  "apple_maps_luris"
+ ],
+ "_services_src": "Luris.xcodeproj SPM (purchases-ios, firebase-ios-sdk Analytics/Crashlytics/RemoteConfig, google-mobile-ads, UMP); Luris/Core/Services/HealthKitService.swift:59-85 (read/write types); LeaderboardService+GameCenter.swift:237 (GKLeaderboard.submitScore) and LeaderboardService.swift:68-86 (CloudKit backend off in release, Game Center on); RemoteConfigService.swift:68-83; RunSessionView.swift (MapKit); RegionUnitService.swift:127-134 (reverse geocode); Luris.entitlements declares iCloud/CloudKit but nothing uses it in release",
+ "extra_services": {
+  "admob": {
+   "name": "Google AdMob",
+   "who": "Google Ireland Ltd / Google LLC",
+   "link": "https://policies.google.com/technologies/ads",
+   "en": {
+    "data": "Advertising identifier (IDFA, only if you allow tracking), IP address, device and app information, ad impressions and taps. Ad requests carry no keywords or targeting about health or activity.",
+    "why": "Showing full-screen ads in the free version, never during a workout or a walk, run or ride in progress. Personalised ads only with your consent; otherwise limited, non-personalised ads. Luris Pro and trial users see no ads."
+   },
+   "ro": {
+    "data": "Identificatorul de publicitate (IDFA, doar dacă permiți urmărirea), adresa IP, informații despre dispozitiv și aplicație, afișări și atingeri ale reclamelor. Cererile de reclame nu conțin cuvinte-cheie sau țintire legate de sănătate sau activitate.",
+    "why": "Afișarea reclamelor pe tot ecranul în versiunea gratuită, niciodată în timpul unui antrenament sau al unei plimbări, alergări ori ture în desfășurare. Reclame personalizate doar cu acordul tău; altfel reclame limitate, nepersonalizate. Utilizatorii Luris Pro și cei din perioada de probă nu văd reclame."
+   },
+   "basis": [
+    "consent",
+    "legit"
+   ],
+   "basis_text": {
+    "en": "Personalised ads: consent, art. 6(1)(a) GDPR and art. 5(3) ePrivacy. Limited ads: legitimate interest in funding the free app, art. 6(1)(f) GDPR.",
+    "ro": "Reclame personalizate: consimțământ, art. 6 alin. (1) lit. a GDPR și art. 5 alin. (3) ePrivacy. Reclame limitate: interes legitim de a finanța aplicația gratuită, art. 6 alin. (1) lit. f GDPR."
+   },
+   "ret": {
+    "en": "Set by Google (see its policy).",
+    "ro": "Stabilită de Google (vezi politica sa)."
+   },
+   "transfer": true
+  },
+  "healthkit": {
+   "name": "Apple Health (HealthKit)",
+   "who": "Apple Inc. (on your device)",
+   "link": "https://www.apple.com/legal/privacy/data/en/health-app/",
+   "en": {
+    "data": "Read, only with your permission: steps, walking and running distance, flights climbed, active energy, exercise minutes, sleep, weight and body fat percentage. Written, only with your permission: the walks, runs, bike rides and workouts you finish (as workouts, with their active energy and their walking and running distance, or cycling distance for a ride). Nothing else is read or written.",
+    "why": "Showing your activity, streaks, achievements and progress, and saving your finished sessions to Health. This data is processed on your device only."
+   },
+   "ro": {
+    "data": "Citite, doar cu permisiunea ta: pașii, distanța de mers și alergare, etajele urcate, energia activă, minutele de exercițiu, somnul, greutatea și procentul de grăsime corporală. Scrise, doar cu permisiunea ta: plimbările, alergările, turele cu bicicleta și antrenamentele terminate (ca antrenamente, cu energia activă și distanța de mers și alergare, sau distanța de pedalare pentru o tură). Nu se citește și nu se scrie nimic altceva.",
+    "why": "Afișarea activității, seriilor, realizărilor și progresului tău și salvarea sesiunilor terminate în Health. Aceste date sunt prelucrate doar pe dispozitiv."
+   },
+   "basis": [
+    "explicit"
+   ],
+   "ret": {
+    "en": "On your device until you delete it in the app. What Luris saved to Apple Health stays there until you delete it in the Health app.",
+    "ro": "Pe dispozitiv, până o ștergi din aplicație. Ce a salvat Luris în Apple Health rămâne acolo până o ștergi din aplicația Health."
+   },
+   "transfer": false
+  },
+  "game_center": {
+   "name": "Apple Game Center",
+   "who": "Apple Inc.",
+   "link": "https://www.apple.com/legal/privacy/",
+   "en": {
+    "data": "Only if you join the weekly steps leaderboard: your Game Center alias, one number (your total steps for the week, calculated from Apple Health) and your place on the board. Other players see your alias and that number. Nothing else is sent: no per-day steps, no workouts, no routes, no other health value.",
+    "why": "Showing the weekly steps leaderboard. Joining is optional and you can leave at any time."
+   },
+   "ro": {
+    "data": "Doar dacă te alături clasamentului săptămânal de pași: aliasul tău Game Center, un singur număr (totalul pașilor din săptămână, calculat din Apple Health) și locul tău în clasament. Ceilalți jucători văd aliasul și acest număr. Nu se trimite nimic altceva: nici pașii pe zile, nici antrenamente, nici trasee, nici altă valoare de sănătate.",
+    "why": "Afișarea clasamentului săptămânal de pași. Alăturarea este opțională și poți ieși oricând."
+   },
+   "basis": [
+    "explicit"
+   ],
+   "basis_text": {
+    "en": "Explicit consent, art. 9(2)(a) and art. 6(1)(a) GDPR: you choose to join the leaderboard.",
+    "ro": "Consimțământ explicit, art. 9 alin. (2) lit. a și art. 6 alin. (1) lit. a GDPR: alegi tu să te alături clasamentului."
+   },
+   "ret": {
+    "en": "Set by Apple. Game Center does not let an app delete a score already posted, so it stays on the board until the weekly reset. Leaving stops further scores.",
+    "ro": "Stabilită de Apple. Game Center nu permite unei aplicații să șteargă un scor deja postat, deci rămâne în clasament până la resetarea săptămânală. Ieșirea oprește scorurile următoare."
+   },
+   "transfer": false
+  },
+  "firebase_remote_config": {
+   "name": "Firebase Remote Config",
+   "who": "Google Ireland Ltd / Google LLC",
+   "link": "https://firebase.google.com/support/privacy",
+   "en": {
+    "data": "A random installation ID, your IP address and basic app and device information, sent when the app fetches its settings. No events and no health or activity data.",
+    "why": "Switching two features on or off from a console (the special offer and the ad shown after onboarding) and choosing which plan the first paywall preselects."
+   },
+   "ro": {
+    "data": "Un ID aleatoriu al instalării, adresa IP și informații de bază despre aplicație și dispozitiv, trimise când aplicația își preia setările. Fără evenimente și fără date de sănătate sau activitate.",
+    "why": "Pornirea sau oprirea a două funcții dintr-o consolă (oferta specială și reclama de după introducere) și alegerea planului preselectat de primul ecran de abonament."
+   },
+   "basis": [
+    "legit"
+   ],
+   "ret": {
+    "en": "Set by Google.",
+    "ro": "Stabilită de Google."
+   },
+   "transfer": true
+  },
+  "apple_maps_luris": {
+   "name": "Apple Maps (MapKit and location lookup)",
+   "who": "Apple Inc.",
+   "link": "https://www.apple.com/legal/privacy/data/en/apple-maps/",
+   "en": {
+    "data": "The map area drawn behind your route while a walk, run or ride is on screen, and your IP address. Once per profile, one location fix is sent to Apple's map service to find which country you are in.",
+    "why": "Drawing your route and choosing kilometres or miles for your region. Only a country code is kept, on your device."
+   },
+   "ro": {
+    "data": "Zona de hartă desenată sub traseul tău cât timp o plimbare, o alergare sau o tură este pe ecran, și adresa IP. O singură dată pe profil, o poziție este trimisă serviciului de hărți Apple ca să afle în ce țară ești.",
+    "why": "Desenarea traseului și alegerea kilometrilor sau a milelor pentru regiunea ta. Pe dispozitiv se păstrează doar codul țării."
+   },
+   "basis": [
+    "contract"
+   ],
+   "ret": {
+    "en": "Set by Apple.",
+    "ro": "Stabilită de Apple."
+   },
+   "transfer": false
+  }
+ },
+ "permissions": [
+  "health",
+  "location_gps",
+  "camera",
+  "photos_add",
+  "notifications",
+  "tracking",
+  "game_center_perm"
+ ],
+ "_permissions_src": "Luris.xcodeproj INFOPLIST_KEY_NSHealthShareUsageDescription / NSHealthUpdateUsageDescription / NSLocationWhenInUseUsageDescription / NSCameraUsageDescription / NSPhotoLibraryAddUsageDescription / NSUserTrackingUsageDescription; Info.plist NSLocationTemporaryUsageDescriptionDictionary WalkRunTracking and UIBackgroundModes location; PhotosPicker in ProgressTabView.swift:829 (no permission); ShareImageExporter.swift:19 (add-only); NotificationService + no registerForRemoteNotifications; Activity.request pushType nil (RunLiveActivityController.swift:78-81)",
+ "extra_permissions": {
+  "health": {
+   "en": [
+    "Apple Health (read and write, per type)",
+    "You choose in the iOS Health sheet which types Luris may read and which it may write, and can change that anytime in Settings, Privacy & Security, Health, Luris. Without it the app still opens but cannot show your steps."
+   ],
+   "ro": [
+    "Apple Health (citire și scriere, pe tip)",
+    "Alegi în fereastra Health din iOS ce tipuri poate citi Luris și ce tipuri poate scrie și poți schimba oricând din Setări, Confidențialitate și securitate, Health, Luris. Fără ea aplicația se deschide, dar nu poate arăta pașii tăi."
+   ]
+  },
+  "location_gps": {
+   "en": [
+    "Location (while using the app, also with the screen locked during a session)",
+    "To record the route, distance, pace and speed of a walk, run or ride. Tracking continues in the background only while you have started a session. Routes stay on your device. If you give only approximate location, Luris can ask for precise location for that one session."
+   ],
+   "ro": [
+    "Localizare (în timpul folosirii, și cu ecranul blocat în timpul unei sesiuni)",
+    "Pentru a înregistra traseul, distanța, ritmul și viteza unei plimbări, alergări sau ture. Urmărirea continuă în fundal doar cât ai pornit o sesiune. Traseele rămân pe dispozitiv. Dacă dai doar localizare aproximativă, Luris poate cere localizare precisă pentru acea sesiune."
+   ]
+  },
+  "camera": {
+   "en": [
+    "Camera",
+    "To take a photo for a share card or a progress photo. Photos stay on your device."
+   ],
+   "ro": [
+    "Cameră",
+    "Pentru o fotografie pentru un card de partajare sau pentru o fotografie de progres. Fotografiile rămân pe dispozitiv."
+   ]
+  },
+  "photos_add": {
+   "en": [
+    "Photos (add only)",
+    "To save a share card to your photo library. Luris cannot read your library. When you pick a photo for a card or for progress, you use the system photo picker and Luris receives only the photo you choose."
+   ],
+   "ro": [
+    "Fotografii (doar adăugare)",
+    "Pentru a salva un card de partajare în biblioteca foto. Luris nu poate citi biblioteca. Când alegi o fotografie pentru un card sau pentru progres, folosești selectorul foto al sistemului, iar Luris primește doar fotografia aleasă."
+   ]
+  },
+  "game_center_perm": {
+   "en": [
+    "Game Center (optional)",
+    "Sign-in is handled by iOS. Luris uses it only for the weekly steps leaderboard, and only after you join from the leaderboard screen."
+   ],
+   "ro": [
+    "Game Center (opțional)",
+    "Autentificarea este gestionată de iOS. Luris îl folosește doar pentru clasamentul săptămânal de pași și doar după ce te alături din ecranul clasamentului."
+   ]
+  }
+ },
+ "local_data": {
+  "en": "Your health data, workouts, routes, photos and settings stay on your iPhone. We have no server that receives them.",
+  "ro": "Datele tale de sănătate, antrenamentele, traseele, fotografiile și setările rămân pe iPhone. Nu avem server care să le primească."
+ },
+ "local_detail": {
+  "en": "<p><strong>Apple Health.</strong> With your permission Luris reads from Apple Health: steps, walking and running distance, flights climbed, active energy, exercise minutes, sleep, weight and body fat percentage. It writes to Apple Health the walks, runs, bike rides and workouts you finish, as workouts, with their active energy and their walking and running distance (cycling distance for a ride). It writes no weight and no route. This is data concerning health under art. 9 GDPR. It is processed on your device, on the basis of your explicit consent: the permission you give in the iOS Health sheet, which you can withdraw anytime in Settings, Privacy &amp; Security, Health, Luris. Health data is never used for advertising, marketing or analytics, never sold, never sent to our servers (we have none) and never sent to Google, RevenueCat or any other third party. No Apple Health value appears in an analytics event, a user property, an ad request or a crash report. The one exception is chosen by you: if you join the weekly leaderboard, one number derived from Apple Health, your total steps for the week, is posted to Apple's Game Center under your alias (see the table below).</p><p><strong>Everything else stays on the iPhone.</strong> Your profile, goals, plan, workouts, walk, run and ride history and routes, habits, challenges, achievements, progress photos, settings and the numbers shown in the widgets are stored in the app's storage on your iPhone. Luris has no account on a server. Sign in with Apple is optional and only fills in your name: your Apple user ID and name are kept on your iPhone, and no token is stored or sent. Notifications are scheduled on the device. Photos you take or pick are kept in the app's storage. A share card leaves your iPhone only when you send it somewhere yourself.</p><p><strong>Deleting it.</strong> In the app, open Profile, then Your data, and tap Delete All Data. It removes everything Luris keeps on your iPhone: the database, progress photos, leaderboard membership and public name, the Sign in with Apple ID and name, settings, widget data, notifications and any Live Activity. Delete Account, shown when you are signed in with Apple, does the same and signs you out. Two things stay and the confirmation says so: what Luris saved to Apple Health (delete it in the Health app) and scores already posted to Game Center (Game Center manages them). Deleting the app removes the app's data too, but the Sign in with Apple details can survive it, so use Delete All Data first.</p>",
+  "ro": "<p><strong>Apple Health.</strong> Cu permisiunea ta, Luris citește din Apple Health: pașii, distanța de mers și alergare, etajele urcate, energia activă, minutele de exercițiu, somnul, greutatea și procentul de grăsime corporală. Scrie în Apple Health plimbările, alergările, turele cu bicicleta și antrenamentele terminate, ca antrenamente, cu energia activă și distanța de mers și alergare (distanța de pedalare pentru o tură). Nu scrie greutate și nu scrie trasee. Acestea sunt date privind sănătatea, conform art. 9 GDPR. Sunt prelucrate pe dispozitiv, pe baza consimțământului tău explicit: permisiunea dată în fereastra Health din iOS, pe care o poți retrage oricând din Setări, Confidențialitate și securitate, Health, Luris. Datele de sănătate nu sunt folosite niciodată pentru publicitate, marketing sau statistici, nu sunt vândute, nu sunt trimise către serverele noastre (nu avem) și nu sunt trimise către Google, RevenueCat sau alt terț. Nicio valoare din Apple Health nu apare într-un eveniment de statistică, o proprietate de utilizator, o cerere de reclamă sau un raport de eroare. Singura excepție o alegi tu: dacă te alături clasamentului săptămânal, un singur număr derivat din Apple Health, totalul pașilor din săptămână, este postat în Game Center-ul Apple sub aliasul tău (vezi tabelul de mai jos).</p><p><strong>Restul rămâne pe iPhone.</strong> Profilul, obiectivele, planul, antrenamentele, istoricul și traseele plimbărilor, alergărilor și turelor, obiceiurile, provocările, realizările, fotografiile de progres, setările și numerele din widgeturi sunt păstrate în stocarea aplicației de pe iPhone. Luris nu are cont pe un server. Sign in with Apple este opțional și completează doar numele: ID-ul tău Apple și numele sunt păstrate pe iPhone, iar niciun token nu este stocat sau trimis. Notificările sunt programate pe dispozitiv. Fotografiile făcute sau alese sunt păstrate în stocarea aplicației. Un card de partajare părăsește iPhone-ul doar când îl trimiți tu undeva.</p><p><strong>Ștergerea.</strong> În aplicație, deschide Profil, apoi Datele tale și atinge Șterge toate datele. Se elimină tot ce păstrează Luris pe iPhone: baza de date, fotografiile de progres, apartenența la clasament și numele public, ID-ul și numele Sign in with Apple, setările, datele widgeturilor, notificările și orice Live Activity. Șterge contul, afișat când ești conectat cu Apple, face același lucru și te deconectează. Două lucruri rămân, iar confirmarea o spune: ce a salvat Luris în Apple Health (șterge-le din aplicația Health) și scorurile deja postate în Game Center (le gestionează Game Center). Ștergerea aplicației elimină și datele aplicației, dar detaliile Sign in with Apple pot supraviețui, deci folosește întâi Șterge toate datele.</p>"
+ },
+ "_local_src": "HealthKitService.swift:59-85; LeaderboardService+GameCenter.swift:18-26 and :237; AnalyticsPolicy.swift header + AnalyticsManager.swift:98-101,705-720 (no health value in events/user properties); AdMobManager.swift:299-309 (no keywords/targeting); DataDeletionService.swift:1-30; DataDeletionKind.swift:24-77; ProfileView.swift:752-770 (Your data section); AuthService.swift (Keychain only); localized strings Delete All Data / Șterge toate datele, Your data / Datele tale",
+ "service_notes": [
+  {
+   "en": "Analytics events only record that something happened (a screen opened, a feature used, a purchase step, an ad shown). They carry no Apple Health value, no steps, distance, calories, sleep, weight, route or location. Three counters are set as user properties from Luris's own records: finished workouts, recorded route sessions and the plan week. Google's ad requests carry no keywords or targeting about health or activity.",
+   "ro": "Evenimentele de statistică înregistrează doar că s-a întâmplat ceva (un ecran deschis, o funcție folosită, un pas de achiziție, o reclamă afișată). Nu conțin nicio valoare din Apple Health, nici pași, distanță, calorii, somn, greutate, traseu sau locație. Trei contoare sunt setate ca proprietăți de utilizator din evidențele proprii ale Luris: antrenamentele terminate, sesiunile cu traseu înregistrate și săptămâna planului. Cererile de reclame către Google nu conțin cuvinte-cheie sau țintire legate de sănătate sau activitate."
+  },
+  {
+   "en": "RevenueCat also receives the Firebase app instance ID, so that renewals and trial conversions can be counted in the statistics. This happens only while measurement is allowed.",
+   "ro": "RevenueCat primește și ID-ul instalării Firebase, ca reînnoirile și conversiile din perioada de probă să poată fi numărate în statistici. Se întâmplă doar cât timp măsurarea este permisă."
+  },
+  {
+   "en": "Crash reports are sent from App Store installs on the basis of our legitimate interest in a working app. They are not tied to the consent form. They contain no Apple Health, location or profile data.",
+   "ro": "Rapoartele de erori se trimit din instalările din App Store pe baza interesului nostru legitim ca aplicația să funcționeze. Nu sunt legate de formularul de consimțământ. Nu conțin date din Apple Health, de locație sau de profil."
+  },
+  {
+   "en": "The exercise photos and steps are bundled in the app, so browsing the library does not normally make a network request.",
+   "ro": "Pozele și pașii exercițiilor sunt incluse în aplicație, deci răsfoirea bibliotecii nu face de obicei nicio cerere în rețea."
+  }
+ ],
+ "privacy_choices_path": {
+  "en": "in the app, Profile, About, Privacy Choices (shown where the consent form applies).",
+  "ro": "în aplicație, Profil, Despre, Opțiuni de confidențialitate (apare acolo unde se aplică formularul)."
+ },
+ "_consent_src": "AdConsentManager.swift (UMP, TCF purposes 1 and 8/9 for measurement); AdStartupSequence.swift (consent, then ATT, then ads); AnalyticsManager.swift:187-278 (Consent Mode, events held until verdict); ProfileView.swift:694-702 + ProfileViewModel.swift:68; localized 'Privacy Choices' = 'Opțiuni de confidențialitate', 'ABOUT' = 'DESPRE', 'Profile' = 'Profil'",
+ "consent_notes": [
+  {
+   "en": "Ad personalisation signals stay off in Google Analytics whatever you answer; AdMob requests are limited (non-personalised) unless the consent form or your region allows personalised ads.",
+   "ro": "Semnalele de personalizare a reclamelor rămân oprite în Google Analytics indiferent de răspuns; cererile AdMob sunt limitate (nepersonalizate) dacă formularul de consimțământ sau regiunea nu permit reclame personalizate."
+  },
+  {
+   "en": "Luris Pro and trial users see no ads and are not asked for ad consent.",
+   "ro": "Utilizatorii Luris Pro și cei din perioada de probă nu văd reclame și nu li se cere consimțământ pentru reclame."
+  }
+ ],
+ "purchases": {
+  "subscriptions": true,
+  "trial": true,
+  "lifetime": true,
+  "what": {
+   "en": "Luris is free to download and free to use for steps, activity history, GPS walks, runs and rides, saving to Apple Health, the leaderboard, challenges, habits, badges and widgets. Luris Pro unlocks the generated six-week plan with the exercise library, the custom workout builder, progress photos with the body charts, and Share Studio, and removes ads. It is sold as a weekly or monthly auto-renewing subscription, as a yearly subscription in a special offer, or as a one-time lifetime purchase. What each plan costs, and whether a free trial is available to you, is shown in the app before you buy.",
+   "ro": "Luris se descarcă gratuit și este gratuit pentru pași, istoricul activității, plimbări, alergări și ture cu GPS, salvarea în Apple Health, clasament, provocări, obiceiuri, insigne și widgeturi. Luris Pro deblochează planul generat pe șase săptămâni cu biblioteca de exerciții, constructorul de antrenamente proprii, fotografiile de progres cu graficele corporale și Share Studio, și elimină reclamele. Se vinde ca abonament săptămânal sau lunar cu reînnoire automată, ca abonament anual într-o ofertă specială sau ca achiziție unică pe viață. Cât costă fiecare plan și dacă ai disponibilă o perioadă de probă gratuită apare în aplicație înainte de cumpărare."
+  }
+ },
+ "_purchases_src": "AppFeature.swift:20-62 (free vs paid list); RevenueCatConfig.swift:29-47 (luris.pro.weekly, monthly, yearly, lifetime, lifetime.offer; entitlement pro); StorePlanMapping.swift (paywall sells week, month and regular lifetime; the special offer sells year and discounted lifetime); SubscriptionPlan.swift IntroOffer from the store per Apple Account; AdMobManager.swift isPro includes trial",
+ "what": {
+  "en": "Luris is a step and fitness tracker for iPhone. It reads your steps and activity from Apple Health, records walks, runs and bike rides with GPS and a route map, builds a six-week plan from a bundled library of 873 exercises, tracks progress with photos and body charts, and offers an optional weekly steps leaderboard on Apple's Game Center.",
+  "ro": "Luris este o aplicație de pași și fitness pentru iPhone. Citește pașii și activitatea din Apple Health, înregistrează plimbări, alergări și ture cu bicicleta cu GPS și hartă a traseului, construiește un plan pe șase săptămâni dintr-o bibliotecă inclusă de 873 de exerciții, urmărește progresul cu fotografii și grafice corporale și oferă un clasament opțional de pași săptămânal în Game Center-ul Apple."
+ },
+ "disclaimers": [
+  {
+   "en": "<strong>Not medical advice.</strong> Luris gives fitness information for general wellbeing and motivation. It is not a medical device and does not diagnose, treat, cure, monitor or prevent any condition. The weekly plan, workouts, goals, streaks and badges are not medical, nutritional or professional coaching advice. Talk to a doctor before starting an exercise programme, especially with a medical condition or injury, during pregnancy, with medication, or after a long break. Stop and seek medical help if you feel pain, chest discomfort, dizziness, faintness or shortness of breath. You exercise at your own risk, to the extent the law allows.",
+   "ro": "<strong>Nu este sfat medical.</strong> Luris oferă informații de fitness pentru starea generală de bine și motivație. Nu este un dispozitiv medical și nu diagnostichează, nu tratează, nu vindecă, nu monitorizează și nu previne nicio afecțiune. Planul săptămânal, antrenamentele, obiectivele, seriile și insignele nu sunt sfaturi medicale, nutriționale sau de antrenor. Vorbește cu un medic înainte de a începe un program de exerciții, mai ales dacă ai o afecțiune sau o accidentare, ești însărcinată, iei medicamente sau ai avut o pauză lungă. Oprește-te și caută ajutor medical dacă simți durere, disconfort în piept, amețeală, slăbiciune sau lipsă de aer. Faci exerciții pe propriul risc, în măsura permisă de lege."
+  },
+  {
+   "en": "<strong>The numbers are estimates.</strong> Steps, distance, floors, energy, exercise minutes, sleep and body measurements come from Apple Health, and Luris cannot check that they are correct. Distance, pace and speed in a walk, run or ride are measured with GPS, whose accuracy depends on your surroundings, your view of the sky and your device. Calories during a workout are estimated, and where Apple Health has no active energy or exercise minutes (for example without an Apple Watch) Luris estimates them from your steps, floors and weight. The weekly plan is generated from your answers and a general exercise library and does not take your medical history into account; skip anything you are unsure about. None of these figures should be used for medical purposes.",
+   "ro": "<strong>Numerele sunt estimări.</strong> Pașii, distanța, etajele, energia, minutele de exercițiu, somnul și măsurătorile corporale vin din Apple Health, iar Luris nu poate verifica dacă sunt corecte. Distanța, ritmul și viteza la o plimbare, alergare sau tură sunt măsurate cu GPS, a cărui precizie depinde de mediu, de vederea spre cer și de dispozitiv. Caloriile din timpul unui antrenament sunt estimate, iar acolo unde Apple Health nu are energie activă sau minute de exercițiu (de exemplu fără Apple Watch) Luris le estimează din pași, etaje și greutate. Planul săptămânal este generat din răspunsurile tale și dintr-o bibliotecă generală de exerciții și nu ține cont de istoricul tău medical; sari peste orice nu ești sigur. Niciuna dintre aceste cifre nu trebuie folosită în scopuri medicale."
+  },
+  {
+   "en": "<strong>Stay safe outdoors.</strong> Luris records walks, runs and rides with your location. It is not a navigation or emergency service, and its maps can be incomplete or out of date. Stay aware of traffic and people, follow traffic laws and local rules, and do not hold or look at your iPhone while crossing a road or riding; start, pause and finish a ride only when stopped in a safe place. Recording runs in the background during a session and uses battery. A route can reveal where you live or often go, and share cards hide the start and end of a route by default. You are responsible for where, when and how you walk, run or ride.",
+   "ro": "<strong>Fii în siguranță în aer liber.</strong> Luris înregistrează plimbări, alergări și ture cu locația ta. Nu este un serviciu de navigație sau de urgență, iar hărțile pot fi incomplete sau depășite. Fii atent la trafic și la oameni, respectă regulile de circulație și regulile locale și nu ține în mână și nu te uita la iPhone când traversezi sau pedalezi; pornește, pune pe pauză și încheie o tură doar când ești oprit într-un loc sigur. Înregistrarea rulează în fundal în timpul unei sesiuni și consumă baterie. Un traseu poate dezvălui unde locuiești sau unde mergi des, iar cardurile de partajare ascund implicit începutul și sfârșitul traseului. Tu răspunzi pentru unde, când și cum mergi, alergi sau pedalezi."
+  },
+  {
+   "en": "<strong>The leaderboard.</strong> The weekly steps leaderboard is optional, runs on Apple's Game Center, and is for fun: no prizes, and a ranking has no monetary value. If you join, your weekly step total appears under your Game Center alias, which must follow Apple's rules for Game Center and must not be offensive, misleading or impersonate anyone. Do not add steps by hand, use other means to record steps you did not walk, use several accounts or exploit a bug to change your ranking. We may, where Game Center allows it, remove a score or player, report it to Apple or reset or stop the leaderboard. You can leave at any time: Luris then stops sending your score, but Game Center does not let apps delete a posted score, so this week's score stays until the weekly reset.",
+   "ro": "<strong>Clasamentul.</strong> Clasamentul săptămânal de pași este opțional, rulează în Game Center-ul Apple și este pentru distracție: fără premii, iar un loc în clasament nu are valoare bănească. Dacă te alături, totalul tău săptămânal de pași apare sub aliasul tău Game Center, care trebuie să respecte regulile Apple pentru Game Center și să nu fie ofensator, înșelător sau să se dea drept altcineva. Nu adăuga pași manual, nu folosi alte mijloace de a înregistra pași pe care nu i-ai făcut, nu folosi mai multe conturi și nu exploata o eroare ca să-ți schimbi locul. Putem, unde Game Center permite, să eliminăm un scor sau un jucător, să raportăm la Apple sau să resetăm ori să oprim clasamentul. Poți ieși oricând: Luris nu mai trimite scorul, dar Game Center nu permite aplicațiilor să șteargă un scor postat, deci scorul acestei săptămâni rămâne până la resetarea săptămânală."
+  },
+  {
+   "en": "<strong>Your content.</strong> Your workouts, routes, progress photos and everything else you create in Luris stay yours. They are stored only on your iPhone, so a device backup is how you protect them. We cannot recover data from a lost, reset or damaged device, or data removed with Delete All Data or Delete Account, which cannot be undone.",
+   "ro": "<strong>Conținutul tău.</strong> Antrenamentele, traseele, fotografiile de progres și tot ce creezi în Luris rămân ale tale. Sunt păstrate doar pe iPhone, așa că o copie de siguranță a dispozitivului este modul de a le proteja. Nu putem recupera date de pe un dispozitiv pierdut, resetat sau deteriorat, nici date eliminate cu Șterge toate datele sau Șterge contul, care nu pot fi anulate."
+  }
+ ],
+ "_disclaimers_src": "Condensed from the previous terms.html sections 4, 5, 7 and 10 and checked against the code: AppFeature.swift, LeaderboardService+GameCenter.swift, ActivityEstimator.swift (estimated active energy), DataDeletionService.swift",
+ "website": {
+  "en": "lurisapp.com is a static site hosted on GitHub Pages (GitHub, Inc., USA), which records the IP address of visitors in server logs for security. The site sets no cookies, runs no scripts, uses no analytics or ads and loads no third-party resources, including its fonts. The App Store links open Apple's site, which has its own privacy policy.",
+  "ro": "lurisapp.com este un site static găzduit pe GitHub Pages (GitHub, Inc., SUA), care înregistrează adresa IP a vizitatorilor în jurnalele serverului, pentru securitate. Site-ul nu setează cookie-uri, nu rulează scripturi, nu folosește statistici sau reclame și nu încarcă resurse de la terți, nici măcar fonturile. Linkurile către App Store deschid site-ul Apple, care are propria politică de confidențialitate."
+ },
+ "overrides": {
+  "privacy.glance": {
+   "en": "<ul><li>No online account. Luris has no server of its own that receives your data. Sign in with Apple is optional and only fills in your name.</li><li>Your health data stays on your iPhone. It is never used for ads or analytics, never sold, and never sent to us or to Google or RevenueCat. The one thing you can choose to send is your weekly step total, to Apple's Game Center, if you join the leaderboard.</li><li>Workouts, routes, progress photos and settings stay on your iPhone, and Profile, Your data, Delete All Data removes them.</li><li>The free version shows ads from Google AdMob. Personalised ads only with your consent; in the EEA, UK and Switzerland no ad loads before you answer the consent form. Luris Pro removes ads.</li><li>Usage statistics (Google Analytics for Firebase) start only once Google's consent regime allows them; they never contain health, activity or location values. Crash reports help us fix bugs.</li><li>We do not sell personal data for money.</li></ul>",
+   "ro": "<ul><li>Fără cont online. Luris nu are un server propriu care să primească datele tale. Sign in with Apple este opțional și completează doar numele.</li><li>Datele tale de sănătate rămân pe iPhone. Nu sunt folosite pentru reclame sau statistici, nu sunt vândute și nu sunt trimise nouă, Google sau RevenueCat. Singurul lucru pe care poți alege să-l trimiți este totalul săptămânal de pași, către Game Center-ul Apple, dacă te alături clasamentului.</li><li>Antrenamentele, traseele, fotografiile de progres și setările rămân pe iPhone, iar Profil, Datele tale, Șterge toate datele le elimină.</li><li>Versiunea gratuită afișează reclame Google AdMob. Reclame personalizate doar cu acordul tău; în SEE, Regatul Unit și Elveția nicio reclamă nu se încarcă înainte să răspunzi la formularul de consimțământ. Luris Pro elimină reclamele.</li><li>Statisticile de utilizare (Google Analytics for Firebase) pornesc doar când regimul de consimțământ Google le permite; nu conțin niciodată valori de sănătate, activitate sau locație. Rapoartele de erori ne ajută să reparăm problemele.</li><li>Nu vindem date personale pe bani.</li></ul>"
+  },
+  "privacy.us": {
+   "en": "<ul><li>We do not sell personal information for money.</li><li>When you allow personalised ads, Google AdMob uses your advertising identifier for ads based on activity in other apps. Some US state laws (for example California) call this \"sharing\" or \"targeted advertising\". You can opt out at any time: refuse tracking on iOS (Settings, Privacy &amp; Security, Tracking), or email us and we will treat it as an opt-out request.</li><li>Residents of California and other US states with privacy laws can ask to know, correct or delete their personal information, and will not be treated differently for doing so. Categories collected in the last 12 months are the ones in the table above (identifiers, internet activity, approximate location from IP, purchase records). We do not collect health data: it stays on your device, and the only health-derived value you can choose to send is your weekly step total to Apple's Game Center. Requests: <a href=\"mailto:iosallapps@gmail.com\">iosallapps@gmail.com</a>.</li></ul>",
+   "ro": "<ul><li>Nu vindem informații personale pe bani.</li><li>Când permiți reclame personalizate, Google AdMob folosește identificatorul de publicitate pentru reclame bazate pe activitatea din alte aplicații. Unele legi din statele SUA (de exemplu California) numesc asta „partajare” sau „publicitate țintită”. Poți refuza oricând: refuză urmărirea pe iOS (Setări, Confidențialitate și securitate, Urmărire) sau scrie-ne și tratăm mesajul ca cerere de renunțare.</li><li>Rezidenții din California și din alte state SUA cu legi de confidențialitate pot cere să afle, să corecteze sau să șteargă informațiile personale, fără a fi tratați diferit pentru asta. Categoriile colectate în ultimele 12 luni sunt cele din tabel (identificatori, activitate online, locație aproximativă din IP, evidența achizițiilor). Nu colectăm date de sănătate: rămân pe dispozitiv, iar singura valoare derivată din ele pe care poți alege să o trimiți este totalul săptămânal de pași, către Game Center-ul Apple. Cereri: <a href=\"mailto:iosallapps@gmail.com\">iosallapps@gmail.com</a>.</li></ul>"
+  },
+  "terms.changes": {
+   "en": "<p>We may update these Terms when the app changes. The date at the top shows the latest version; important changes are announced in the store update notes. Changes do not apply to a subscription period you already paid for. These Terms are written in English; if a translation is ever provided, the English text prevails.</p>",
+   "ro": "<p>Putem actualiza acești Termeni când aplicația se schimbă. Data de sus arată ultima versiune; schimbările importante sunt anunțate în notele de actualizare din magazin. Schimbările nu se aplică unei perioade de abonament deja plătite. Acești Termeni sunt scriși în engleză; dacă va exista vreodată o traducere, prevalează textul în engleză.</p>"
+  }
+ }
+}

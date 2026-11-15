@@ -1,0 +1,129 @@
+{
+ "slug": "agrondo",
+ "name": "Agrondo",
+ "site": "https://agrondo.com",
+ "updated": "2026-11-15",
+ "platforms": ["ios"],
+ "src": {"ios": "~/Developer/Agro (code name Agro, bundle iosallapps.Agro, App Store id 6775927132, main d998c2d)"},
+ "services": ["admob", "ump", "firebase_analytics", "crashlytics", "revenuecat", "apple_store", "apple_maps",
+              "plantnet_relay", "plantnet", "open_meteo", "wikimedia"],
+ "_services_src": "Agro.xcodeproj Package.resolved (firebase-ios-sdk 12.18.0, purchases-ios 5.88.0, swift-package-manager-google-mobile-ads 12.14.0, google-user-messaging-platform 3.1.0); Services/Ads, Services/Analytics, Services/StoreKitService.swift; Features/Plants/Services/PlantIdentificationService.swift (endpoint Constants.AppLinks.plantIdentifyEndpoint = agrondo-plantnet.plantnet-proxy.workers.dev); Server/plantnet-proxy/worker.js; Services/WeatherService.swift (api.open-meteo.com); Services/WikipediaSummaryService.swift + UIComponents RemoteImage + Features/Plants/Models/Plant.swift (commons.wikimedia.org); map = MapKit only (MKMapSnapshotter in Features/Map/Components). Not in the app: CloudKit (Constants.CloudKit.isSyncEnabled = false, no .entitlements file), HealthKit, Game Center, Mapbox, Plant.id. Every https:// literal in Agro/ was grepped: agrondo.com, apps.apple.com, the relay, Wikipedia/Wikimedia/GBIF/POWO links only.",
+ "extra_services": {
+  "plantnet_relay": {
+   "name": "Agrondo plant relay (Cloudflare Workers)", "who": "Cloudflare, Inc. (USA), running code of Visto Apps",
+   "link": "https://www.cloudflare.com/privacypolicy/",
+   "en": {"data": "The photo you chose to identify (downscaled JPEG, longest side at most 2048 px), the plant part you picked, your app language, an identifier of your installation (the iOS vendor ID, or a random one kept on the device if iOS gives none), whether a subscription is active, and your IP address as Cloudflare sees any request.",
+          "why": "Passing the photo on to Pl@ntNet without putting the Pl@ntNet key inside the app, and counting identifications per installation per month against the free and Pro limits. The relay does not keep the photo; it stores only a counter per installation."},
+   "ro": {"data": "Fotografia pe care ai ales să o identifici (JPEG redus, latura cea mai lungă de cel mult 2048 px), partea plantei aleasă, limba aplicației, un identificator al instalării (ID-ul de furnizor iOS sau, dacă iOS nu îl dă, unul aleatoriu păstrat pe dispozitiv), dacă ai un abonament activ și adresa IP, așa cum o vede Cloudflare la orice cerere.",
+          "why": "Transmiterea fotografiei către Pl@ntNet fără ca cheia Pl@ntNet să stea în aplicație și numărarea identificărilor pe instalare și pe lună, față de limitele gratuită și Pro. Releul nu păstrează fotografia; reține doar un contor pe instalare."},
+   "basis": ["contract"],
+   "ret": {"en": "The photo is not stored. The monthly counter expires by itself about 40 days after it is written. Cloudflare's standard network logs follow its policy.",
+           "ro": "Fotografia nu este păstrată. Contorul lunar expiră singur la circa 40 de zile după scriere. Jurnalele de rețea standard Cloudflare urmează politica lor."},
+   "transfer": true
+  },
+  "plantnet": {
+   "name": "Pl@ntNet", "who": "Pl@ntNet research consortium (France)",
+   "link": "https://plantnet.org/",
+   "en": {"data": "The photo, the plant part and the language, forwarded by the Agrondo relay. The app then loads the result thumbnails directly from Pl@ntNet's image host, which sees your IP address.",
+          "why": "Naming the plant in the photo and showing similar pictures."},
+   "ro": {"data": "Fotografia, partea plantei și limba, transmise de releul Agrondo. Aplicația încarcă apoi miniaturile rezultatelor direct de la serverul de imagini Pl@ntNet, care îți vede adresa IP.",
+          "why": "Denumirea plantei din fotografie și afișarea unor imagini asemănătoare."},
+   "basis": ["contract"],
+   "ret": {"en": "Set by Pl@ntNet (see its policy).", "ro": "Stabilită de Pl@ntNet (vezi politica sa)."},
+   "transfer": false
+  },
+  "open_meteo": {
+   "name": "Open-Meteo", "who": "Open-Meteo (weather data service)",
+   "link": "https://open-meteo.com/en/terms",
+   "en": {"data": "The latitude and longitude of the centre of the first field you drew, your IP address. Not your device location.",
+          "why": "Showing the current temperature and the three-day forecast on the home screen."},
+   "ro": {"data": "Latitudinea și longitudinea centrului primului câmp desenat de tine, adresa IP. Nu poziția dispozitivului.",
+          "why": "Afișarea temperaturii curente și a prognozei pe trei zile pe ecranul principal."},
+   "basis": ["contract"],
+   "ret": {"en": "Set by Open-Meteo.", "ro": "Stabilită de Open-Meteo."},
+   "transfer": false
+  },
+  "wikimedia": {
+   "name": "Wikipedia and Wikimedia Commons", "who": "Wikimedia Foundation, Inc. (USA)",
+   "link": "https://foundation.wikimedia.org/wiki/Policy:Privacy_policy",
+   "en": {"data": "The scientific name of an identified plant and the app language (to fetch a short description from the Wikipedia edition for that language); a request for the plant pictures of the care library. Never your photo. Your IP address and device information reach Wikimedia as with any web request.",
+          "why": "Showing a short description of an identified plant and the pictures with their credits."},
+   "ro": {"data": "Numele științific al unei plante identificate și limba aplicației (pentru a prelua o scurtă descriere din ediția Wikipedia a limbii respective); cererea pentru imaginile plantelor din biblioteca de îngrijire. Niciodată fotografia ta. Adresa IP și informații despre dispozitiv ajung la Wikimedia ca la orice cerere web.",
+          "why": "Afișarea unei scurte descrieri a plantei identificate și a imaginilor cu credite."},
+   "basis": ["contract"],
+   "ret": {"en": "Set by Wikimedia.", "ro": "Stabilită de Wikimedia."},
+   "transfer": true
+  }
+ },
+ "permissions": ["camera", "photos", "location_map", "notifications", "tracking"],
+ "_permissions_src": "project.pbxproj INFOPLIST_KEY_NSCameraUsageDescription / NSPhotoLibraryUsageDescription / NSLocationWhenInUseUsageDescription / NSUserTrackingUsageDescription; Features/Journal/AddPhotoEntryView + Features/Plants/PlantIdentifyView (UIImagePickerController .camera, PhotosPicker); Services/LocationService.swift (WhenInUse, nearest ten metres) used to centre the map; Services/NotificationService.swift (local only); Features/Dashboard DashboardViewModel.weatherCenter = centroid of first field, not the device position.",
+ "extra_permissions": {
+  "camera": {
+   "en": ["Camera", "To take a photo for your field journal or to identify a plant. A photo taken for identification is sent only when you tap to identify it."],
+   "ro": ["Cameră", "Pentru o fotografie în jurnalul câmpului sau pentru identificarea unei plante. O fotografie făcută pentru identificare este trimisă doar când atingi pentru a o identifica."]
+  },
+  "photos": {
+   "en": ["Photo library", "To add pictures to your field journal, or to pick a picture of a plant to identify. Only the pictures you pick are read; the app never browses your library."],
+   "ro": ["Fototeca", "Pentru a adăuga imagini în jurnalul câmpului sau pentru a alege o imagine cu o plantă de identificat. Se citesc doar imaginile alese de tine; aplicația nu îți răsfoiește fototeca."]
+  },
+  "location_map": {
+   "en": ["Location (while using the app)", "To centre the map on your fields. It is read on the device and is not sent to any service: the forecast uses the centre of the first field you drew, not your position."],
+   "ro": ["Localizare (în timpul folosirii)", "Pentru a centra harta pe câmpurile tale. Se citește pe dispozitiv și nu este trimisă niciunui serviciu: prognoza folosește centrul primului câmp desenat, nu poziția ta."]
+  }
+ },
+ "local_data": {
+  "en": "Your fields, parcels, journal entries, photos, costs and reminders stay on your device.",
+  "ro": "Câmpurile, parcelele, intrările din jurnal, fotografiile, costurile și mementourile rămân pe dispozitiv."
+ },
+ "local_detail": {
+  "en": "Field and parcel boundaries, crops, treatments, operations, harvests, costs and revenue, journal photos, reminders and settings (for example the farm name, area unit and currency) are stored only in the app's storage on your device. There is no sync to iCloud or to any server of ours, and we cannot see them. Reports and the CSV export are created on the device and leave it only through the share sheet, to the place you choose. You delete data in the app item by item (for example Delete Field, Delete Entry); there is no single button that erases everything. Deleting the app removes all of it. Because it is not synced, use your normal iPhone backup if you want it kept.",
+  "ro": "Limitele câmpurilor și parcelelor, culturile, tratamentele, lucrările, recoltele, costurile și veniturile, fotografiile din jurnal, mementourile și setările (de exemplu numele fermei, unitatea de suprafață și moneda) se păstrează doar în stocarea aplicației de pe dispozitiv. Nu există sincronizare cu iCloud sau cu vreun server al nostru și noi nu le putem vedea. Rapoartele și exportul CSV se creează pe dispozitiv și îl părăsesc doar prin fereastra de partajare, spre locul ales de tine. Ștergi datele din aplicație element cu element (de exemplu Șterge câmpul, Șterge intrarea); nu există un singur buton care șterge tot. Ștergerea aplicației le elimină pe toate. Fiindcă nu se sincronizează, folosește copia de siguranță obișnuită a iPhone-ului dacă vrei să le păstrezi."
+ },
+ "_local_src": "Data/Persistence/PersistenceService.swift (SwiftData, cloudKitDatabase .none; CloudKit stage gated by Constants.CloudKit.isSyncEnabled = false); Core/Models/PhotoEntry.swift (imageData externalStorage); Services/ExportService.swift + Settings dataCard share sheet; Features/FieldManagement/FieldFormView 'Delete Field', Journal 'Delete Entry'; SettingsViewModel.clearAllData exists but Settings no longer exposes it (comment in code).",
+ "service_notes": [
+  {"en": "Apple Maps draws the satellite and standard map; there is no other map provider. Pictures in the plant library and plant descriptions come from Wikimedia and Wikipedia.",
+   "ro": "Apple Maps desenează harta standard și din satelit; nu există alt furnizor de hărți. Imaginile din biblioteca de plante și descrierile plantelor vin de la Wikimedia și Wikipedia."},
+  {"en": "Pl@ntNet identification is the only feature that sends one of your photos away. The relay runs on Cloudflare Workers and is code of ours, but it only forwards the photo and keeps a number per installation, not the photo. The app sends the iOS vendor identifier to count identifications: it is shared by all apps of the same developer on your device, it is not your name or Apple Account, and iOS resets it when the last app of that developer is removed. If a Pro subscription is active the app tells the relay, which lifts the monthly limit from 3 to 100 identifications. Pl@ntNet's own handling of the photo is described in its policy.",
+   "ro": "Identificarea Pl@ntNet este singura funcție care trimite una dintre fotografiile tale în afară. Releul rulează pe Cloudflare Workers și este cod al nostru, dar doar transmite fotografia și păstrează un număr pe instalare, nu fotografia. Aplicația trimite identificatorul de furnizor iOS pentru a număra identificările: este comun tuturor aplicațiilor aceluiași dezvoltator de pe dispozitivul tău, nu este numele sau contul tău Apple, iar iOS îl resetează când ultima aplicație a dezvoltatorului este ștearsă. Dacă ai un abonament Pro activ, aplicația anunță releul, care ridică limita lunară de la 3 la 100 de identificări. Modul în care Pl@ntNet tratează fotografia este descris în politica sa."},
+  {"en": "The usage statistics are a fixed list of events (screens, features used, paywall and purchase steps, ad outcomes) with values from a fixed set or numbers. They never contain a field name, note, place or photo.",
+   "ro": "Statisticile de utilizare sunt o listă fixă de evenimente (ecrane, funcții folosite, pașii paywall-ului și ai achiziției, rezultatul reclamelor) cu valori dintr-un set fix sau numere. Nu conțin niciodată numele unui câmp, o notă, un loc sau o fotografie."},
+  {"en": "On iOS RevenueCat also receives the Firebase app instance ID, so that renewals and trial conversions can be counted. It is sent only once usage statistics are allowed.",
+   "ro": "Pe iOS, RevenueCat primește și ID-ul instalării Firebase, ca reînnoirile și trecerile din perioada de probă să poată fi numărate. Se trimite doar după ce statisticile de utilizare sunt permise."},
+  {"en": "Crash reports are not tied to the consent form: they are collected on the basis of our legitimate interest in a working app, and contain no field data, photos or coordinates. The app also reads a few settings from Firebase Remote Config (for example which purchase screen to show), a request that carries the installation ID and your IP address and does not depend on the consent form.",
+   "ro": "Rapoartele de erori nu depind de formularul de consimțământ: se colectează pe baza interesului nostru legitim ca aplicația să funcționeze și nu conțin date despre câmpuri, fotografii sau coordonate. Aplicația citește și câteva setări din Firebase Remote Config (de exemplu ce ecran de achiziție să arate), o cerere care poartă ID-ul instalării și adresa ta IP și nu depinde de formularul de consimțământ."}
+ ],
+ "_notes_src": "worker.js (consumeQuota: KV counter, QUOTA_TTL_SECONDS 40 days, FREE_MONTHLY_LIMIT 3, CLAIMED_PREMIUM_MONTHLY_LIMIT 100, body streamed to upstream, nothing stored); PlantIdentificationService.makeRequest (X-Install-Id, X-Entitlement, lang) + resolvedInstallID; Core/Utilities/PhotoCompressor.swift (UIImage redraw + jpegData, max 2048 px, q 0.8: embedded metadata of the original file is not part of the re-encoded image); AnalyticsEvents.swift AnalyticsParam list (fixed set); AnalyticsManager.linkAppInstanceID -> StoreKitService.setFirebaseAppInstanceID only when isCollectingAnalytics; FirebaseBootstrap.swift (Crashlytics collection disabled only in DEBUG, no consent gate; Remote Config configured with no consent comment).",
+ "privacy_choices_path": {
+  "en": "in the app, Settings, Support, Ad Privacy Settings (shown where the consent form applies).",
+  "ro": "în aplicație, Setări, Asistență, Confidențialitatea reclamelor (apare acolo unde se aplică formularul)."
+ },
+ "_privacy_src": "Features/Settings/Views/SettingsView.swift supportCard row 'Ad Privacy Settings' (showsAdPrivacyOptions); Localizable.xcstrings ro: 'Ad Privacy Settings' = 'Confidențialitatea reclamelor', 'Support' = 'Asistență'. Order: UMP on splash (AdConsentManager), ATT on Welcome Continue (TrackingAuthorizationGate); Firebase analyticsStorage follows TCF purposes 1+8/9 (AdConsentManager.allowsFirstPartyMeasurement); refused personalised ads -> npa=1 extras (AdMobManager).",
+ "purchases": {
+  "subscriptions": true,
+  "trial": true,
+  "lifetime": true,
+  "what": {
+   "en": "Agrondo is free to download with limits: 2 fields and 3 plant identifications a month, with ads. Agrondo Pro removes the ads and the field limit, switches on PDF and CSV export and raises plant identification to 100 a month. It is sold as a weekly or monthly subscription, and, in special offers shown in the app, as a yearly subscription or a one-time lifetime purchase. Prices are shown in the app and the App Store before you buy.",
+   "ro": "Agrondo se descarcă gratuit, cu limite: 2 câmpuri și 3 identificări de plante pe lună, cu reclame. Agrondo Pro elimină reclamele și limita de câmpuri, activează exportul PDF și CSV și ridică identificarea plantelor la 100 pe lună. Se vinde ca abonament săptămânal sau lunar și, în ofertele speciale afișate în aplicație, ca abonament anual sau ca achiziție unică pe viață. Prețurile apar în aplicație și în App Store înainte de cumpărare."
+  }
+ },
+ "_purchases_src": "Features/Paywall/PaywallViewModel.swift (weekly or monthly via 'Switch to monthly plan' link, lifetime card, 'Start free trial' CTA when eligible); StoreKitService.swift (productIDs weekly.01 + monthly.01; SpecialOfferIdentifier yearly + lifetime; WelcomeOfferIdentifier lifetime.offer); Constants.FreeTier (2 fields, 3 IDs) + ProTier (100); Settings 'Unlimited fields, exports, 100 plant IDs a month, no ads'; RevenueCat entitlement id agrondo_pro (Constants.RevenueCat.entitlementID); Configuration.storekit has a P3D free trial on weekly and monthly, live trial availability is OPEN (App Store Connect not checked).",
+ "what": {
+  "en": "Agrondo is an iOS app for mapping fields and keeping farm records: draw field and parcel boundaries on a map and read the area, keep a journal of crops, treatments, operations, harvests and photos, track costs and revenue, get a crop rotation warning, see a weather forecast for your first field, identify a plant from a photo and read a plant care library, set reminders and export reports as PDF and CSV.",
+  "ro": "Agrondo este o aplicație iOS pentru cartarea câmpurilor și evidența fermei: desenezi limitele câmpurilor și parcelelor pe hartă și afli suprafața, ții un jurnal de culturi, tratamente, lucrări, recolte și fotografii, urmărești costurile și veniturile, primești avertizări de rotație a culturilor, vezi prognoza pentru primul tău câmp, identifici o plantă dintr-o fotografie și citești o bibliotecă de îngrijire a plantelor, setezi mementouri și exporți rapoarte PDF și CSV."
+ },
+ "disclaimers": [
+  {"en": "Agrondo is a record-keeping and information tool, not agronomic, legal, financial or safety advice. Areas come from the boundary you draw on the map and are only as exact as that drawing and the map imagery. Plant identification is a best guess from one photo and can be wrong: do not decide on spraying, feeding or eating a plant from it alone, and confirm with an agronomist. The care library is general information for the species, not for your soil or season. The forecast comes from a third party and can be wrong; judge field work on the ground. Nothing in the app recommends a plant protection product.",
+   "ro": "Agrondo este un instrument de evidență și informare, nu consultanță agronomică, juridică, financiară sau de siguranță. Suprafețele provin din limita pe care o desenezi pe hartă și sunt exacte doar cât desenul și imaginile hărții. Identificarea plantelor este o presupunere dintr-o singură fotografie și poate fi greșită: nu decide stropirea, hrănirea sau consumul unei plante doar pe baza ei și confirmă cu un agronom. Biblioteca de îngrijire conține informații generale despre specie, nu despre solul sau sezonul tău. Prognoza vine de la un terț și poate fi greșită; apreciază lucrările în câmp la fața locului. Nimic din aplicație nu recomandă un produs de protecția plantelor."}
+ ],
+ "overrides": {
+  "privacy.glance": {
+   "en": "<ul><li>No account. Agrondo does not ask for your name, email or phone number.</li><li>Your fields, parcels, journal entries, photos, costs and reminders stay on your device.</li><li>One thing sends a photo away: when you tap to identify a plant, the photo goes through our relay on Cloudflare Workers to Pl@ntNet. The relay does not keep it.</li><li>The forecast sends the centre of your first field to Open-Meteo.</li><li>The free version shows ads from Google AdMob. Personalised ads only with your consent; in the EEA, UK and Switzerland no ad loads before you answer the consent form.</li><li>Usage statistics (Google Analytics for Firebase) start only after the consent form has been answered in the EEA, UK and Switzerland. Crash reports help us fix bugs.</li><li>We do not sell personal data for money. Our only server is the small plant relay described below, which keeps one counter per installation and nothing else.</li></ul>",
+   "ro": "<ul><li>Fără cont. Agrondo nu îți cere numele, emailul sau telefonul.</li><li>Câmpurile, parcelele, intrările din jurnal, fotografiile, costurile și mementourile rămân pe dispozitiv.</li><li>Un singur lucru trimite o fotografie în afară: când atingi pentru a identifica o plantă, fotografia merge prin releul nostru de pe Cloudflare Workers către Pl@ntNet. Releul nu o păstrează.</li><li>Prognoza trimite centrul primului tău câmp către Open-Meteo.</li><li>Versiunea gratuită afișează reclame Google AdMob. Reclame personalizate doar cu acordul tău; în SEE, Regatul Unit și Elveția nicio reclamă nu se încarcă înainte să răspunzi la formularul de consimțământ.</li><li>Statisticile de utilizare (Google Analytics for Firebase) pornesc în SEE, Regatul Unit și Elveția doar după ce ai răspuns la formularul de consimțământ. Rapoartele de erori ne ajută să reparăm problemele.</li><li>Nu vindem date personale pe bani. Singurul nostru server este micul releu pentru plante descris mai jos, care păstrează un contor pe instalare și nimic altceva.</li></ul>"
+  },
+  "privacy.retention": {
+   "en": "<p>Data on your device stays until you delete it in the app or delete the app. Data held by the services above is kept for the period listed in the table. Our plant relay keeps one counter per installation and month, which deletes itself about 40 days later; it keeps no photo. Emails you send us are kept as long as needed to answer, and at most 2 years.</p>",
+   "ro": "<p>Datele de pe dispozitiv rămân până le ștergi din aplicație sau ștergi aplicația. Datele aflate la serviciile de mai sus se păstrează cât scrie în tabel. Releul nostru pentru plante păstrează un contor pe instalare și pe lună, care se șterge singur după circa 40 de zile; nu păstrează nicio fotografie. Emailurile trimise nouă se păstrează cât e nevoie pentru răspuns, cel mult 2 ani.</p>"
+  }
+ }
+}
