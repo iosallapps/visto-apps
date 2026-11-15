@@ -329,9 +329,9 @@ def privacy(c):
 
     if c.paid:
         out.append(S("purchases", "Purchases",
-            p(f"Purchases are made through {c.store('en')}. The store processes the payment; we receive only a pseudonymous receipt, checked through RevenueCat, that tells the app which purchase you own. We never see your card or account details."),
+            p(f"Purchases are made through {c.store('en')}. The store processes the payment; we receive only a pseudonymous receipt" + (", checked through RevenueCat," if "revenuecat" in c.services else "") + " that tells the app which purchase you own. We never see your card or account details."),
             "Achiziții",
-            p(f"Achizițiile se fac prin {c.store('ro')}. Magazinul procesează plata; noi primim doar o chitanță pseudonimă, verificată prin RevenueCat, care spune aplicației ce ai cumpărat. Nu vedem niciodată datele cardului sau ale contului tău.")))
+            p(f"Achizițiile se fac prin {c.store('ro')}. Magazinul procesează plata; noi primim doar o chitanță pseudonimă" + (", verificată prin RevenueCat," if "revenuecat" in c.services else "") + " care spune aplicației ce ai cumpărat. Nu vedem niciodată datele cardului sau ale contului tău.")))
 
     out.append(S("retention", "How long data is kept",
         p("Data on your device stays until you delete it in the app or delete the app. Data held by the services above is kept for the period listed in the table. We do not keep copies of our own. Emails you send us are kept as long as needed to answer, and at most 2 years."),
@@ -374,9 +374,9 @@ def privacy(c):
         p("Toate conexiunile folosesc HTTPS. Datele de pe dispozitiv sunt protejate de izolarea aplicațiilor și de criptarea sistemului de operare. Niciun sistem nu e perfect sigur, de aceea trimitem în afara dispozitivului doar minimul descris aici.")))
 
     out.append(S("website", "This website",
-        p(f"{c.site} is hosted on GitHub Pages (GitHub, Inc., USA), which records the IP address of visitors in server logs for security. The site sets no cookies and uses no analytics or ads. It stores only your language choice in your browser (local storage)."),
+        p(f["website"]["en"]) if f.get("website") else p(f"{c.site} is hosted on GitHub Pages (GitHub, Inc., USA), which records the IP address of visitors in server logs for security. The site sets no cookies and uses no analytics or ads. It stores only your language choice in your browser (local storage)."),
         "Acest site",
-        p(f"{c.site} este găzduit pe GitHub Pages (GitHub, Inc., SUA), care înregistrează adresa IP a vizitatorilor în jurnalele serverului, pentru securitate. Site-ul nu setează cookie-uri și nu folosește statistici sau reclame. Păstrează doar limba aleasă, în browserul tău (local storage).")))
+        p(f["website"]["ro"]) if f.get("website") else p(f"{c.site} este găzduit pe GitHub Pages (GitHub, Inc., SUA), care înregistrează adresa IP a vizitatorilor în jurnalele serverului, pentru securitate. Site-ul nu setează cookie-uri și nu folosește statistici sau reclame. Păstrează doar limba aleasă, în browserul tău (local storage).")))
 
     out.append(S("changes", "Changes",
         p(f"If the app starts handling data differently, we update this page and the date at the top before the new version ships. Important changes are also mentioned in the store update notes."),
@@ -599,8 +599,24 @@ Ctx.purchases = purchases
 
 
 def build(facts):
+    """facts may define "extra_services" and "extra_permissions" with the same
+    shape as SERVICES / PERMISSIONS, so app-specific entries stay in the app's
+    own facts file."""
+    SERVICES.update(facts.get("extra_services", {}))
+    PERMISSIONS.update(facts.get("extra_permissions", {}))
     c = Ctx(facts)
-    return {"privacy": privacy(c), "terms": terms(c)}
+    out = {"privacy": privacy(c), "terms": terms(c)}
+    # "overrides": {"privacy.consent": {"en": "<p>..</p>", "ro": ".."}} replaces a
+    # section body when the shared wording does not match what this app's code does.
+    for key, val in facts.get("overrides", {}).items():
+        kind, sid = key.split(".", 1)
+        for sec in out[kind]:
+            if sec["id"] == sid:
+                sec["en"]["html"], sec["ro"]["html"] = val["en"], val["ro"]
+                break
+        else:
+            raise SystemExit(f"override {key}: no such section")
+    return out
 
 
 if __name__ == "__main__":
