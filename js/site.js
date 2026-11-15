@@ -211,12 +211,12 @@
     return '<a class="hero-card" style="' + appStyle(a) + '" data-pos="' + i + '" href="' + a.store + '" target="_blank" rel="noopener" aria-label="' + appLinkLabel(a) + '">' +
       '<span class="hero-card__head"><img class="app-icon" src="/assets/icons/' + a.slug + '.webp" width="64" height="64" alt="">' +
       '<span><span class="hero-card__name">' + esc(a.name) + '</span><span class="hero-card__sub">' + esc(t(a.subtitle)) + "</span></span></span>" +
-      '<span class="hero-card__shot"><img class="hero-card__phone" src="/assets/phones/' + a.slug + "-hero-" + lang + '.webp" width="900" height="' + PHONE_H + '" alt=""></span>' +
+      '<span class="hero-card__shot"><img class="hero-card__phone" src="/assets/phones/' + a.slug + "-hero-" + lang + '.webp" width="600" height="759" alt="" fetchpriority="high" decoding="async"></span>' +
       "</a>";
   }
   function tile(a) {
     return '<li><a class="app-tile" style="' + appStyle(a) + '" href="' + a.store + '" target="_blank" rel="noopener" aria-label="' + appLinkLabel(a) + '">' +
-      '<img class="app-icon" src="/assets/icons/' + a.slug + '.webp" width="80" height="80" alt="" loading="lazy">' +
+      '<img class="app-icon" src="/assets/icons/' + a.slug + '.webp" width="80" height="80" alt="" loading="lazy" decoding="async">' +
       '<span class="app-tile__name">' + esc(a.name) + '</span><span class="app-tile__sub">' + esc(t(a.subtitle)) + "</span></a></li>";
   }
   function card(a) {
@@ -227,10 +227,9 @@
         '<span class="arrow-dot">' + icon("arrow") + "</span></span>" +
       '<span class="app-card__text">' + esc(t(a.text)) + "</span>" +
       '<span class="chip">' + icon(c.icon) + esc(t(c.label)) + "</span>" +
-      '<span class="app-card__shot"><img class="app-card__phone" src="/assets/phones/' + a.slug + "-" + lang + '.webp" width="900" height="' + PHONE_H + '" alt="" loading="lazy"></span>' +
+      '<span class="app-card__shot"><img class="app-card__phone" src="/assets/phones/' + a.slug + "-" + lang + '.webp" width="520" height="658" alt="" loading="lazy" decoding="async"></span>' +
       "</a></li>";
   }
-  var PHONE_H = 1139;
 
   function renderHome() {
     var heroHost = document.getElementById("hero-cards");
@@ -323,4 +322,8 @@
   bindCopy();
   bindReveal();
   document.documentElement.classList.add("js-ready");
+  // Keep CSS, JS, fonts and images on the device after the first visit.
+  if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "127.0.0.1" || location.hostname === "localhost")) {
+    window.addEventListener("load", function () { navigator.serviceWorker.register("/sw.js").catch(function () {}); });
+  }
 })();

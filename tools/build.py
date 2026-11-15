@@ -10,6 +10,7 @@ The English pages at the repo root are the source. This script:
   - writes sitemap.xml with both languages.
 It is idempotent: running it twice gives the same files.
 """
+import hashlib
 import html
 import json
 import re
@@ -20,7 +21,7 @@ ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://vistoapps.com"
 PAGES = ["index.html", "apps.html", "about.html", "contact.html", "privacy.html", "terms.html", "404.html"]
 INDEXABLE = [p for p in PAGES if p != "404.html"]
-OG_IMAGE = SITE + "/assets/logo/og-image.png"
+OG_IMAGE = SITE + "/assets/logo/og-image.jpg"
 LOCALES = {"en": "en_US", "ro": "ro_RO"}
 # schema.org applicationCategory per App Store genre
 SCHEMA_CATEGORY = {
@@ -183,8 +184,27 @@ def fill(src, name, content):
     return re.sub(r"<!--gen:%s-->.*?<!--/gen:%s-->" % (name, name), lambda m: "<!--gen:%s-->%s<!--/gen:%s-->" % (name, content, name), src, flags=re.S)
 
 
+def asset_versions():
+    out = {}
+    for rel in ("css/styles.css", "js/site.js", "js/data.js"):
+        out[rel] = hashlib.sha1((ROOT / rel).read_bytes()).hexdigest()[:10]
+    return out
+
+
+def version_urls(src, versions):
+    for rel, v in versions.items():
+        src = re.sub(r'(["\'])/%s(\?v=[0-9a-f]+)?(["\'])' % re.escape(rel), lambda m: '%s/%s?v=%s%s' % (m.group(1), rel, v, m.group(3)), src)
+    return src
+
+
 def build():
     V, RO = load_data()
+    versions = asset_versions()
+    sw = (ROOT / "sw.js").read_text()
+    sw_version = hashlib.sha1("".join(sorted(versions.values())).encode()).hexdigest()[:10]
+    sw = re.sub(r'const VERSION = "[^"]*";', 'const VERSION = "%s";' % sw_version, sw, 1)
+    sw = re.sub(r'"/assets/bg/home-wide.webp"\n\];', '"/assets/bg/home-wide.webp"\n];', sw)
+    (ROOT / "sw.js").write_text(sw)
     (ROOT / "ro").mkdir(exist_ok=True)
     for file in PAGES:
         path = ROOT / file
@@ -192,6 +212,7 @@ def build():
         src = GEN_SEO.sub("", src)
         src = OLD_SEO.sub("", src)
         src = absolutize(src)
+        src = version_urls(src, versions)
         name = page_name(file)
         title_en = re.search(r"<title>(.*?)</title>", src, re.S).group(1)
         desc_en = re.search(r'<meta name="description" content="([^"]*)">', src).group(1)
