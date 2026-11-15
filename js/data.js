@@ -3,7 +3,7 @@
 
 window.VISTO = {
   email: "iosallapps@gmail.com",
-  appStoreDeveloper: "https://apps.apple.com/us/developer/id1827010077",
+  appleEula: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
 
   // Filter categories on the Apps page, in display order.
   categories: [
@@ -20,7 +20,7 @@ window.VISTO = {
 
   apps: [
     {
-      slug: "kupfra", name: "Kupfra", category: "professional",
+      slug: "kupfra", site: "https://kupfra.com/", privacy: "https://kupfra.com/privacy.html", terms: "https://kupfra.com/terms.html", name: "Kupfra", category: "professional",
       colors: ["#f2853a", "#7a2f6e"],
       store: "https://apps.apple.com/us/app/kupfra-construction-calculator/id6827716801",
       subtitle: { en: "Construction Calculator", ro: "Calculator construcții" },
@@ -30,7 +30,7 @@ window.VISTO = {
       }
     },
     {
-      slug: "pdfino", name: "Pdfino", category: "productivity",
+      slug: "pdfino", site: "https://pdfino.com/", privacy: "https://pdfino.com/privacy.html", terms: "https://pdfino.com/terms.html", name: "Pdfino", category: "productivity",
       colors: ["#ea4646", "#8c2470"],
       store: "https://apps.apple.com/us/app/pdfino-compress-pdf-file-size/id6748689545",
       subtitle: { en: "Compress PDF File Size", ro: "Comprimă fișiere PDF" },
@@ -40,7 +40,7 @@ window.VISTO = {
       }
     },
     {
-      slug: "darc", name: "Darc", category: "utilities",
+      slug: "darc", site: "https://darcapp.com/", privacy: "https://darcapp.com/privacy.html", terms: "https://darcapp.com/terms.html", name: "Darc", category: "utilities",
       colors: ["#8a45f5", "#35208f"],
       store: "https://apps.apple.com/us/app/darc-dark-mode-for-safari/id6819036330",
       subtitle: { en: "Dark Mode for Safari", ro: "Mod întunecat în Safari" },
@@ -50,7 +50,7 @@ window.VISTO = {
       }
     },
     {
-      slug: "agrondo", name: "Agrondo", category: "professional",
+      slug: "agrondo", site: "https://agrondo.com/", privacy: "https://agrondo.com/privacy.html", terms: "https://agrondo.com/terms.html", name: "Agrondo", category: "professional",
       colors: ["#2fbf6a", "#0e5a58"],
       store: "https://apps.apple.com/us/app/agrondo-field-area-measure/id6775927132",
       subtitle: { en: "Field Area Measure", ro: "Măsurare teren" },
@@ -60,7 +60,7 @@ window.VISTO = {
       }
     },
     {
-      slug: "luris", name: "Luris", category: "lifestyle",
+      slug: "luris", site: "https://lurisapp.com/", privacy: "https://lurisapp.com/privacy.html", terms: "https://lurisapp.com/terms.html", name: "Luris", category: "lifestyle",
       colors: ["#2b8cff", "#1a3aa8"],
       store: "https://apps.apple.com/us/app/luris-step-fitness-tracker/id6813596103",
       subtitle: { en: "Step & Fitness Tracker", ro: "Pedometru și alergare" },
@@ -70,7 +70,7 @@ window.VISTO = {
       }
     },
     {
-      slug: "appsrank", name: "AppsRank", category: "utilities",
+      slug: "appsrank", site: "https://appsrankapp.com/", privacy: "https://appsrankapp.com/privacy", terms: "https://appsrankapp.com/terms", name: "AppsRank", category: "utilities",
       colors: ["#9150ff", "#3a2496"],
       store: "https://apps.apple.com/us/app/appsrank-ranking-tracker/id6762045370",
       subtitle: { en: "Ranking Tracker", ro: "Clasament App Store" },
@@ -80,7 +80,7 @@ window.VISTO = {
       }
     },
     {
-      slug: "topoxy", name: "TopoXY", category: "professional",
+      slug: "topoxy", site: "https://topoxyapp.com/", privacy: "https://topoxyapp.com/privacy.html", terms: "https://topoxyapp.com/terms.html", name: "TopoXY", category: "professional",
       colors: ["#20c45a", "#0d6450"],
       store: "https://apps.apple.com/us/app/topoxy-coordinate-converter/id6758582908",
       subtitle: { en: "Coordinate Converter", ro: "Conversie Stereo 70" },
@@ -90,7 +90,7 @@ window.VISTO = {
       }
     },
     {
-      slug: "kipply", name: "Kipply", category: "lifestyle",
+      slug: "kipply", site: "https://kipplyapp.com/", privacy: "https://kipplyapp.com/privacy.html", terms: "https://kipplyapp.com/terms.html", name: "Kipply", category: "lifestyle",
       colors: ["#3a9dff", "#1d4ed0"],
       store: "https://apps.apple.com/us/app/kipply-smart-phone-cleaner/id6756061280",
       subtitle: { en: "Smart Phone Cleaner", ro: "Curățare poze" },
@@ -100,7 +100,7 @@ window.VISTO = {
       }
     },
     {
-      slug: "serenity", name: "Serenity", category: "lifestyle",
+      slug: "serenity", site: "https://serenityjournalapp.com/", privacy: "https://serenityjournalapp.com/privacy.html", terms: "https://serenityjournalapp.com/terms.html", name: "Serenity", category: "lifestyle",
       colors: ["#8c55dd", "#2b2a70"],
       store: "https://apps.apple.com/us/app/serenity-ai-mood-journal/id6761684674",
       subtitle: { en: "AI Mood Journal", ro: "Jurnal personal AI" },
@@ -110,7 +110,7 @@ window.VISTO = {
       }
     },
     {
-      slug: "shelfready", name: "ShelfReady", category: "productivity",
+      slug: "shelfready", site: "https://shelfreadyapp.com/", privacy: "https://shelfreadyapp.com/privacy.html", terms: "https://shelfreadyapp.com/terms.html", name: "ShelfReady", category: "productivity",
       colors: ["#c99a6c", "#5e3d36"],
       store: "https://apps.apple.com/us/app/shelfready-product-photos/id6818769240",
       subtitle: { en: "Product Photos", ro: "Poze de produs" },
@@ -125,18 +125,21 @@ window.VISTO = {
 // Romanian strings. English lives in the HTML itself; site.js remembers it on load,
 // so there is one copy of every English sentence.
 window.VISTO_RO = {
-  "meta.home.title": "Visto Apps | Studio de aplicații mobile",
-  "meta.home.desc": "Visto Apps creează aplicații mobile gândite atent, care fac treburile de zi cu zi mai simple.",
-  "meta.apps.title": "Aplicațiile noastre | Visto Apps",
-  "meta.apps.desc": "Toate aplicațiile Visto Apps: practice, sigure și gândite atent, pentru viața de zi cu zi și pentru meserii.",
-  "meta.about.title": "Despre noi | Visto Apps",
-  "meta.about.desc": "Visto Apps este un studio independent de aplicații mobile, concentrat pe idei utile.",
-  "meta.contact.title": "Contact | Visto Apps",
-  "meta.contact.desc": "Scrie-ne pentru întrebări, sugestii sau colaborări.",
+  "meta.home.title": "Visto Apps | Studio de aplicații mobile utile pentru iPhone",
+  "meta.home.desc": "Visto Apps este studioul independent din spatele aplicațiilor Pdfino, Kipply, TopoXY, Kupfra, Darc, Agrondo, Luris, AppsRank, Serenity și ShelfReady.",
+  "meta.apps.title": "Aplicațiile noastre: Pdfino, Kipply, TopoXY, Kupfra | Visto Apps",
+  "meta.apps.desc": "Toate aplicațiile Visto Apps: comprimi PDF-uri, cureți poze, convertești coordonate Stereo 70, măsori terenuri, numeri pașii și altele, pe iPhone.",
+  "meta.about.title": "Despre Visto Apps | Studio independent de aplicații mobile",
+  "meta.about.desc": "Visto Apps proiectează și construiește aplicații iPhone practice și sigure pentru nevoi reale. Află cum transformăm idei utile în aplicații.",
+  "meta.contact.title": "Contact Visto Apps | Suport și colaborări",
+  "meta.contact.desc": "Scrie-ne pentru suport la aplicații, sugestii sau o idee de colaborare. Răspundem pe email cât de repede putem.",
   "meta.privacy.title": "Politica de confidențialitate | Visto Apps",
   "meta.terms.title": "Termeni de utilizare | Visto Apps",
   "meta.404.title": "Pagina nu există | Visto Apps",
 
+  "meta.privacy.desc": "Cum tratează site-ul Visto Apps datele tale, plus link-uri spre politica de confidențialitate a fiecărei aplicații Visto Apps.",
+  "meta.terms.desc": "Termenii de utilizare ai site-ului Visto Apps, plus link-uri spre termenii fiecărei aplicații și contractul de licență standard Apple.",
+  "meta.404.desc": "Pagina nu există. Descoperă în schimb colecția Visto Apps.",
   "nav.home": "Acasă",
   "nav.apps": "Aplicații",
   "nav.about": "Despre",
@@ -233,6 +236,18 @@ window.VISTO_RO = {
   "contact.g4.title": "Părerea ta contează",
   "contact.g4.text": "Ideile tale ne ajută<br>să ne îmbunătățim.",
 
+  "legal.apps.privacy": "Politicile de confidențialitate ale aplicațiilor",
+  "legal.apps.privacy.text": "Fiecare aplicație are propria politică, publicată pe site-ul ei și legată din pagina ei din App Store.",
+  "legal.apps.terms": "Termenii aplicațiilor",
+  "legal.apps.terms.text": "Fiecare aplicație are proprii termeni de utilizare. Abonamentele și achizițiile din aplicații sunt guvernate și de Contractul de licență standard Apple (EULA).",
+  "legal.col.app": "Aplicație",
+  "legal.col.site": "Site",
+  "legal.col.privacy": "Confidențialitate",
+  "legal.col.terms": "Termeni",
+  "legal.privacy": "Politica de confidențialitate",
+  "legal.terms": "Termeni de utilizare",
+  "legal.eula": "Contractul de licență standard Apple (EULA)",
+  "legal.contact": "Întrebări despre aceste documente? Scrie-ne la",
   "privacy.title": "Politica de confidențialitate",
   "privacy.updated": "Actualizată pe 15 noiembrie 2026",
   "privacy.body": "<p>Acest site prezintă aplicațiile Visto Apps. Nu folosește cookie-uri, nu are statistici de trafic sau reclame și nu îți cere date personale. Fonturile și imaginile sunt găzduite pe același server, așa că vizita ta nu este trimisă altor companii.</p><p>Singura preferință salvată este limba aleasă (engleză sau română), în browserul tău, și o poți șterge oricând din setările browserului.</p><p>Dacă ne scrii pe email, folosim adresa și mesajul tău doar ca să-ți răspundem. Fiecare aplicație are propria politică de confidențialitate, legată din pagina ei din App Store.</p><p>Pentru întrebări despre datele tale, scrie-ne la adresa de pe pagina de contact.</p>",

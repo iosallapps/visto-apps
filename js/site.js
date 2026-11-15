@@ -40,15 +40,22 @@
   function storageGet(k) { try { return window.localStorage.getItem(k); } catch (e) { return null; } }
   function storageSet(k, v) { try { window.localStorage.setItem(k, v); } catch (e) { /* private mode */ } }
 
-  function initialLang() {
-    var q = new URLSearchParams(window.location.search).get("lang");
-    if (LANGS.indexOf(q) >= 0) return q;
-    var saved = storageGet(LANG_KEY);
-    if (LANGS.indexOf(saved) >= 0) return saved;
-    var nav = (navigator.language || "en").toLowerCase();
-    return nav.indexOf("ro") === 0 ? "ro" : "en";
+  // The language comes from the page itself: English at /, Romanian at /ro/.
+  var lang = document.documentElement.lang === "ro" ? "ro" : "en";
+  function pagePath(l, file) {
+    var f = file === "index.html" ? "" : file;
+    return (l === "ro" ? "/ro/" : "/") + f;
   }
-  var lang = initialLang();
+  function currentFile() {
+    var f = window.location.pathname.replace(/^\/ro\//, "/").replace(/^\//, "");
+    return f === "" ? "index.html" : f;
+  }
+  function counterpart(l) { return pagePath(l, currentFile()) + window.location.search.replace(/[?&]lang=(en|ro)/, "").replace(/^&/, "?") + window.location.hash; }
+  (function routeLanguage() {
+    var q = new URLSearchParams(window.location.search).get("lang");
+    if (LANGS.indexOf(q) >= 0) { storageSet(LANG_KEY, q); if (q !== lang) window.location.replace(counterpart(q)); return; }
+    // No automatic redirect by browser language: search engines must reach /ro/ pages as they are.
+  })();
   function t(obj) { return obj[lang] || obj.en; }
 
   // English originals captured from the HTML once, so English exists in one place.
@@ -85,12 +92,8 @@
   }
   function setLang(next) {
     if (next === lang || LANGS.indexOf(next) < 0) return;
-    lang = next;
-    storageSet(LANG_KEY, lang);
-    var url = new URL(window.location.href);
-    if (lang === "en") url.searchParams.delete("lang"); else url.searchParams.set("lang", lang);
-    window.history.replaceState(null, "", url);
-    render();
+    storageSet(LANG_KEY, next);
+    window.location.href = counterpart(next);
   }
 
   // ---------- header + footer ----------
@@ -103,7 +106,7 @@
   function navLinks(cls) {
     return NAV.map(function (n) {
       var cur = n.id === page ? ' aria-current="page"' : "";
-      return '<a class="' + cls + '" href="' + n.href + '"' + cur + ' data-i18n="' + n.key + '">' + n.label + "</a>";
+      return '<a class="' + cls + '" href="' + pagePath(lang, n.href) + '"' + cur + ' data-i18n="' + n.key + '">' + n.label + "</a>";
     }).join("");
   }
   function langSwitch() {
@@ -116,14 +119,14 @@
     if (!host) return;
     host.innerHTML =
       '<div class="header-inner">' +
-        '<a class="brand" href="index.html"><img src="assets/logo/visto-v-128.png" width="40" height="33" alt=""><span>Visto Apps</span></a>' +
+        '<a class="brand" href="' + pagePath(lang, "index.html") + '"><img src="/assets/logo/visto-v-128.png" width="40" height="33" alt=""><span>Visto Apps</span></a>' +
         '<nav class="nav-pill" aria-label="Main">' + navLinks("nav-link") + "</nav>" +
         '<div class="header-actions">' + langSwitch() +
           '<button class="circle-btn search-btn" type="button" aria-label="Search apps" data-i18n-attr="aria-label:nav.search">' + icon("search") + "</button>" +
           '<button class="circle-btn menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu" data-i18n-attr="aria-label:nav.menu">' + icon("menu") + "</button>" +
         "</div>" +
       "</div>" +
-      '<div class="search-bar glass" hidden><form action="apps.html" role="search">' + icon("search") +
+      '<div class="search-bar glass" hidden><form action="' + pagePath(lang, "apps.html") + '" role="search">' + icon("search") +
         '<input type="search" name="q" autocomplete="off" placeholder="Search by name or feature" aria-label="Search apps" data-i18n-attr="placeholder:apps.search;aria-label:nav.search"></form></div>' +
       '<div class="mobile-menu glass" id="mobile-menu" hidden><nav aria-label="Main">' + navLinks("mobile-link") + "</nav>" + langSwitch() + "</div>";
   }
@@ -132,12 +135,12 @@
     if (!host) return;
     host.innerHTML =
       '<div class="footer-inner">' +
-        '<a class="brand brand--footer" href="index.html"><img src="assets/logo/visto-v-128.png" width="36" height="30" alt=""><span>Visto Apps</span></a>' +
+        '<a class="brand brand--footer" href="' + pagePath(lang, "index.html") + '"><img src="/assets/logo/visto-v-128.png" width="36" height="30" alt=""><span>Visto Apps</span></a>' +
         '<p class="footer-tagline" data-i18n="footer.tagline">Thoughtfully designed<br>mobile applications.</p>' +
         '<nav class="footer-nav" aria-label="Footer">' + navLinks("footer-link") + "</nav>" +
         '<nav class="footer-legal-nav" aria-label="Legal">' +
-          '<a class="footer-link" href="privacy.html"' + (page === "privacy" ? ' aria-current="page"' : "") + ' data-i18n="footer.privacy">Privacy Policy</a>' +
-          '<a class="footer-link" href="terms.html"' + (page === "terms" ? ' aria-current="page"' : "") + ' data-i18n="footer.terms">Terms of Use</a>' +
+          '<a class="footer-link" href="' + pagePath(lang, "privacy.html") + '"' + (page === "privacy" ? ' aria-current="page"' : "") + ' data-i18n="footer.privacy">Privacy Policy</a>' +
+          '<a class="footer-link" href="' + pagePath(lang, "terms.html") + '"' + (page === "terms" ? ' aria-current="page"' : "") + ' data-i18n="footer.terms">Terms of Use</a>' +
         "</nav>" +
       "</div>" +
       '<p class="footer-legal">© ' + new Date().getFullYear() + ' Visto Apps. <span data-i18n="footer.legal">Apple, the Apple logo and iPhone are trademarks of Apple Inc.</span></p>';
@@ -182,9 +185,7 @@
       e.preventDefault();
       if (onAppsPage) { input.blur(); return; }
       var q = input.value.trim();
-      var url = "apps.html" + (q ? "?q=" + encodeURIComponent(q) : "");
-      if (lang === "ro") url += (q ? "&" : "?") + "lang=ro";
-      window.location.href = url;
+      window.location.href = pagePath(lang, "apps.html") + (q ? "?q=" + encodeURIComponent(q) : "");
     });
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeAll(); });
     document.addEventListener("click", function (e) {
@@ -199,16 +200,6 @@
       b.addEventListener("click", function () { setLang(b.dataset.lang); });
     });
   }
-  // Keep ?lang=ro on internal links so the choice survives without storage.
-  function decorateLinks() {
-    document.querySelectorAll('a[href$=".html"], a[href*=".html?"]').forEach(function (a) {
-      if (!a.dataset.baseHref) a.dataset.baseHref = a.getAttribute("href");
-      var base = a.dataset.baseHref;
-      if (lang === "ro") a.setAttribute("href", base + (base.indexOf("?") >= 0 ? "&" : "?") + "lang=ro");
-      else a.setAttribute("href", base);
-    });
-  }
-
   // ---------- apps ----------
   var bySlug = {};
   V.apps.forEach(function (a) { bySlug[a.slug] = a; });
@@ -218,25 +209,25 @@
 
   function heroCard(a, i) {
     return '<a class="hero-card" style="' + appStyle(a) + '" data-pos="' + i + '" href="' + a.store + '" target="_blank" rel="noopener" aria-label="' + appLinkLabel(a) + '">' +
-      '<span class="hero-card__head"><img class="app-icon" src="assets/icons/' + a.slug + '.webp" width="64" height="64" alt="">' +
+      '<span class="hero-card__head"><img class="app-icon" src="/assets/icons/' + a.slug + '.webp" width="64" height="64" alt="">' +
       '<span><span class="hero-card__name">' + esc(a.name) + '</span><span class="hero-card__sub">' + esc(t(a.subtitle)) + "</span></span></span>" +
-      '<span class="hero-card__shot"><img class="hero-card__phone" src="assets/phones/' + a.slug + "-hero-" + lang + '.webp" width="900" height="' + PHONE_H + '" alt=""></span>' +
+      '<span class="hero-card__shot"><img class="hero-card__phone" src="/assets/phones/' + a.slug + "-hero-" + lang + '.webp" width="900" height="' + PHONE_H + '" alt=""></span>' +
       "</a>";
   }
   function tile(a) {
     return '<li><a class="app-tile" style="' + appStyle(a) + '" href="' + a.store + '" target="_blank" rel="noopener" aria-label="' + appLinkLabel(a) + '">' +
-      '<img class="app-icon" src="assets/icons/' + a.slug + '.webp" width="80" height="80" alt="" loading="lazy">' +
+      '<img class="app-icon" src="/assets/icons/' + a.slug + '.webp" width="80" height="80" alt="" loading="lazy">' +
       '<span class="app-tile__name">' + esc(a.name) + '</span><span class="app-tile__sub">' + esc(t(a.subtitle)) + "</span></a></li>";
   }
   function card(a) {
     var c = categoryOf(a);
     return '<li class="app-card-wrap" data-category="' + a.category + '"><a class="app-card" style="' + appStyle(a) + '" href="' + a.store + '" target="_blank" rel="noopener" aria-label="' + appLinkLabel(a) + '">' +
-      '<span class="app-card__head"><img class="app-icon" src="assets/icons/' + a.slug + '.webp" width="64" height="64" alt="" loading="lazy">' +
+      '<span class="app-card__head"><img class="app-icon" src="/assets/icons/' + a.slug + '.webp" width="64" height="64" alt="" loading="lazy">' +
         '<span class="app-card__titles"><span class="app-card__name">' + esc(a.name) + '</span><span class="app-card__sub">' + esc(t(a.subtitle)) + "</span></span>" +
         '<span class="arrow-dot">' + icon("arrow") + "</span></span>" +
       '<span class="app-card__text">' + esc(t(a.text)) + "</span>" +
       '<span class="chip">' + icon(c.icon) + esc(t(c.label)) + "</span>" +
-      '<span class="app-card__shot"><img class="app-card__phone" src="assets/phones/' + a.slug + "-" + lang + '.webp" width="900" height="' + PHONE_H + '" alt="" loading="lazy"></span>' +
+      '<span class="app-card__shot"><img class="app-card__phone" src="/assets/phones/' + a.slug + "-" + lang + '.webp" width="900" height="' + PHONE_H + '" alt="" loading="lazy"></span>' +
       "</a></li>";
   }
   var PHONE_H = 1139;
@@ -319,7 +310,6 @@
     renderApps();
     renderContact();
     applyStrings();
-    decorateLinks();
   }
 
   var backdrop = document.querySelector(".backdrop");

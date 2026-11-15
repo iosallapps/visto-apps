@@ -1,9 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://vistoapps.com/</loc><lastmod>2026-11-15</lastmod></url>
-  <url><loc>https://vistoapps.com/apps.html</loc><lastmod>2026-11-15</lastmod></url>
-  <url><loc>https://vistoapps.com/about.html</loc><lastmod>2026-11-15</lastmod></url>
-  <url><loc>https://vistoapps.com/contact.html</loc><lastmod>2026-11-15</lastmod></url>
-  <url><loc>https://vistoapps.com/privacy.html</loc><lastmod>2026-11-15</lastmod></url>
-  <url><loc>https://vistoapps.com/terms.html</loc><lastmod>2026-11-15</lastmod></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://vistoapps.com/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vistoapps.com/"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://vistoapps.com/ro/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vistoapps.com/"/>
+  </url>
+  <url>
+    <loc>https://vistoapps.com/ro/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vistoapps.com/"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://vistoapps.com/ro/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vistoapps.com/"/>
+  </url>
+  <url>
+    <loc>https://vistoapps.com/apps.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vistoapps.com/apps.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://vistoapps.com/ro/apps.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vistoapps.com/apps.html"/>
+  </url>
+  <url>
+    <loc>https://vistoapps.com/ro/apps.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vistoapps.com/apps.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://vistoapps.com/ro/apps.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vistoapps.com/apps.html"/>
+  </url>
+  <url>
+    <loc>https://vistoapps.com/about.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vistoapps.com/about.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://vistoapps.com/ro/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vistoapps.com/about.html"/>
+  </url>
+  <url>
+    <loc>https://vistoapps.com/ro/about.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vistoapps.com/about.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://vistoapps.com/ro/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vistoapps.com/about.html"/>
+  </url>
+  <url>
+    <loc>https://vistoapps.com/contact.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vistoapps.com/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://vistoapps.com/ro/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vistoapps.com/contact.html"/>
+  </url>
+  <url>
+    <loc>https://vistoapps.com/ro/contact.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vistoapps.com/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://vistoapps.com/ro/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vistoapps.com/contact.html"/>
+  </url>
+  <url>
+    <loc>https://vistoapps.com/privacy.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vistoapps.com/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://vistoapps.com/ro/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vistoapps.com/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://vistoapps.com/ro/privacy.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vistoapps.com/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://vistoapps.com/ro/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vistoapps.com/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://vistoapps.com/terms.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vistoapps.com/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://vistoapps.com/ro/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vistoapps.com/terms.html"/>
+  </url>
+  <url>
+    <loc>https://vistoapps.com/ro/terms.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vistoapps.com/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://vistoapps.com/ro/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vistoapps.com/terms.html"/>
+  </url>
 </urlset>
