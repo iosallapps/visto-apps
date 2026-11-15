@@ -1,0 +1,211 @@
+{
+ "slug": "kipply",
+ "name": "Kipply",
+ "site": "https://kipplyapp.com",
+ "updated": "2026-11-15",
+ "platforms": [
+  "ios"
+ ],
+ "src": {
+  "ios": "~/Developer/Kipply (1.33, build 30, git 1a14603)"
+ },
+ "services": [
+  "admob",
+  "ump",
+  "firebase_analytics",
+  "crashlytics",
+  "firebase_performance",
+  "firebase_remote_config",
+  "revenuecat",
+  "apple_store"
+ ],
+ "_services_src": "Kipply.xcodeproj/project.pbxproj SPM: purchases-ios (RevenueCat), firebase-ios-sdk (Analytics, Crashlytics, RemoteConfig), swift-package-manager-google-mobile-ads; imports of UserMessagingPlatform in Services/AdConsentManager.swift, FirebaseRemoteConfig in Services/RemoteConfigService.swift, FirebaseCrashlytics in KipplyApp.swift. No URLSession/URLRequest anywhere in Kipply/ or KipplyControls/ (grep): the app itself calls no server of ours; only the SDKs connect. No Lottie/Sentry/other SDK in the project. FirebasePerformance is linked into the app target (project.pbxproj lines 17/138/241) and never imported or switched off in code (no setPerformanceCollectionEnabled), so its automatic traces run; PrivacyInfo.xcprivacy declares PerformanceData.",
+ "permissions": [
+  "photos",
+  "tracking",
+  "notifications"
+ ],
+ "_permissions_src": "Info.plist keys in project.pbxproj: NSPhotoLibraryUsageDescription, NSUserTrackingUsageDescription; no camera/mic/location/contacts keys (location is only the GPS tag already stored in a photo, SwipeCardViewModel.locationText, never CLLocationManager); PhotoLibraryService.requestAuthorization(for: .readWrite); NotificationService.swift UNUserNotificationCenter local notifications, no registerForRemoteNotifications, no aps-environment entitlement",
+ "extra_services": {
+  "admob": {
+   "name": "Google AdMob",
+   "who": "Google Ireland Ltd / Google LLC",
+   "link": "https://policies.google.com/technologies/ads",
+   "en": {
+    "data": "Advertising identifier (IDFA, only if you allow tracking), IP address, device and app information, ad impressions and taps, and the answer you gave in the consent form.",
+    "why": "Showing full-screen ads (when the app opens and at some points while you use it) in the free version. Personalised ads only with your consent; otherwise limited, non-personalised ads. Never chosen from your photos."
+   },
+   "ro": {
+    "data": "Identificatorul de publicitate (IDFA, doar dacă permiți urmărirea), adresa IP, informații despre dispozitiv și aplicație, afișări și atingeri ale reclamelor, plus răspunsul dat în formularul de consimțământ.",
+    "why": "Afișarea reclamelor pe tot ecranul (la deschiderea aplicației și în unele momente din timpul folosirii) în versiunea gratuită. Reclame personalizate doar cu acordul tău; altfel reclame limitate, nepersonalizate. Nu sunt alese pe baza pozelor tale."
+   },
+   "basis": [
+    "consent",
+    "legit"
+   ],
+   "basis_text": {
+    "en": "Personalised ads: consent, art. 6(1)(a) GDPR and art. 5(3) ePrivacy. Limited ads: legitimate interest in funding the free app, art. 6(1)(f) GDPR.",
+    "ro": "Reclame personalizate: consimțământ, art. 6 alin. (1) lit. a GDPR și art. 5 alin. (3) ePrivacy. Reclame limitate: interes legitim de a finanța aplicația gratuită, art. 6 alin. (1) lit. f GDPR."
+   },
+   "ret": {
+    "en": "Set by Google (see its policy).",
+    "ro": "Stabilită de Google (vezi politica sa)."
+   },
+   "transfer": true
+  },
+  "firebase_remote_config": {
+   "name": "Firebase Remote Config",
+   "who": "Google Ireland Ltd / Google LLC",
+   "link": "https://firebase.google.com/support/privacy",
+   "en": {
+    "data": "A random Firebase installation ID, app version, device model, OS, language, IP address.",
+    "why": "Fetching app settings we can change without an update, such as limits and which offer layout is shown. Runs at every launch and does not wait for the consent form."
+   },
+   "ro": {
+    "data": "Un ID aleatoriu al instalării Firebase, versiunea aplicației, modelul dispozitivului, sistemul, limba, adresa IP.",
+    "why": "Preluarea setărilor aplicației pe care le putem schimba fără actualizare, precum limitele și aspectul ofertei afișate. Rulează la fiecare pornire și nu așteaptă formularul de consimțământ."
+   },
+   "basis": [
+    "legit"
+   ],
+   "ret": {
+    "en": "Set by Google (see its policy).",
+    "ro": "Stabilită de Google (vezi politica sa)."
+   },
+   "transfer": true
+  },
+  "firebase_performance": {
+   "name": "Firebase Performance Monitoring",
+   "who": "Google Ireland Ltd / Google LLC",
+   "link": "https://firebase.google.com/support/privacy",
+   "en": {
+    "data": "App start and screen timings, timings and sizes of the app's network requests, device model, OS and app version, a random Firebase installation ID, IP address.",
+    "why": "Measuring how fast the app starts and runs so we can fix slowness. Runs on its own, without waiting for the consent form."
+   },
+   "ro": {
+    "data": "Durata pornirii aplicației și a ecranelor, durata și dimensiunea cererilor de rețea ale aplicației, modelul dispozitivului, sistemul, versiunea aplicației, un ID aleatoriu al instalării Firebase, adresa IP.",
+    "why": "Măsurarea vitezei de pornire și de rulare a aplicației, ca să reparăm lentoarea. Rulează de la sine, fără să aștepte formularul de consimțământ."
+   },
+   "basis": [
+    "legit"
+   ],
+   "ret": {
+    "en": "Set by Google (see its policy).",
+    "ro": "Stabilită de Google (vezi politica sa)."
+   },
+   "transfer": true
+  }
+ },
+ "extra_permissions": {
+  "photos": {
+   "en": [
+    "Photos library",
+    "Needed for the app to work: Kipply reads your photos and videos on the device to show and sort them, and deletes only what you confirm. You can give full or limited access, and change it in iOS Settings, Kipply, Photos. Nothing from your library is sent to us or to any service listed above."
+   ],
+   "ro": [
+    "Biblioteca foto",
+    "Necesară ca aplicația să funcționeze: Kipply citește pozele și videoclipurile pe dispozitiv ca să le arate și să le sorteze și șterge doar ce confirmi. Poți da acces complet sau limitat și îl poți schimba în Setări iOS, Kipply, Fotografii. Nimic din bibliotecă nu este trimis nouă sau vreunui serviciu listat mai sus."
+   ]
+  }
+ },
+ "local_data": {
+  "en": "Your photos and videos are scanned on your device and are never uploaded. Review history, statistics and scan results stay on your device.",
+  "ro": "Pozele și videoclipurile sunt analizate pe dispozitiv și nu sunt încărcate nicăieri. Istoricul de revizuire, statisticile și rezultatele scanării rămân pe dispozitiv."
+ },
+ "local_detail": {
+  "en": "see overrides privacy.local",
+  "ro": "vezi overrides privacy.local"
+ },
+ "_local_src": "Services/SmartScanEngine.swift + VisionAnalysisService.swift + ImageHasher.swift (isNetworkAccessAllowed = false for analysis; Apple Vision framework, perceptual hashes); SmartCleanPersistence.swift (smart_scan_groups.json, local identifiers); ReviewStateService.swift; StatisticsManager.swift (daily journal); KeychainService.swift + PaywallManager.swift (daily swipe count, lifetime swipe count in the iOS Keychain, survives reinstall); ThumbnailLoader/CategoryThumbLoader/PhotoLibraryService use isNetworkAccessAllowed = true only to show an iCloud-only photo, through PhotoKit; Settings > Data > Reset Statistics = StatisticsManager.resetAllStatistics (RO: Resetează statisticile)",
+ "service_notes": [
+  {
+   "en": "Kipply has no feature that uploads your photos, videos, image fingerprints or scan results, and none of the services above receive them. Ads are never chosen using your photos. Photos kept only in iCloud are fetched by iOS (PhotoKit) when Kipply shows them; that traffic is between your device and Apple, not Kipply.",
+   "ro": "Kipply nu are nicio funcție care să încarce pozele, videoclipurile, amprentele de imagine sau rezultatele scanării, iar serviciile de mai sus nu le primesc. Reclamele nu sunt alese pe baza pozelor tale. Pozele păstrate doar în iCloud sunt aduse de iOS (PhotoKit) când Kipply le arată; acel trafic este între dispozitivul tău și Apple, nu prin Kipply."
+  },
+  {
+   "en": "Analytics events are about the app, not your library: screens opened, features used, purchase steps, and running totals such as swipes made, photos cleaned and storage freed. They carry no photo, file name, location or album.",
+   "ro": "Evenimentele de statistici privesc aplicația, nu biblioteca ta: ecrane deschise, funcții folosite, pașii achiziției și totaluri curente precum swipe-uri făcute, poze curățate și spațiu eliberat. Nu conțin poze, nume de fișiere, locație sau albume."
+  },
+  {
+   "en": "RevenueCat receives the Firebase app instance ID only while analytics is allowed, so that renewals and trial conversions can be counted in the statistics.",
+   "ro": "RevenueCat primește ID-ul instalării Firebase doar cât timp statisticile sunt permise, ca reînnoirile și trecerile de la probă la abonament să poată fi numărate în statistici."
+  },
+  {
+   "en": "Crash reports and performance measurements are not held back by the consent form; they are sent on the basis of our legitimate interest in a working, fast app and contain no photos.",
+   "ro": "Rapoartele de erori și măsurătorile de performanță nu așteaptă formularul de consimțământ; se trimit pe baza interesului nostru legitim ca aplicația să funcționeze și să fie rapidă și nu conțin poze."
+  },
+  {
+   "en": "Kipply Pro shows no ads and no consent form. The Kipply Control Center control, Siri and Shortcuts only open parts of the app on your device and send nothing.",
+   "ro": "Kipply Pro nu afișează reclame și nici formularul de consimțământ. Controlul Kipply din Centrul de control, Siri și Comenzile rapide doar deschid părți ale aplicației pe dispozitiv și nu trimit nimic."
+  }
+ ],
+ "_service_notes_src": "KipplyApp.swift didFinishLaunching (RemoteConfigService.configure + FirebaseApp.configure unconditional, Crashlytics has no collection switch, GoogleService-Info.plist IS_ANALYTICS_ENABLED=false but AnalyticsManager.applyMeasurementVerdict turns collection on); AnalyticsManager.swift:257-278 (analyticsStorage consent + linkFirebaseAppInstanceID only when collecting), RevenueCatManager.swift:182-192; AdStartupSequence.swift (skippedForPro: no ad SDK, no form); AnalyticsManager user properties (userType, subState, totalPhotosCleaned, lifetimeSwipes, lifetimeStorageFreedMB) lines 906-926; KipplyControls/KipplyControlsControl.swift OpenSwipeCleanerIntent; Intents/KipplyAppIntents.swift",
+ "privacy_choices_path": {
+  "en": "in the app, Settings, Legal, Ad Privacy Settings (shown only where the consent form applies).",
+  "ro": "în aplicație, Setări, Informații juridice, Confidențialitatea reclamelor (apare doar acolo unde se aplică formularul)."
+ },
+ "_privacy_choices_src": "Views/Settings/SettingsSections.swift SettingsLegalSection (section Legal, row Ad Privacy Settings, hidden unless AdConsentManager.isPrivacyOptionsRequired); Localizable.xcstrings ro: Legal = Informații juridice, Ad Privacy Settings = Confidențialitatea reclamelor",
+ "consent_notes": [
+  {
+   "en": "Analytics in those regions also need your consent to storing information on the device and to measuring performance; if you do not give it, analytics stays off.",
+   "ro": "Statisticile din acele regiuni cer și acordul tău pentru stocarea informațiilor pe dispozitiv și pentru măsurarea performanței; dacă nu îl dai, statisticile rămân oprite."
+  }
+ ],
+ "_consent_src": "AdConsentManager.swift allowsFirstPartyMeasurement + measurementAllowed (TCF purpose 1 AND purpose 8 or 9 required under .obtained; .required = off); ATT after UMP: AdStartupSequence.swift + TrackingAuthorizationGate.swift; ads gated by AdPresentationGate canRequestAds; refusal of personalisation => npa=1 (AdMobManager.swift:378). VERIFIED honoured. Note: outside the consent regime (notRequired) analytics runs without a form.",
+ "purchases": {
+  "subscriptions": true,
+  "trial": true,
+  "lifetime": true,
+  "what": {
+   "en": "Kipply is free to download, with 25 swipes a day, a limit on how many items you can delete at once, and ads. Kipply Pro removes those limits and the ads. It is sold as a weekly or monthly subscription, or as a one-time lifetime purchase; a yearly subscription may be offered in a special offer. A free trial may be offered on the weekly plan to Apple Accounts that are eligible for it; the trial length is shown before you subscribe.",
+   "ro": "Kipply se descarcă gratuit, cu 25 de swipe-uri pe zi, o limită la câte elemente poți șterge odată și reclame. Kipply Pro elimină aceste limite și reclamele. Se vinde ca abonament săptămânal sau lunar ori ca achiziție unică pe viață; un abonament anual poate fi oferit într-o ofertă specială. O probă gratuită poate fi oferită pe planul săptămânal conturilor Apple eligibile; durata probei apare înainte să te abonezi."
+  }
+ },
+ "_purchases_src": "RevenueCatManager.swift PaywallProduct weekly com.kipply.pro.weekly, monthly com.kipply.pro.monthly4, lifetime com.kipply.pro.lifetime; SpecialOfferCatalog.swift yearly com.kipply.pro.yearly + lifetime.offer; PaywallViewModel.freeTrialDays reads the store product's free-trial intro offer and RevenueCatManager.isTrialEligible gates it (trial length is not hard-coded); entitlement Kipply Pro; PaywallManager.freeSwipeLimit = 25; Constants.swift freeBatchDeleteLimit = 10 with RemoteConfig default true; AdStartupSequence skippedForPro",
+ "what": {
+  "en": "Kipply helps you review and clean up the photos and videos in your iPhone or iPad Photos library: swipe to keep or delete, let Smart Clean group duplicates, similar shots, screenshots and videos, and browse older photos by date. It works only on photos and videos in your Photos library. It does not touch contacts, files, caches, app data or system storage.",
+  "ro": "Kipply te ajută să revizuiești și să cureți pozele și videoclipurile din biblioteca foto a iPhone-ului sau iPad-ului: swipe pentru a păstra sau șterge, Smart Clean grupează duplicatele, pozele similare, capturile de ecran și videoclipurile, iar poți răsfoi pozele mai vechi după dată. Lucrează doar cu pozele și videoclipurile din biblioteca foto. Nu atinge contactele, fișierele, cache-urile, datele altor aplicații sau spațiul de sistem."
+ },
+ "disclaimers": [
+  {
+   "en": "Suggestions, such as which photos look like duplicates or which shot is the best in a group, are made automatically and can be wrong. Storage figures are estimates. Review every suggestion before you delete anything.",
+   "ro": "Sugestiile, de exemplu care poze arată ca duplicate sau care e cadrul cel mai bun dintr-un grup, sunt făcute automat și pot fi greșite. Cifrele de spațiu sunt estimări. Verifică fiecare sugestie înainte să ștergi ceva."
+  },
+  {
+   "en": "Kipply never deletes a photo or video on its own. Items you swipe left wait in the Deleted tab, still in your Photos library, until you confirm. Then iOS asks for permission and moves them to Recently Deleted in the Photos app, where iOS normally keeps them for 30 days; after that they cannot be recovered by Kipply or by us. If you use iCloud Photos, the deletion applies to your other devices through Apple. You are responsible for what you delete, so back up what you want to keep first.",
+   "ro": "Kipply nu șterge niciodată singur o poză sau un videoclip. Elementele trase la stânga așteaptă în fila Deleted, încă în biblioteca foto, până confirmi. Apoi iOS cere permisiunea și le mută în Recently Deleted din aplicația Fotografii, unde iOS le păstrează de obicei 30 de zile; după aceea nu mai pot fi recuperate de Kipply sau de noi. Dacă folosești iCloud Photos, ștergerea se aplică pe celelalte dispozitive prin Apple. Ești responsabil pentru ce ștergi, deci fă întâi o copie a ce vrei să păstrezi."
+  },
+  {
+   "en": "You must be at least 13 years old to use Kipply. If you are under the age of majority where you live, use it only with a parent or guardian, who should also approve any purchase.",
+   "ro": "Trebuie să ai cel puțin 13 ani ca să folosești Kipply. Dacă ești minor în țara ta, folosește-l doar cu un părinte sau tutore, care trebuie să aprobe și orice achiziție."
+  }
+ ],
+ "_disclaimers_src": "DeletionQueueManager.swift + MediaDeletionService.swift (PHAssetChangeRequest.deleteAssets, system confirmation, Recently Deleted); previous site terms.html section 4 and 2 (age 13), kept because the code agrees",
+ "overrides": {
+  "privacy.local": {
+   "en": "<p>Kipply needs access to your Photos library to work. It reads your photos and videos on the device, with details stored with them such as date, size, type and any location your camera recorded, to show them to you and to find duplicates, similar shots, screenshots and blurry photos. To compare photos it calculates small image fingerprints and measurements such as sharpness and how many faces or animals appear. It does not recognise who anyone is. These results and the thumbnails Kipply makes are stored on your device only. A location saved in a photo is only shown to you; Kipply never asks for your device's location.</p><p>Kipply also keeps on your device your review history (which items you kept or marked for deletion, and the Deleted tab list), your statistics, streak, XP and challenges, your preferences, and your consent choices. Two counters for the free daily swipe limit are kept in the iOS Keychain, so the limit still applies after a reinstall; they hold only counts and a date. We have no server that receives any of this and we cannot see it. This data can be part of your iCloud or computer backup, which Apple's own policy covers.</p><p>How to remove it: Settings, Data, Reset Statistics clears your statistics. Deleting the app removes the rest, except the two Keychain counters. Swiping an item to Deleted does not remove it from your library until you confirm. If you use Share, iOS sends the item only to the app or person you choose and Kipply gets no copy.</p>",
+   "ro": "<p>Kipply are nevoie de acces la biblioteca foto ca să funcționeze. Citește pozele și videoclipurile pe dispozitiv, împreună cu detaliile stocate cu ele, precum data, dimensiunea, tipul și locația înregistrată de cameră, ca să ți le arate și să găsească duplicate, poze similare, capturi de ecran și poze neclare. Pentru comparare calculează amprente mici de imagine și măsurători precum claritatea și câte fețe sau animale apar. Nu recunoaște cine sunt persoanele. Aceste rezultate și miniaturile create de Kipply se păstrează doar pe dispozitiv. Locația salvată într-o poză este doar arătată ție; Kipply nu cere niciodată locația dispozitivului.</p><p>Kipply mai păstrează pe dispozitiv istoricul de revizuire (ce ai păstrat sau marcat pentru ștergere și lista din fila Deleted), statisticile, seria, XP și provocările, preferințele și alegerile de consimțământ. Două contoare pentru limita zilnică gratuită de swipe-uri sunt păstrate în Keychain-ul iOS, ca limita să se aplice și după reinstalare; conțin doar numere și o dată. Nu avem server care să primească aceste date și nu le putem vedea. Ele pot face parte din copia de siguranță iCloud sau de pe computer, acoperită de politica Apple.</p><p>Cum le elimini: Setări, Date, Resetează statisticile șterge statisticile. Ștergerea aplicației elimină restul, cu excepția celor două contoare din Keychain. Mutarea unui element în Deleted nu îl scoate din bibliotecă până nu confirmi. Dacă folosești Share, iOS trimite elementul doar aplicației sau persoanei alese, iar Kipply nu primește o copie.</p>"
+  },
+  "privacy.rights": {
+   "en": "<p>You have the right to access, correct and delete your data, to restrict or object to processing (including to object at any time to processing based on legitimate interest), to data portability, and to withdraw consent at any time without affecting earlier processing.</p><p>Because the app has no account, we usually cannot tell which data at Google or RevenueCat is yours. Write to <a href=\"mailto:iosallapps@gmail.com\">iosallapps@gmail.com</a> and, if you can, include an Apple order number for a purchase, and we will forward the request to the provider. You can remove the data on the device by deleting the app (see above for the two Keychain counters).</p><p>You can complain to the supervisory authority where you live or work, or to ours: Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal (ANSPDCP), <a href=\"https://www.dataprotection.ro\" rel=\"noopener\">www.dataprotection.ro</a>. The list of EU authorities: <a href=\"https://www.edpb.europa.eu/about-edpb/about-edpb/members_en\" rel=\"noopener\">edpb.europa.eu</a>.</p>",
+   "ro": "<p>Ai dreptul de acces, rectificare și ștergere, de restricționare și de opoziție (inclusiv opoziție oricând la prelucrarea bazată pe interes legitim), la portabilitate și dreptul de a-ți retrage oricând consimțământul, fără a afecta prelucrarea anterioară.</p><p>Pentru că aplicația nu are cont, de obicei nu putem ști care date de la Google sau RevenueCat sunt ale tale. Scrie la <a href=\"mailto:iosallapps@gmail.com\">iosallapps@gmail.com</a> și, dacă poți, include numărul comenzii Apple pentru o achiziție, iar noi trimitem cererea furnizorului. Poți elimina datele de pe dispozitiv ștergând aplicația (vezi mai sus cele două contoare din Keychain).</p><p>Poți depune plângere la autoritatea de supraveghere din țara în care locuiești sau lucrezi, ori la a noastră: Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal (ANSPDCP), <a href=\"https://www.dataprotection.ro\" rel=\"noopener\">www.dataprotection.ro</a>. Lista autorităților din UE: <a href=\"https://www.edpb.europa.eu/about-edpb/about-edpb/members_en\" rel=\"noopener\">edpb.europa.eu</a>.</p>"
+  },
+  "privacy.us": {
+   "en": "<ul><li>We do not sell personal information for money.</li><li>When you allow personalised ads, Google AdMob uses your advertising identifier for ads based on activity in other apps. Some US state laws (for example California) call this \"sharing\" or \"targeted advertising\". You can opt out at any time: refuse tracking on iOS (Settings, Privacy &amp; Security, Tracking), or email us and we will treat it as an opt-out request.</li><li>Residents of California and other US states with privacy laws can ask to know, correct or delete their personal information, and will not be treated differently for doing so. Categories collected in the last 12 months are the ones in the table above (identifiers, internet activity, approximate location from IP, purchase records). Requests: <a href=\"mailto:iosallapps@gmail.com\">iosallapps@gmail.com</a>.</li></ul>",
+   "ro": "<ul><li>Nu vindem informații personale pe bani.</li><li>Când permiți reclame personalizate, Google AdMob folosește identificatorul de publicitate pentru reclame bazate pe activitatea din alte aplicații. Unele legi din statele SUA (de exemplu California) numesc asta „partajare” sau „publicitate țintită”. Poți refuza oricând: refuză urmărirea pe iOS (Setări, Confidențialitate și securitate, Urmărire) sau scrie-ne și tratăm mesajul ca cerere de renunțare.</li><li>Rezidenții din California și din alte state SUA cu legi de confidențialitate pot cere să afle, să corecteze sau să șteargă informațiile personale, fără a fi tratați diferit pentru asta. Categoriile colectate în ultimele 12 luni sunt cele din tabel (identificatori, activitate online, locație aproximativă din IP, evidența achizițiilor). Cereri: <a href=\"mailto:iosallapps@gmail.com\">iosallapps@gmail.com</a>.</li></ul>"
+  },
+  "terms.ip": {
+   "en": "<p>The app, its name, design and code belong to Darius Cirjan. Your photos and videos remain yours; Kipply gets no rights to them.</p>",
+   "ro": "<p>Aplicația, numele, designul și codul ei aparțin lui Darius Cirjan. Pozele și videoclipurile tale rămân ale tale; Kipply nu primește niciun drept asupra lor.</p>"
+  },
+  "privacy.retention": {
+   "en": "<p>Data on your device stays until you reset your statistics in the app or delete the app; the two Keychain counters described above stay on the device after the app is deleted, until the device is erased. Data held by the services above is kept for the period listed in the table. We do not keep copies of our own. Emails you send us are kept as long as needed to answer, and at most 2 years.</p>",
+   "ro": "<p>Datele de pe dispozitiv rămân până îți resetezi statisticile în aplicație sau ștergi aplicația; cele două contoare din Keychain, descrise mai sus, rămân pe dispozitiv și după ștergerea aplicației, până la ștergerea completă a dispozitivului. Datele aflate la serviciile de mai sus se păstrează cât scrie în tabel. Nu păstrăm copii proprii. Emailurile trimise nouă se păstrează cât e nevoie pentru răspuns, cel mult 2 ani.</p>"
+  }
+ },
+ "website": {
+  "en": "kipplyapp.com is hosted on GitHub Pages (GitHub, Inc., USA), which records the IP address of visitors in server logs for security. The site sets no cookies, uses no analytics or ads, loads no third-party scripts or fonts, and stores nothing in your browser. Its links to the App Store lead to Apple's own pages.",
+  "ro": "kipplyapp.com este găzduit pe GitHub Pages (GitHub, Inc., SUA), care înregistrează adresa IP a vizitatorilor în jurnalele serverului, pentru securitate. Site-ul nu setează cookie-uri, nu folosește statistici sau reclame, nu încarcă scripturi sau fonturi de la terți și nu păstrează nimic în browserul tău. Linkurile către App Store duc la paginile Apple."
+ },
+ "_website_src": "Kipply-Website: no gtag/GA/cookie/localStorage in index.html, script.js (menu only); CNAME kipplyapp.com on GitHub Pages; fonts self-hosted after redesign"
+}
