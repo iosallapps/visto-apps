@@ -203,29 +203,30 @@
   var bySlug = {};
   V.apps.forEach(function (a) { bySlug[a.slug] = a; });
   function appStyle(a) { return "--c1:" + a.colors[0] + ";--c2:" + a.colors[1]; }
-  function appLinkLabel(a) { return esc(a.name + ", " + (lang === "ro" ? RO["app.open"] : "Open in the App Store")); }
+  // Spoken after the visible name, so the link's accessible name contains what is on screen.
+  function storeHint() { return '<span class="visually-hidden">, ' + esc(lang === "ro" ? RO["app.open"] : "Open in the App Store") + "</span>"; }
   function categoryOf(a) { return V.categories.filter(function (c) { return c.id === a.category; })[0]; }
 
   function heroCard(a, i) {
-    return '<a class="hero-card" style="' + appStyle(a) + '" data-pos="' + i + '" href="' + a.store + '" target="_blank" rel="noopener" aria-label="' + appLinkLabel(a) + '">' +
+    return '<a class="hero-card" style="' + appStyle(a) + '" data-pos="' + i + '" href="' + a.store + '" target="_blank" rel="noopener">' +
       '<span class="hero-card__head"><img class="app-icon" src="/assets/icons/' + a.slug + '.webp" width="64" height="64" alt="">' +
-      '<span><span class="hero-card__name">' + esc(a.name) + '</span><span class="hero-card__sub">' + esc(t(a.subtitle)) + "</span></span></span>" +
+      '<span><span class="hero-card__name">' + esc(a.name) + '</span><span class="hero-card__sub">' + esc(t(a.subtitle)) + "</span>" + storeHint() + "</span></span>" +
       '<span class="hero-card__shot"><img class="hero-card__phone" src="/assets/phones/' + a.slug + "-hero-" + lang + '.webp" width="600" height="759" alt="" fetchpriority="high" decoding="async"></span>' +
       "</a>";
   }
   function tile(a) {
-    return '<li><a class="app-tile" style="' + appStyle(a) + '" href="' + a.store + '" target="_blank" rel="noopener" aria-label="' + appLinkLabel(a) + '">' +
+    return '<li><a class="app-tile" style="' + appStyle(a) + '" href="' + a.store + '" target="_blank" rel="noopener">' +
       '<img class="app-icon" src="/assets/icons/' + a.slug + '.webp" width="80" height="80" alt="" loading="lazy" decoding="async">' +
-      '<span class="app-tile__name">' + esc(a.name) + '</span><span class="app-tile__sub">' + esc(t(a.subtitle)) + "</span></a></li>";
+      '<span class="app-tile__name">' + esc(a.name) + '</span><span class="app-tile__sub">' + esc(t(a.subtitle)) + "</span>" + storeHint() + "</a></li>";
   }
   function card(a) {
     var c = categoryOf(a);
-    return '<li class="app-card-wrap" data-category="' + a.category + '"><a class="app-card" style="' + appStyle(a) + '" href="' + a.store + '" target="_blank" rel="noopener" aria-label="' + appLinkLabel(a) + '">' +
+    return '<li class="app-card-wrap" data-category="' + a.category + '"><a class="app-card" style="' + appStyle(a) + '" href="' + a.store + '" target="_blank" rel="noopener">' +
       '<span class="app-card__head"><img class="app-icon" src="/assets/icons/' + a.slug + '.webp" width="64" height="64" alt="" loading="lazy">' +
         '<span class="app-card__titles"><span class="app-card__name">' + esc(a.name) + '</span><span class="app-card__sub">' + esc(t(a.subtitle)) + "</span></span>" +
         '<span class="arrow-dot">' + icon("arrow") + "</span></span>" +
       '<span class="app-card__text">' + esc(t(a.text)) + "</span>" +
-      '<span class="chip">' + icon(c.icon) + esc(t(c.label)) + "</span>" +
+      '<span class="chip">' + icon(c.icon) + esc(t(c.label)) + "</span>" + storeHint() +
       '<span class="app-card__shot"><img class="app-card__phone" src="/assets/phones/' + a.slug + "-" + lang + '.webp" width="520" height="658" alt="" loading="lazy" decoding="async"></span>' +
       "</a></li>";
   }
