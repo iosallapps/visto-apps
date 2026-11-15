@@ -1,0 +1,172 @@
+{
+ "slug": "kupfra",
+ "name": "Kupfra",
+ "site": "https://kupfra.com",
+ "updated": "2026-11-15",
+ "platforms": [
+  "ios"
+ ],
+ "src": {
+  "ios": "origin/main of iosallapps/kupfra-app at 9e3dd37 (2026-11-10), audited from a git archive; local ~/Developer/Treppenwerk is an empty clone"
+ },
+ "services": [
+  "admob",
+  "ump",
+  "firebase_analytics",
+  "crashlytics",
+  "firebase_remote_config",
+  "revenuecat",
+  "apple_store"
+ ],
+ "_services_src": "Treppenwerk.xcodeproj/project.pbxproj SPM: purchases-ios, firebase-ios-sdk (FirebaseAnalytics, FirebaseCrashlytics, FirebaseRemoteConfig via RemoteConfigService.swift), swift-package-manager-google-mobile-ads; Core/Monetization/AdConsentManager.swift (UserMessagingPlatform); no CloudKit, HealthKit, Game Center, notifications (no UNUserNotificationCenter), no own server, no AI API (grep of all .swift files)",
+ "extra_services": {
+  "admob": {
+   "name": "Google AdMob",
+   "who": "Google Ireland Ltd / Google LLC",
+   "link": "https://policies.google.com/technologies/ads",
+   "en": {
+    "data": "Advertising identifier (IDFA, only if you allow tracking), IP address, device and app information, ad impressions and taps, and the answer you gave in the consent form.",
+    "why": "Showing full-screen ads (when the app opens and at some points while you use it) in the free version. Personalised ads only with your consent; otherwise limited, non-personalised ads. Never chosen from your projects or the values you enter."
+   },
+   "ro": {
+    "data": "Identificatorul de publicitate (IDFA, doar dacă permiți urmărirea), adresa IP, informații despre dispozitiv și aplicație, afișări și atingeri ale reclamelor, plus răspunsul dat în formularul de consimțământ.",
+    "why": "Afișarea reclamelor pe tot ecranul (la deschiderea aplicației și în unele momente din timpul folosirii) în versiunea gratuită. Reclame personalizate doar cu acordul tău; altfel reclame limitate, nepersonalizate. Nu sunt alese pe baza proiectelor sau a valorilor introduse."
+   },
+   "basis": [
+    "consent",
+    "legit"
+   ],
+   "basis_text": {
+    "en": "Personalised ads: consent, art. 6(1)(a) GDPR and art. 5(3) ePrivacy. Limited ads: legitimate interest in funding the free app, art. 6(1)(f) GDPR.",
+    "ro": "Reclame personalizate: consimțământ, art. 6 alin. (1) lit. a GDPR și art. 5 alin. (3) ePrivacy. Reclame limitate: interes legitim de a finanța aplicația gratuită, art. 6 alin. (1) lit. f GDPR."
+   },
+   "ret": {
+    "en": "Set by Google (see its policy).",
+    "ro": "Stabilită de Google (vezi politica sa)."
+   },
+   "transfer": true
+  },
+  "firebase_remote_config": {
+   "name": "Firebase Remote Config",
+   "who": "Google Ireland Ltd / Google LLC",
+   "link": "https://firebase.google.com/support/privacy",
+   "en": {
+    "data": "A random Firebase installation ID, app version, device model, OS, language, IP address.",
+    "why": "Fetching app settings we can change without an update: the layout of the unlock screen shown during onboarding and the plan it selects first. Runs at every launch and does not wait for the consent form."
+   },
+   "ro": {
+    "data": "Un ID aleatoriu al instalării Firebase, versiunea aplicației, modelul dispozitivului, sistemul, limba, adresa IP.",
+    "why": "Preluarea setărilor aplicației pe care le putem schimba fără actualizare: aspectul ecranului de deblocare din onboarding și planul selectat primul. Rulează la fiecare pornire și nu așteaptă formularul de consimțământ."
+   },
+   "basis": [
+    "legit"
+   ],
+   "ret": {
+    "en": "Set by Google (see its policy).",
+    "ro": "Stabilită de Google (vezi politica sa)."
+   },
+   "transfer": true
+  }
+ },
+ "_extra_services_src": "AdMob: Core/Monetization/MonetizationMoments.swift (interstitial after calculator closed, export, project saved), AdMobManager.swift, AppOpenAdPolicy.swift, ads skipped when isProOrDebug; Remote Config: Core/Monetization/RemoteConfigService.swift keys onboarding_paywall_style and onboarding_default_plan, fetchAndActivate at launch (AppDelegate.swift:34)",
+ "permissions": [
+  "camera",
+  "tracking"
+ ],
+ "extra_permissions": {
+  "camera": {
+   "en": [
+    "Camera",
+    "Only when you measure a stair with the camera (ARKit). Frames are processed on the device while the measuring screen is open; nothing is recorded, saved or uploaded. You can type the values instead."
+   ],
+   "ro": [
+    "Cameră",
+    "Doar când măsori o scară cu camera (ARKit). Cadrele se procesează pe dispozitiv cât timp ecranul de măsurare este deschis; nimic nu este înregistrat, salvat sau încărcat. Poți introduce valorile de mână."
+   ]
+  }
+ },
+ "_permissions_src": "project.pbxproj INFOPLIST_KEY_NSCameraUsageDescription and NSUserTrackingUsageDescription; Modules/Stairs/Measure/MeasureViewModel.swift (ARWorldTrackingConfiguration, AVCaptureDevice.requestAccess, LiDAR sceneDepth in MeasureScreen.swift:256); TrackingAuthorizationGate.swift. Logo is chosen with SwiftUI PhotosPicker (SettingsView.swift:160), which needs no photo-library permission",
+ "local_data": {
+  "en": "Your projects, prices, company details and logo stay on your device.",
+  "ro": "Proiectele, prețurile, datele firmei și logoul rămân pe dispozitiv."
+ },
+ "local_detail": {
+  "en": "Kupfra stores on your device the projects you save (the inputs of a stair or a calculation, with a name and dates), your settings (units, stair guidance, your trade, your unit prices and currency), your company name, contact details and logo for client PDFs, and markers such as whether onboarding was completed, the answers you gave in Google's consent form and whether you have unlocked Kupfra. None of this is sent to us and we cannot see it. Kupfra does not sync it through iCloud. A PDF or text export is created on your device and goes only where you choose to send it, for example with the share sheet; it contains what you entered, including your company details and logo and the client name and notes you typed. To remove data: swipe a project to delete it in Projects, tap Remove under your company logo in Settings, or delete the app, which removes everything from that device.",
+  "ro": "Kupfra păstrează pe dispozitiv proiectele salvate (datele unei scări sau ale unui calcul, cu nume și date), setările (unități, normativul pentru scări, meseria, prețurile unitare și moneda), numele firmei, datele de contact și logoul pentru PDF-urile clientului, plus marcaje precum finalizarea onboardingului, răspunsurile date în formularul Google și dacă ai deblocat Kupfra. Nimic nu ne este trimis și nu putem vedea nimic. Kupfra nu le sincronizează prin iCloud. Un export PDF sau text se creează pe dispozitiv și ajunge doar unde alegi tu să-l trimiți, de exemplu prin foaia de partajare; conține ce ai introdus, inclusiv datele firmei și logoul, numele clientului și notele scrise de tine. Pentru ștergere: trage de un proiect ca să-l ștergi în Proiecte, apasă Remove sub logoul firmei în Setări sau șterge aplicația, ceea ce elimină totul de pe dispozitiv."
+ },
+ "_local_src": "Core/Projects/Project.swift (SwiftData Project, ProjectStore.delete), App/TreppenwerkApp.swift makeContainer (ModelConfiguration, no CloudKit), Features/Projects/ProjectsView.swift:95 .onDelete, Core/Settings/CompanyProfile.swift (company-logo.png in app folder), SettingsView.swift:168 Button(\"Remove\"), CutListView.swift:270 UIActivityViewController. There is no delete-all-data button in Settings",
+ "service_notes": [
+  {
+   "en": "Analytics stays off until Kupfra knows whether consent is needed for you. Where consent is required (EEA, UK, Switzerland) it is switched on only if you agree in the consent form to information being stored on your device and to measurement; elsewhere, once Google confirms that no consent is needed. Events from before that decision are held in memory and discarded if analytics stays off. Only App Store installs report: test and development builds do not.",
+   "ro": "Statisticile rămân oprite până când Kupfra află dacă ai nevoie de consimțământ. Acolo unde consimțământul este cerut (SEE, Regatul Unit, Elveția), pornesc doar dacă accepți în formular stocarea de informații pe dispozitiv și măsurarea; în rest, după ce Google confirmă că nu e nevoie. Evenimentele de dinainte de decizie se rețin în memorie și se aruncă dacă statisticile rămân oprite. Raportează doar instalările din App Store, nu și versiunile de test."
+  },
+  {
+   "en": "Events describe how the app is used, such as app opens, onboarding steps, features opened, unlock and offer screens, purchases with plan, price and currency, and your answers to permission prompts. They do not contain your projects or the values you enter.",
+   "ro": "Evenimentele descriu cum este folosită aplicația, de exemplu deschideri, pașii din onboarding, funcții deschise, ecranele de deblocare și de ofertă, achiziții cu plan, preț și monedă și răspunsurile la solicitările de permisiuni. Nu conțin proiectele sau valorile introduse."
+  },
+  {
+   "en": "Crash reports go to Firebase Crashlytics when the app crashes. They are not controlled by the consent form, on the basis of our legitimate interest in a working app, and contain none of your project data.",
+   "ro": "Rapoartele de erori ajung la Firebase Crashlytics când aplicația se oprește. Nu sunt controlate de formularul de consimțământ, pe baza interesului nostru legitim ca aplicația să funcționeze, și nu conțin date din proiectele tale."
+  },
+  {
+   "en": "RevenueCat also receives the Firebase app instance ID, only while analytics is switched on, so that renewals, trial conversions and refunds can be counted.",
+   "ro": "RevenueCat primește și ID-ul instalării Firebase, doar cât timp statisticile sunt pornite, ca reînnoirile, trecerile din perioada de probă și rambursările să poată fi numărate."
+  }
+ ],
+ "_service_notes_src": "AnalyticsManager.swift (collectsFromThisBuild, applyMeasurementVerdict, setAnalyticsCollectionEnabled, PreConsentEventBuffer), AdConsentManager.allowsFirstPartyMeasurement; GoogleService-Info.plist IS_ANALYTICS_ENABLED=false; Crashlytics linked in project.pbxproj with no collection switch in code or Info.plist; RevenueCatManager.linkFirebaseAppInstanceID (guard isCollectingAnalytics)",
+ "privacy_choices_path": {
+  "en": "in the app, Settings, Privacy choices (shown where the consent form applies).",
+  "ro": "în aplicație, Setări, Opțiuni de confidențialitate (apare acolo unde se aplică formularul)."
+ },
+ "_privacy_choices_src": "SettingsView.swift:308 Text(\"Privacy choices\") under if consent.isPrivacyOptionsRequired; RO label from Localizable.xcstrings",
+ "consent_notes": [],
+ "purchases": {
+  "subscriptions": true,
+  "trial": true,
+  "lifetime": true,
+  "what": {
+   "en": "Kupfra is free to download, with the straight stair, the cable size calculator, the concrete and screed calculator, up to 3 saved projects and ads. The unlock adds every stair type, every calculator, design options, the materials and cost estimate, client PDFs, PDF and text export, camera measuring and unlimited projects, and removes the ads. It is sold as a weekly or monthly auto-renewing subscription or as a one-time lifetime purchase; a yearly subscription may be offered in a special offer. A free trial may be offered on the weekly or monthly plan to Apple Accounts that are eligible for it; the trial length is shown before you subscribe.",
+   "ro": "Kupfra se descarcă gratuit, cu scara dreaptă, calculatorul de secțiune a cablului, calculatorul de beton și șapă, până la 3 proiecte salvate și reclame. Deblocarea adaugă toate tipurile de scări, toate calculatoarele, opțiunile de design, devizul de materiale și costuri, PDF-uri pentru client, export PDF și text, măsurarea cu camera și proiecte nelimitate, și elimină reclamele. Se vinde ca abonament săptămânal sau lunar cu reînnoire automată ori ca achiziție unică pe viață; un abonament anual poate fi oferit într-o ofertă specială. O perioadă de probă gratuită poate fi oferită pe planul săptămânal sau lunar conturilor Apple eligibile; durata se arată înainte să te abonezi."
+  }
+ },
+ "_purchases_src": "Core/Monetization/PaywallViewModel.swift (weekly, monthly via Switch to monthly, lifetime cards; trialDays from the store product and isTrialEligible), StoreOfferings.swift + SpecialOfferCatalog.swift ($rc_annual offer.yearly), Core/Store/Entitlements.swift UnlockFeature, Modules/Calculators/CalculatorTool.swift:19 isFree = cableSize or concrete, Core/Projects/Project.swift:52 freeProjectLimit = 3, AdMobManager (ads skipped when isProOrDebug). Whether a trial is live in ASC today is unverified (Kupfra.storekit has 3-day trials on weekly and monthly)",
+ "what": {
+  "en": "Kupfra is a toolkit for electricians, builders and DIY: a 3D stair designer with cut list, materials, cost estimate and client PDF, eight electrical calculators (cable size, voltage drop, breaker selection, short-circuit current, earthing, conduit fill, line sizing, Ohm's law) following IEC 60364, BS 7671 or the NEC, eight construction calculators (concrete, tiles, paint, drywall, masonry, insulation, flooring, roof) and camera measuring of stair rise and opening.",
+  "ro": "Kupfra este un set de unelte pentru electricieni, constructori și amatori: un designer de scări 3D cu listă de tăiere, materiale, deviz și PDF pentru client, opt calculatoare electrice (secțiune cablu, cădere de tensiune, alegerea întreruptorului, curent de scurtcircuit, împământare, umplerea tubului, dimensionarea liniei, legea lui Ohm) după IEC 60364, BS 7671 sau NEC, opt calculatoare de construcții (beton, gresie, vopsea, gips-carton, zidărie, izolație, pardoseli, acoperiș) și măsurarea cu camera a înălțimii și a golului scării."
+ },
+ "disclaimers": [
+  {
+   "en": "Every result in Kupfra is an estimate for planning, not a design, a certificate or an approval. Kupfra checks stair values against the guidance you pick (DIN 18065, the US IRC or the English Approved Document K) and electrical results against the tables of IEC 60364, BS 7671 or the NEC. These tables are a reference and can be out of date, simplified or not the rule that applies to your site: if your country's rules are not built in, Kupfra says so and uses a reference table. The building code, wiring regulations and rules that apply where you work always decide, and so does the authority that enforces them. Check your local building code before you build.",
+   "ro": "Orice rezultat din Kupfra este o estimare pentru planificare, nu un proiect, un certificat sau o aprobare. Kupfra compară valorile scărilor cu normativul ales de tine (DIN 18065, IRC din SUA sau Approved Document K pentru Anglia) și rezultatele electrice cu tabelele IEC 60364, BS 7671 sau NEC. Aceste tabele sunt o referință și pot fi depășite, simplificate sau pot să nu fie regula care se aplică pe șantierul tău: dacă regulile țării tale nu sunt incluse, Kupfra spune asta și folosește un tabel de referință. Codul construcțiilor, normele de instalații electrice și regulile aplicabile unde lucrezi decid întotdeauna, la fel ca autoritatea care le aplică. Verifică codul local al construcțiilor înainte să construiești."
+  },
+  {
+   "en": "Never use Kupfra as the only basis for electrical work. Cable size, voltage drop, breaker selection, short-circuit current, earthing and conduit fill are guides only: the installation must be designed, carried out, inspected and tested by a qualified, licensed electrician in line with local regulations, such as BS 7671 and Part P of the Building Regulations in England and Wales, the NEC and your local amendments in the United States, or IEC 60364 and your national rules. Kupfra is not an inspection, testing or certification tool and its results are not an electrical sign-off. Measured values on site, such as earth loop impedance and insulation resistance, always override a calculated one. Wrong electrical work can cause fire, electric shock and death.",
+   "ro": "Nu folosi niciodată Kupfra ca unic temei pentru lucrări electrice. Secțiunea cablului, căderea de tensiune, alegerea întreruptorului, curentul de scurtcircuit, împământarea și umplerea tubului sunt doar orientative: instalația trebuie proiectată, executată, verificată și testată de un electrician calificat și autorizat, conform reglementărilor locale, precum BS 7671 și Partea P din Building Regulations în Anglia și Țara Galilor, NEC și amendamentele locale în SUA sau IEC 60364 și normele naționale. Kupfra nu este un instrument de inspecție, testare sau certificare, iar rezultatele sale nu înlocuiesc recepția unei instalații electrice. Valorile măsurate pe șantier, precum impedanța buclei de defect și rezistența de izolație, primează întotdeauna asupra celor calculate. O lucrare electrică greșită poate provoca incendii, electrocutare și moarte."
+  },
+  {
+   "en": "Kupfra is not structural engineering. Do not use it to size beams, floors, openings, supports, foundations or any load-bearing part, or as the sole basis for a stair, guard or handrail that people will use. Stairs, landings, balustrades and openings must meet the building code and be checked by a qualified builder, structural engineer or building control before they are built or used; a falling or collapsing stair can kill.",
+   "ro": "Kupfra nu este inginerie structurală. Nu o folosi pentru dimensionarea grinzilor, planșeelor, golurilor, reazemelor, fundațiilor sau a oricărui element portant și nu o folosi ca unic temei pentru o scară, un parapet sau o mână curentă pe care vor merge oameni. Scările, podestele, balustradele și golurile trebuie să respecte codul construcțiilor și să fie verificate de un constructor calificat, un inginer structurist sau autoritatea de control înainte de execuție și folosire; o scară care cedează poate ucide."
+  },
+  {
+   "en": "Camera measuring is an estimate: usually within 2 to 5 cm, and within about 1 cm on devices with LiDAR. Check every measurement with a tape before you cut or order. Quantities, waste, cost estimates and cut lists depend on the values and unit prices you enter and on the product you buy; check product data sheets and local regulations before you order or build. A client PDF is a proposal made from your inputs, not a certified drawing, a quotation with legal effect or a code-compliance statement, and you are responsible for what you give a client.",
+   "ro": "Măsurarea cu camera este o estimare: de obicei în limita a 2 până la 5 cm și în jur de 1 cm pe dispozitivele cu LiDAR. Verifică fiecare măsurătoare cu ruleta înainte să tai sau să comanzi. Cantitățile, pierderile, devizele și listele de tăiere depind de valorile și prețurile introduse de tine și de produsul cumpărat; verifică fișele tehnice și reglementările locale înainte să comanzi sau să construiești. Un PDF pentru client este o propunere făcută din datele tale, nu un desen certificat, o ofertă cu efect juridic sau o declarație de conformitate cu codul, iar tu răspunzi pentru ce dai unui client."
+  }
+ ],
+ "_disclaimers_src": "Localizable.xcstrings, Construction.xcstrings, Electrical.xcstrings, Calculators.xcstrings: 'Values are orientation only. Check your local building code before you build.', 'Values are a guide only. The installation must be designed, carried out and checked by a qualified electrician in line with local regulations.', 'Quantities are estimates. Check product data sheets and local regulations before you order or build.', Part P notifiable-work string, 'Your country's wiring rules are not built in...'; MeasureViewModel.swift:106 accuracy notes; onboarding WelcomeStepView 'Precise calculations. Check before you build.'. Structural, client-PDF and fire/shock wording added by us as the strong Terms disclaimer the owner asked for",
+ "website": {
+  "en": "kupfra.com is hosted on GitHub Pages (GitHub, Inc., USA), which records the IP address of visitors in server logs for security. The site sets no cookies, uses no analytics or ads, loads no third-party scripts or fonts, and stores nothing in your browser. Its links to the App Store lead to Apple's own pages.",
+  "ro": "kupfra.com este găzduit pe GitHub Pages (GitHub, Inc., SUA), care înregistrează adresa IP a vizitatorilor în jurnalele serverului, pentru securitate. Site-ul nu setează cookie-uri, nu folosește statistici sau reclame, nu încarcă scripturi sau fonturi de la terți și nu păstrează nimic în browserul tău. Linkurile către App Store duc la paginile Apple."
+ },
+ "_website_src": "Kupfra-Website index.html/site.js: no gtag, cookies, third-party requests; fonts self-hosted; no localStorage use (grep site.js)",
+ "overrides": {
+  "terms.ip": {
+   "en": "<p>The app, its name, design and code belong to Darius Cirjan. Data you enter stays yours. Standards and guidance are named only to say which published rules the results follow; they belong to their publishers, and Kupfra is not affiliated with or endorsed by any standards body.</p>",
+   "ro": "<p>Aplicația, numele, designul și codul ei aparțin lui Darius Cirjan. Datele pe care le introduci rămân ale tale. Standardele și normativele sunt numite doar pentru a spune ce reguli publicate urmează rezultatele; ele aparțin editorilor lor, iar Kupfra nu este afiliată și nu este susținută de niciun organism de standardizare.</p>"
+  },
+  "terms.changes": {
+   "en": "<p>We may update these Terms when the app changes. The date at the top shows the latest version; important changes are announced in the store update notes. Changes do not apply to a subscription period you already paid for. This website currently offers these Terms in English.</p>",
+   "ro": "<p>Putem actualiza acești Termeni când aplicația se schimbă. Data de sus arată ultima versiune; schimbările importante sunt anunțate în notele de actualizare din magazin. Schimbările nu se aplică unei perioade de abonament deja plătite. Acest site oferă deocamdată Termenii în engleză.</p>"
+  }
+ },
+ "_overrides_src": "legal.py ip text mentions map imagery (Kupfra has no maps); changes text says EN and RO are equally valid, but kupfra.com is English only"
+}
