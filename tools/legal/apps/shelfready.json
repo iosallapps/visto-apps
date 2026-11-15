@@ -1,0 +1,170 @@
+{
+ "slug": "shelfready",
+ "name": "ShelfReady",
+ "site": "https://shelfreadyapp.com",
+ "updated": "2026-11-15",
+ "platforms": [
+  "ios"
+ ],
+ "src": {
+  "ios": "~/Developer/ShelfReady origin/main 2a1a6e9, version 1.0.2 build 10 (the local clone was 11 commits behind at eeb9043 and was not used; live App Store build may be older, see report)"
+ },
+ "services": [
+  "admob",
+  "ump",
+  "firebase_analytics",
+  "firebase_remote_config",
+  "crashlytics",
+  "revenuecat",
+  "apple_store"
+ ],
+ "_services_src": "StudioApp.xcodeproj/project.pbxproj SPM products RevenueCat, GoogleMobileAds, GoogleUserMessagingPlatform, FirebaseAnalytics, FirebaseCrashlytics, FirebaseRemoteConfig (no other package; StudioPipeline is a local package using Core Image + Vision); StudioApp/PrivacyInfo.xcprivacy (DeviceID, ProductInteraction, AdvertisingData, CoarseLocation, CrashData, PerformanceData, OtherDiagnosticData, PurchaseHistory; tracking true; domains googleads.g.doubleclick.net, googlesyndication.com, doubleclick.net); Monetization/RemoteConfigService.swift:20-64 (configure() at launch, fetchAndActivate, no consent wait); no URLSession anywhere in StudioApp or StudioPipeline (grep)",
+ "extra_services": {
+  "crashlytics": {
+   "name": "Firebase Crashlytics",
+   "who": "Google Ireland Ltd / Google LLC",
+   "link": "https://firebase.google.com/support/privacy",
+   "en": {
+    "data": "Crash reports: stack trace, device model, OS and app version, a random installation ID.",
+    "why": "Finding and fixing crashes."
+   },
+   "ro": {
+    "data": "Rapoarte de erori: stiva apelurilor, modelul dispozitivului, versiunea sistemului și a aplicației, un ID aleatoriu al instalării.",
+    "why": "Găsirea și repararea erorilor."
+   },
+   "basis": [
+    "consent",
+    "legit"
+   ],
+   "basis_text": {
+    "en": "EEA, UK and Switzerland: consent given in the consent form, art. 6(1)(a) GDPR. Elsewhere: legitimate interest in a working app, art. 6(1)(f) GDPR.",
+    "ro": "SEE, Regatul Unit și Elveția: consimțământul dat în formular, art. 6 alin. (1) lit. a GDPR. În rest: interes legitim ca aplicația să funcționeze, art. 6 alin. (1) lit. f GDPR."
+   },
+   "ret": {
+    "en": "90 days.",
+    "ro": "90 de zile."
+   },
+   "transfer": true
+  },
+  "firebase_remote_config": {
+   "name": "Firebase Remote Config",
+   "who": "Google Ireland Ltd / Google LLC",
+   "link": "https://firebase.google.com/support/privacy",
+   "en": {
+    "data": "A random Firebase installation ID, app version, device model, OS, language, IP address, sent when the app fetches its settings. No photos and no events.",
+    "why": "Fetching app settings we can change without an update: which plan the first paywall preselects, its layout, whether the paywall can be closed, and whether an ad may show before your first saves. Runs at launch and does not wait for the consent form."
+   },
+   "ro": {
+    "data": "Un ID aleatoriu al instalării Firebase, versiunea aplicației, modelul dispozitivului, sistemul, limba, adresa IP, trimise când aplicația își preia setările. Fără poze și fără evenimente.",
+    "why": "Preluarea setărilor aplicației pe care le putem schimba fără actualizare: ce plan preselectează primul ecran de abonament, aspectul lui, dacă poate fi închis și dacă o reclamă poate apărea înainte de primele salvări. Rulează la pornire și nu așteaptă formularul de consimțământ."
+   },
+   "basis": [
+    "legit"
+   ],
+   "ret": {
+    "en": "Set by Google (see its policy).",
+    "ro": "Stabilită de Google (vezi politica sa)."
+   },
+   "transfer": true
+  }
+ },
+ "permissions": [
+  "camera",
+  "photos_add",
+  "tracking"
+ ],
+ "extra_permissions": {
+  "camera": {
+   "en": [
+    "Camera",
+    "Only when you choose to take a photo of an item inside the app. The picture is processed on the device and is not sent anywhere."
+   ],
+   "ro": [
+    "Cameră",
+    "Doar când alegi să fotografiezi un obiect în aplicație. Poza este prelucrată pe dispozitiv și nu este trimisă nicăieri."
+   ]
+  },
+  "photos_add": {
+   "en": [
+    "Photos (add only)",
+    "To save a finished photo to your photo library. ShelfReady cannot read your library. When you pick a photo to edit you use the system photo picker, and ShelfReady receives only the photos you choose."
+   ],
+   "ro": [
+    "Fotografii (doar adăugare)",
+    "Pentru a salva o poză terminată în biblioteca foto. ShelfReady nu poate citi biblioteca. Când alegi o poză de editat folosești selectorul foto al sistemului, iar ShelfReady primește doar pozele alese."
+   ]
+  }
+ },
+ "_permissions_src": "project.pbxproj INFOPLIST_KEY_NSCameraUsageDescription, NSPhotoLibraryAddUsageDescription, NSUserTrackingUsageDescription (no read-library key); Services/CameraSession.swift:50 AVCaptureDevice.requestAccess; Services/PhotosExporter.swift:40 requestAuthorization(.addOnly); PhotosPicker in Features/Editor, Batch, Onboarding; no UNUserNotificationCenter, HealthKit, CloudKit, GameKit (grep)",
+ "local_data": {
+  "en": "Your photos, the cutouts and your settings stay on your device.",
+  "ro": "Pozele, decupajele și setările tale rămân pe dispozitiv."
+ },
+ "local_detail": {
+  "en": "When you pick or take a photo, ShelfReady finds the item, removes the background and places it on the backdrop you choose using Apple's on-device frameworks (Vision and Core Image). No photo, cutout or anything made from a photo is uploaded to us or to any service, and the app has no feature that does so. The app keeps the original and the finished photo in its own private storage on your device (excluded from iCloud backups) so you can reopen a photo later. In Settings, Delete all photos clears these copies; photos you already saved to your photo library stay there, and deleting the app removes the app's copies. If you use Share, the photo goes only to the app or person you choose in the iOS share sheet. To count the three free saves, the app keeps in the iOS Keychain a number and a one-way hash of each saved result (not the photo); the Keychain can survive deleting the app, so reinstalling does not reset the count.",
+  "ro": "Când alegi sau faci o poză, ShelfReady găsește obiectul, elimină fundalul și îl așază pe fundalul ales folosind cadrele de lucru Apple de pe dispozitiv (Vision și Core Image). Nicio poză, niciun decupaj și nimic obținut dintr-o poză nu este încărcat la noi sau la vreun serviciu, iar aplicația nu are nicio funcție care să facă asta. Aplicația păstrează originalul și poza terminată în spațiul ei privat de pe dispozitiv (exclus din copiile de siguranță iCloud), ca să poți redeschide o poză mai târziu. În Configurări, Ștergeți toate pozele șterge aceste copii; pozele deja salvate în biblioteca foto rămân acolo, iar ștergerea aplicației elimină copiile ei. Dacă folosești Partajare, poza ajunge doar la aplicația sau persoana aleasă în fereastra de partajare iOS. Ca să numere cele trei salvări gratuite, aplicația păstrează în Keychain-ul iOS un număr și o amprentă unidirecțională a fiecărui rezultat salvat (nu poza); Keychain-ul poate supraviețui ștergerii aplicației, deci reinstalarea nu resetează numărătoarea."
+ },
+ "_local_src": "StudioPipeline/Sources/StudioPipeline/PhotoStudioProcessor.swift:496 VNGenerateForegroundInstanceMaskRequest; Localizable.xcstrings 'Photos are processed on this device and never uploaded.'; Services/PhotoFileStore.swift:94-111 (Application Support/Photos, isExcludedFromBackup); Features/Settings/SettingsView.swift:333-337 + SettingsViewModel.deleteAllPhotos (label 'Delete all photos', RO 'Ștergeți toate pozele', hint: clears app's own copies, library photos stay); ShareLink in Features/Library + UIActivityViewController in Batch; Monetization/FreeSaves/FreeSaveStore.swift:19-21 Keychain, FreeExportPolicy.swift:79-85 SHA256 fingerprint",
+ "service_notes": [
+  {
+   "en": "No photo or anything derived from a photo is sent to any of the services above. Analytics events describe the app, not your pictures: onboarding steps, paywall steps, saves and shares counted, photos processed counted, ads shown. They carry no photo, file name or location.",
+   "ro": "Nicio poză și nimic obținut dintr-o poză nu este trimis vreunui serviciu de mai sus. Evenimentele de statistici descriu aplicația, nu pozele tale: pașii introducerii, pașii ecranului de abonament, salvările și partajările numărate, pozele prelucrate numărate, reclamele afișate. Nu conțin poze, nume de fișiere sau locație."
+  },
+  {
+   "en": "RevenueCat also receives the number of free saves you have used (a count only) and, while measurement is allowed, the Firebase app instance ID, so that purchases and renewals can be counted in the statistics.",
+   "ro": "RevenueCat primește și numărul de salvări gratuite folosite (doar un număr) și, cât timp măsurarea este permisă, ID-ul instalării Firebase, ca achizițiile și reînnoirile să poată fi numărate în statistici."
+  },
+  {
+   "en": "Usage statistics and crash reports both wait for the consent form where it applies, and are sent only from App Store installs. If you refuse, neither is sent.",
+   "ro": "Statisticile de utilizare și rapoartele de erori așteaptă formularul de consimțământ acolo unde se aplică și se trimit doar din instalările din App Store. Dacă refuzi, nu se trimite niciuna."
+  }
+ ],
+ "_service_notes_src": "Monetization/Analytics/AnalyticsEvent.swift (event cases); FreeSaves/FreeSaveAttributeMirror.swift:17-19 setAttributes free_saves_used; Monetization/AppServices.swift:378-394 applyMeasurementConsent -> FirebaseAnalyticsLogger.applyMeasurementConsent (setAnalyticsCollectionEnabled + setCrashlyticsCollectionEnabled(allowed)), setFirebaseAppInstanceID only when allowed; Info.plist FirebaseCrashlyticsCollectionEnabled=false; AnalyticsCollectionGate.swift (debug, simulator, TestFlight never collect)",
+ "privacy_choices_path": {
+  "en": "in the app, Settings, Privacy choices (shown where the consent form applies).",
+  "ro": "în aplicație, Configurări, Opțiuni de confidențialitate (apare acolo unde se aplică formularul)."
+ },
+ "_consent_src": "Monetization/Ads/AdStartupSequence.swift:15-70 (UMP, then ATT, then MobileAds.start; subscribers skipped); AdConsentManager.swift:80-110, 410-425 (privacy options form, TCF purposes 1 + 8/9 gate measurement); SettingsView.swift:363-367 row 'Privacy choices'; Localizable.xcstrings ro 'Privacy choices'='Opțiuni de confidențialitate', 'Settings'='Configurări'; EntitlementStore + AppServices.swift:105 isSubscriber = subscribed or in trial",
+ "consent_notes": [
+  {
+   "en": "Subscribers and users in a free trial see no ads and are not asked for ad consent.",
+   "ro": "Abonații și utilizatorii aflați în perioada de probă nu văd reclame și nu li se cere consimțământ pentru reclame."
+  }
+ ],
+ "purchases": {
+  "subscriptions": true,
+  "trial": true,
+  "lifetime": true,
+  "what": {
+   "en": "ShelfReady is free to download. Free use lets you process any photo and try every background, gives you three full-quality saves, and shows ads (a full-screen ad when the app opens and after a photo is processed). A paid plan gives unlimited saving and sharing, saving a whole batch at once, and removes ads. It is sold as a weekly or monthly auto-renewing subscription (the weekly plan can start with a free trial for eligible new subscribers), as a yearly subscription or a one-time lifetime purchase in special offers, and some offers carry a discounted first price. What each plan costs, and whether a free trial is available to you, is shown in the app before you buy. In some versions or tests of the app, the first paywall may require a trial or a purchase before you can use the app.",
+   "ro": "ShelfReady se descarcă gratuit. Folosirea gratuită îți permite să prelucrezi orice poză și să încerci toate fundalurile, îți dă trei salvări la calitate maximă și afișează reclame (o reclamă pe tot ecranul la deschiderea aplicației și după prelucrarea unei poze). Un plan plătit oferă salvare și partajare nelimitate, salvarea unui lot întreg odată și elimină reclamele. Se vinde ca abonament săptămânal sau lunar cu reînnoire automată (planul săptămânal poate începe cu o perioadă de probă gratuită pentru abonații noi eligibili), ca abonament anual sau achiziție unică pe viață în oferte speciale, iar unele oferte au un preț redus la început. Cât costă fiecare plan și dacă ai disponibilă o perioadă de probă gratuită apare în aplicație înainte de cumpărare. În unele versiuni sau teste ale aplicației, primul ecran de abonament poate cere o probă sau o achiziție înainte să poți folosi aplicația."
+  }
+ },
+ "_purchases_src": "Models/SubscriptionPlan.swift:60-91 (weekly+monthly paywall, lifetime+yearly special offer); PaywallViewModel.swift:80-95 priceCopy 'Free for N days, then' weekly/monthly with trial only when eligible; RevenueCatClient.swift:124 freeTrialDays; FreeExportPolicy.swift:19 freeSaveLimit=3, batch save stays paid (FreeExportPolicy header); Monetization/SpecialOffer/GiftOffer.swift gift50_* promotional offers; RemoteConfigService paywall_mode default soft, hard = no close (PaywallViewModel.swift:59); InterstitialAdPolicy (after photo processed), AppOpenAdPolicy; entitlement 'pro' PurchasesClient.swift:75",
+ "what": {
+  "en": "ShelfReady turns a photo of something you sell into a listing-ready product photo: it lifts the item off whatever it was lying on, sets it on a clean backdrop with a soft shadow, and sizes the result for the marketplace you choose. All of this runs on your iPhone.",
+  "ro": "ShelfReady transformă o poză cu un obiect pe care îl vinzi într-o poză de produs gata pentru anunț: ridică obiectul de pe suprafața pe care stătea, îl așază pe un fundal curat cu o umbră fină și dimensionează rezultatul pentru platforma de vânzare aleasă. Totul rulează pe iPhone-ul tău."
+ },
+ "disclaimers": [
+  {
+   "en": "Cutouts, backdrops and shadows are made automatically and can be imperfect, especially with glass, fine edges or cluttered photos. Check every photo before you publish it. A photo that does not show the item as it really is can mislead buyers, and you are responsible for how you describe and show what you sell.",
+   "ro": "Decupajele, fundalurile și umbrele sunt făcute automat și pot fi imperfecte, mai ales la sticlă, margini fine sau poze încărcate. Verifică fiecare poză înainte s-o publici. O poză care nu arată obiectul așa cum este poate induce cumpărătorii în eroare, iar tu răspunzi pentru felul în care descrii și arăți ce vinzi."
+  },
+  {
+   "en": "You must have the right to use the photos you edit. ShelfReady is not affiliated with any marketplace, and the sizes it offers follow what those marketplaces ask at the time of writing; their rules can change.",
+   "ro": "Trebuie să ai dreptul de a folosi pozele pe care le editezi. ShelfReady nu este afiliată cu nicio platformă de vânzare, iar dimensiunile oferite urmează cerințele acestora la momentul scrierii; regulile lor se pot schimba."
+  }
+ ],
+ "overrides": {
+  "terms.ip": {
+   "en": "<p>The app, its name, design and code belong to Darius Cirjan. The photos you take or pick, and the photos you make with the app, stay yours. We claim no rights in them and never receive them.</p>",
+   "ro": "<p>Aplicația, numele, designul și codul ei aparțin lui Darius Cirjan. Pozele pe care le faci sau le alegi și pozele create cu aplicația rămân ale tale. Nu pretindem niciun drept asupra lor și nu le primim niciodată.</p>"
+  }
+ },
+ "_overrides_src": "shared terms.ip text mentions map imagery; ShelfReady has no maps (no MapKit/network code)",
+ "website": {
+  "en": "shelfreadyapp.com is a static site hosted on GitHub Pages (GitHub, Inc., USA), which records the IP address of visitors in server logs for security. The site sets no cookies, runs no tracking, uses no analytics or ads and loads no third-party resources, including its fonts. The App Store links open Apple's site, which has its own privacy policy.",
+  "ro": "shelfreadyapp.com este un site static găzduit pe GitHub Pages (GitHub, Inc., SUA), care înregistrează adresa IP a vizitatorilor în jurnalele serverului, pentru securitate. Site-ul nu setează cookie-uri, nu urmărește vizitatorii, nu folosește statistici sau reclame și nu încarcă resurse de la terți, nici măcar fonturile. Linkurile către App Store deschid site-ul Apple, care are propria politică de confidențialitate."
+ },
+ "_website_src": "grep of ~/Developer/ShelfReady-Website: no external hosts except links, no cookie/localStorage/fetch in script.js (2026-11-15). Redesign keeps self-hosted fonts"
+}

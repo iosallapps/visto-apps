@@ -1,0 +1,189 @@
+{
+ "slug": "darc",
+ "name": "Darc",
+ "site": "https://darcapp.com",
+ "updated": "2026-11-15",
+ "platforms": [
+  "ios"
+ ],
+ "src": {
+  "ios": "~/Developer/Darc origin/main 9cb8ef5 = version 1.2 build 6 (the local checkout was 12 commits behind, at the paid 1.0 build 3; App Store lookup 2026-11-15: version 1.2, price 0.0). One universal target set: iPhone, iPad and Mac share the code, the Mac app has no ads."
+ },
+ "services": [
+  "admob",
+  "ump",
+  "firebase_analytics",
+  "crashlytics",
+  "firebase_remote_config",
+  "revenuecat",
+  "apple_store",
+  "icloud_kvs"
+ ],
+ "_services_src": "Color.xcodeproj/project.pbxproj SPM: purchases-ios 5.94, firebase-ios-sdk 12.7 (FirebaseAnalytics, FirebaseCrashlytics, FirebaseRemoteConfig), swift-package-manager-google-mobile-ads 12.14 (iOS app only); Shared (App)/Monetization/{MonetizationLaunch,AdConsentManager,AnalyticsManager,RemoteConfigService,RevenueCatManager,AdMobManager}.swift; no URLSession/URLRequest in app, extension or ColorCore (grep): the only hosts reached are the SDKs' and the websites the user visits. No FirebasePerformance. iCloud: NSUbiquitousKeyValueStore only (CloudMirror.swift, entitlement com.apple.developer.ubiquity-kvstore-identifier in all four entitlements files), no CloudKit container.",
+ "permissions": [
+  "website_access",
+  "tracking"
+ ],
+ "_permissions_src": "Shared (Extension)/Resources/manifest.json: permissions storage, scripting, nativeMessaging, tabs, activeTab; host_permissions <all_urls>; content scripts on <all_urls> at document_start, all_frames, match_about_blank (dist/content.js) plus a MAIN-world script (dist/media-override.js); Info.plist NSUserTrackingUsageDescription (INFOPLIST_KEY in project.pbxproj:1726); no camera, mic, location, photos, contacts, notifications, HealthKit, Game Center keys in any Info.plist",
+ "extra_services": {
+  "icloud_kvs": {
+   "name": "Apple iCloud (key-value storage)",
+   "who": "Apple Inc.",
+   "link": "https://www.apple.com/legal/privacy/",
+   "en": {
+    "data": "Your Darc settings and site rules, kept in your own iCloud account: the global mode, dark hours, fine-tuning values, and the host names of the sites you set a rule for with each rule's mode. We cannot read it.",
+    "why": "Keeping your settings and site rules the same on your iPhone, iPad and Mac, when iCloud is turned on."
+   },
+   "ro": {
+    "data": "Setările și regulile de site Darc, păstrate în propriul tău cont iCloud: modul general, programul întunecat, valorile de reglaj fin și numele site-urilor pentru care ai făcut o regulă, cu modul fiecărei reguli. Noi nu le putem citi.",
+    "why": "Setările și regulile de site rămân la fel pe iPhone, iPad și Mac, când iCloud este activat."
+   },
+   "basis": [
+    "contract"
+   ],
+   "ret": {
+    "en": "Until you delete it from iCloud.",
+    "ro": "Până o ștergi din iCloud."
+   },
+   "transfer": false
+  },
+  "firebase_remote_config": {
+   "name": "Firebase Remote Config",
+   "who": "Google Ireland Ltd / Google LLC",
+   "link": "https://firebase.google.com/support/privacy",
+   "en": {
+    "data": "A random Firebase installation ID, app version, device model, OS, language, IP address.",
+    "why": "Fetching app settings we can change without an update, such as which paywall layout is shown and the date the app became free. Runs at every launch and does not wait for the consent form."
+   },
+   "ro": {
+    "data": "Un ID aleatoriu al instalării Firebase, versiunea aplicației, modelul dispozitivului, sistemul, limba, adresa IP.",
+    "why": "Preluarea setărilor aplicației pe care le putem schimba fără actualizare, precum aspectul ecranului de plată afișat și data la care aplicația a devenit gratuită. Rulează la fiecare pornire și nu așteaptă formularul de consimțământ."
+   },
+   "basis": [
+    "legit"
+   ],
+   "ret": {
+    "en": "Set by Google (see its policy).",
+    "ro": "Stabilită de Google (vezi politica sa)."
+   },
+   "transfer": true
+  }
+ },
+ "extra_permissions": {
+  "website_access": {
+   "en": [
+    "Website access (Safari extension)",
+    "Needed for Darc to work: Safari asks you to let the extension access websites, and warns that it can read and alter web pages. Darc asks for all websites so it can recolour any page you open; you can limit it to chosen sites in iOS Settings, Apps, Safari, Extensions, Darc, or in Safari on the Mac under Settings, Extensions. See \"Data that stays on your device\" above for exactly what the extension reads and where that goes."
+   ],
+   "ro": [
+    "Acces la site-uri (extensia Safari)",
+    "Necesar ca Darc să funcționeze: Safari te cere să permiți extensiei accesul la site-uri și avertizează că poate citi și modifica paginile web. Darc cere acces la toate site-urile ca să poată recolora orice pagină deschizi; îl poți limita la site-urile alese în Setări iOS, Aplicații, Safari, Extensii, Darc, sau în Safari pe Mac la Setări, Extensii. Vezi „Date care rămân pe dispozitiv” mai sus pentru ce citește exact extensia și unde ajunge."
+   ]
+  }
+ },
+ "local_data": {
+  "en": "Darc recolours pages on your device. Your browsing history and page content are never sent to us, and there is no Darc server to send them to.",
+  "ro": "Darc recolorează paginile pe dispozitivul tău. Istoricul de navigare și conținutul paginilor nu ne sunt trimise niciodată și nu există un server Darc către care să fie trimise."
+ },
+ "local_detail": {
+  "en": "see overrides privacy.local",
+  "ro": "vezi overrides privacy.local"
+ },
+ "_local_src": "manifest.json + web/src (content/, engines/, background/): only browser.storage.local (cache.js, site-store.js), tabs.query/sendMessage (broadcast.js), scripting.registerContentScripts (registered-css.js), runtime.sendNativeMessage to the Darc app (native.js); no fetch/XHR/beacon in web/src (grep), fetch in dist/content.js is the bundled Dark Reader engine re-reading the visited page's own stylesheets; dev beacon (common/debug.js) compiled out of production (__DEV_BEACON__ false); native messages (ExtensionMessage.swift) carry host, mode, adjustments only; reportActive carries nothing; report.js mailto body = host, mode, engine tier, detection result, Darc version, platform; SettingsStore/AppGroup.swift App Group group.iosallapps.Darc; themedDay.v1 device-local; entitlement files",
+ "service_notes": [
+  {
+   "en": "Darc has no server of its own. The Safari extension sends nothing to Google, RevenueCat or anyone else: the services above are used only by the Darc app, not by the extension.",
+   "ro": "Darc nu are server propriu. Extensia Safari nu trimite nimic către Google, RevenueCat sau altcineva: serviciile de mai sus sunt folosite doar de aplicația Darc, nu de extensie."
+  },
+  {
+   "en": "Analytics events are about the app, not the web pages you visit: screens opened, onboarding steps, paywall steps, features used, ad events, and the days after install you came back. They carry no website address, host name, page content or site rule.",
+   "ro": "Evenimentele de statistici privesc aplicația, nu paginile web pe care le vizitezi: ecrane deschise, pașii de introducere, pașii ecranului de plată, funcții folosite, evenimente de reclame și zilele de după instalare în care ai revenit. Nu conțin adresa unui site, numele gazdei, conținutul paginilor sau vreo regulă de site."
+  },
+  {
+   "en": "RevenueCat receives the Firebase app instance ID only while analytics is allowed, so that renewals and trial conversions can be counted in the statistics.",
+   "ro": "RevenueCat primește ID-ul instalării Firebase doar cât timp statisticile sunt permise, ca reînnoirile și trecerile de la probă la abonament să poată fi numărate în statistici."
+  },
+  {
+   "en": "Crash reports are not held back by the consent form; they are sent on the basis of our legitimate interest in a working app and contain no web pages.",
+   "ro": "Rapoartele de erori nu așteaptă formularul de consimțământ; se trimit pe baza interesului nostru legitim ca aplicația să funcționeze și nu conțin pagini web."
+  },
+  {
+   "en": "The Mac app shows no ads, so it has no ad consent form and no ad identifier. It measures usage only where the App Store country is outside the EEA, the UK and Switzerland. A paid unlock removes ads on iPhone and iPad and shows no consent form.",
+   "ro": "Aplicația pentru Mac nu afișează reclame, deci nu are formular de consimțământ pentru reclame și nici identificator de publicitate. Măsoară utilizarea doar unde țara App Store este în afara SEE, a Regatului Unit și a Elveției. O deblocare plătită elimină reclamele pe iPhone și iPad și nu mai arată formularul de consimțământ."
+  }
+ ],
+ "_service_notes_src": "AnalyticsManager.swift Event/Param enums (lines 20-70: no host/url param), logEvent line 303; MonetizationLaunch.swift (FirebaseApp.configure unconditional, no Crashlytics collection switch, GoogleService-Info.plist IS_ANALYTICS_ENABLED=false but AnalyticsManager.applyMeasurementVerdict turns collection on); RevenueCatManager.swift:189 linkFirebaseAppInstanceID only if isCollectingAnalytics; ConsentRegions.swift MacMeasurementConsent (storefront outside consent regime, 'the Mac, which shows no ads'); MonetizationConfig.swift 'iOS only: the Mac app shows no ads'; MonetizationLaunch.runsAds false on macOS; AdStartupSequence.swift skippedForPro (no ad SDK, no form for Pro). Open: whether Firebase Analytics runs for a Pro user in the EEA, where no form is shown to Pro (allowsFirstPartyMeasurement = false while .required/.unknown unsettled) - not claimed.",
+ "privacy_choices_path": {
+  "en": "in the app, Help, Privacy, Ad Privacy Settings (shown only where the consent form applies).",
+  "ro": "în aplicație, Ajutor, Confidențialitate, Confidențialitatea reclamelor (apare doar acolo unde se aplică formularul)."
+ },
+ "_privacy_choices_src": "Shared (App)/Screens/HelpView.swift:264-270 (sectionHeader 'Privacy', HelpRow 'Ad Privacy Settings', iOS only, if viewModel.showsPrivacyOptions = AdConsentManager.isPrivacyOptionsRequired, HelpViewModel.swift:127); Localizable.xcstrings ro: Privacy = Confidențialitate, Ad Privacy Settings = Confidențialitatea reclamelor. The Help tab title: needs check of 'Help' RO string = Ajutor (not verified, see report)",
+ "consent_notes": [
+  {
+   "en": "Analytics in those regions also need your consent to storing information on the device and to measuring performance; if you do not give it, analytics stays off.",
+   "ro": "Statisticile din acele regiuni cer și acordul tău pentru stocarea informațiilor pe dispozitiv și pentru măsurarea performanței; dacă nu îl dai, statisticile rămân oprite."
+  }
+ ],
+ "_consent_src": "AdConsentManager.swift allowsFirstPartyMeasurement + measurementAllowed (TCF purpose 1 AND purpose 8 or 9; .required = off); ATT after UMP: AdStartupSequence.swift; AdPresentationGate canRequestAds + trackingStatus != notDetermined; refusal of personalisation => npa=1 (AdMobManager.swift:372); PreConsentEventBuffer drops events when refused (AnalyticsPolicy.swift). Outside the regime (notRequired) analytics runs without a form.",
+ "purchases": {
+  "subscriptions": true,
+  "trial": true,
+  "lifetime": true,
+  "what": {
+   "en": "Darc is free to use: all four modes (System, Dark, Light, Off) work on every site, with up to 3 site rules, and the app shows ads on iPhone and iPad. The unlock adds unlimited site rules, dark hours, true black and fine-tuning, and removes the ads. It is sold as a weekly or monthly subscription or as a one-time lifetime purchase; a yearly subscription or a discounted lifetime price may be offered in special offers, and some plans may be offered at a reduced price for their first period. A free trial may be offered on the weekly plan to Apple Accounts that are eligible for it; the trial length is shown before you subscribe. One unlock covers iPhone, iPad and Mac with the same Apple Account. If an unlock ends, nothing is deleted: extra site rules, dark hours, true black and fine-tuning are kept and paused until you unlock again. Restore Purchases is in the app's Help tab. People who bought Darc when it was a paid app keep every feature, with no ads.",
+   "ro": "Darc este gratuit: toate cele patru moduri (System, Dark, Light, Off) funcționează pe orice site, cu până la 3 reguli de site, iar aplicația afișează reclame pe iPhone și iPad. Deblocarea adaugă reguli de site nelimitate, program întunecat, negru absolut și reglaj fin și elimină reclamele. Se vinde ca abonament săptămânal sau lunar ori ca achiziție unică pe viață; un abonament anual sau un preț redus pentru achiziția pe viață pot fi oferite în oferte speciale, iar unele planuri pot fi oferite la preț redus pentru prima perioadă. O probă gratuită poate fi oferită pe planul săptămânal conturilor Apple eligibile; durata probei apare înainte să te abonezi. O singură deblocare acoperă iPhone, iPad și Mac cu același cont Apple. Dacă o deblocare se încheie, nu se șterge nimic: regulile de site în plus, programul întunecat, negrul absolut și reglajul fin sunt păstrate și puse în pauză până deblochezi din nou. Restaurează achizițiile este în fila Ajutor a aplicației. Cei care au cumpărat Darc când era aplicație plătită păstrează toate funcțiile, fără reclame."
+  }
+ },
+ "_purchases_src": "ColorCore ProductID.swift (weekly, monthly, lifetime, offer.yearly, offer.lifetime; all unlock entitlement `pro`, MonetizationConfig.swift); PaywallViewModel.swift (weekly preselected, 'Switch to monthly', lifetime card, trial = store product intro free trial via freeTrialDays, 0 when none/ineligible; trial length not hard-coded); SpecialOfferCatalog.swift (welcome offering = discounted lifetime); GiftOffer.swift gift50_week/month/year promotional offers = half price for the first period; FeatureGate.swift + EntitlementProviding.swift FreeLimits.siteRules = 3, Pro = unlimited rules, OLED, schedule, fine-tuning; Localizable.xcstrings 'Every mode works on every site for free, with up to 3 site rules...' and 'One unlock covers iPhone, iPad and Mac'; GrandfatherStatus.swift (AppTransaction, paid buyers keep everything). Store price NOT stated: App Store lookup shows 0.0 but the previous site and memory said paid.",
+ "what": {
+  "en": "Darc is a Safari extension, with a companion app, for iPhone, iPad and Mac. It gives bright websites a dark theme and dark-only websites a light theme, can follow your device's appearance or a schedule, lets you set a mode per site, and adjusts brightness, contrast, saturation and sepia. It works only inside Safari. The Safari extension needs your permission to access websites, and it recolours pages on your device.",
+  "ro": "Darc este o extensie Safari, cu o aplicație însoțitoare, pentru iPhone, iPad și Mac. Dă site-urilor luminoase o temă întunecată și site-urilor doar întunecate o temă luminoasă, poate urma aspectul dispozitivului sau un program, îți lasă să alegi un mod pentru fiecare site și ajustează luminozitatea, contrastul, saturația și sepia. Funcționează doar în Safari. Extensia Safari are nevoie de permisiunea ta de a accesa site-urile și recolorează paginile pe dispozitivul tău."
+ },
+ "disclaimers": [
+  {
+   "en": "Darc recolours pages automatically and can get a page wrong, for example text that stays hard to read, a photo that looks off, or a brief white flash before the page darkens. If it gets a page wrong you can turn Darc off for that site or reset it. It is meant for comfort, not for medical or accessibility needs.",
+   "ro": "Darc recolorează paginile automat și poate greși o pagină, de exemplu text greu de citit, o poză care arată ciudat sau o scurtă licărire albă înainte ca pagina să se întunece. Dacă greșește o pagină, poți opri Darc pentru acel site sau îl poți reseta. Este făcut pentru confort, nu pentru nevoi medicale sau de accesibilitate."
+  },
+  {
+   "en": "Darc includes the open source Dark Reader engine (MIT licence); Dark Reader is not affiliated with Darc.",
+   "ro": "Darc include motorul open source Dark Reader (licență MIT); Dark Reader nu este afiliat cu Darc."
+  }
+ ],
+ "_disclaimers_src": "site FAQ and support page (kept because code agrees: web/src/engines tier1-3, recovery.js, DarkReaderLicense.swift in Shared (App)/Help)",
+ "overrides": {
+  "privacy.intro": {
+   "en": "<p>Visto Apps is the brand of Darius Cirjan, the developer and data controller. This policy explains what the Darc app and its Safari extension (iPhone, iPad and Mac) and the website https://darcapp.com do with personal data.</p><p>Contact for any privacy question or request: <a href=\"mailto:iosallapps@gmail.com\">iosallapps@gmail.com</a>. Website: <a href=\"https://vistoapps.com\" rel=\"noopener\">vistoapps.com</a>. We answer within one month (art. 12 GDPR). We are not required to appoint a Data Protection Officer.</p><p>Last updated: November 15, 2026.</p>",
+   "ro": "<p>Visto Apps este brandul lui Darius Cirjan, dezvoltatorul și operatorul de date. Această politică explică ce fac aplicația Darc și extensia ei Safari (iPhone, iPad și Mac) și site-ul https://darcapp.com cu datele personale.</p><p>Contact pentru orice întrebare sau cerere privind datele: <a href=\"mailto:iosallapps@gmail.com\">iosallapps@gmail.com</a>. Site: <a href=\"https://vistoapps.com\" rel=\"noopener\">vistoapps.com</a>. Răspundem în cel mult o lună (art. 12 GDPR). Nu avem obligația de a numi un responsabil cu protecția datelor.</p><p>Ultima actualizare: 15 noiembrie 2026.</p>"
+  },
+  "privacy.glance": {
+   "en": "<ul><li>No account. Darc does not ask for your name, email or phone number.</li><li>The Safari extension recolours pages on your device. Your browsing history and page content are never sent to us, and there is no Darc server to send them to. The extension sends nothing to any third party.</li><li>The Darc app on iPhone and iPad shows ads from Google AdMob to people who have not unlocked it. Personalised ads only with your consent; in the EEA, UK and Switzerland no ad loads before you answer the consent form. The Mac app shows no ads.</li><li>The app measures how it is used (Google Analytics for Firebase) and sends crash reports. In the EEA, UK and Switzerland usage statistics start only after the consent form has been answered and allowed.</li><li>If iCloud is on, your settings and site rules, including the host names of sites you set a rule for, sync through your own iCloud account.</li><li>We do not sell personal data for money. We have no servers of our own that receive your data.</li></ul>",
+   "ro": "<ul><li>Fără cont. Darc nu îți cere numele, emailul sau telefonul.</li><li>Extensia Safari recolorează paginile pe dispozitivul tău. Istoricul de navigare și conținutul paginilor nu ne sunt trimise niciodată și nu există un server Darc către care să fie trimise. Extensia nu trimite nimic niciunui terț.</li><li>Aplicația Darc pe iPhone și iPad afișează reclame Google AdMob persoanelor care nu au deblocat-o. Reclame personalizate doar cu acordul tău; în SEE, Regatul Unit și Elveția nicio reclamă nu se încarcă înainte să răspunzi la formularul de consimțământ. Aplicația pentru Mac nu afișează reclame.</li><li>Aplicația măsoară cum este folosită (Google Analytics for Firebase) și trimite rapoarte de erori. În SEE, Regatul Unit și Elveția statisticile de utilizare pornesc doar după ce formularul de consimțământ a fost completat și permite asta.</li><li>Dacă iCloud este activat, setările și regulile de site, inclusiv numele site-urilor pentru care ai o regulă, se sincronizează prin propriul tău cont iCloud.</li><li>Nu vindem date personale pe bani. Nu avem servere proprii care să primească datele tale.</li></ul>"
+  },
+  "privacy.local": {
+   "en": "<p><strong>Safari extension.</strong> To recolour a page, the extension needs Safari's permission to access websites (it is declared for all websites, with the storage, scripting, tabs, activeTab and native messaging permissions). It runs inside every page you open in Safari, including embedded frames, from the moment the page starts loading, and reads the page's colours and styles and the page's address in order to decide how to theme it. It may load the page's own stylesheets again from the website that serves them; those requests go to the website you are visiting, never to us. It does not send form entries or passwords, and it sends no page content, address or browsing history to us or to any other party. The extension has no network code of its own and talks only to the Darc app on your device. When you press Report issue, it opens a pre-filled email for you to read and send yourself, containing the site's host name (not the full address), the mode and engine Darc used, whether the site was already dark, the Darc version and the platform.</p><p><strong>Stored on your device.</strong> Darc keeps in the Safari extension's storage and in an app group shared with the Darc app: your global mode, dark hours, fine-tuning values, and your site rules (the host name of each site you set a rule for, its mode and its fine-tuning), plus small status data such as when a page was last themed and whether onboarding was completed. To open each site in the right theme without a white flash, the extension also remembers, for each website it themed, the host name (not the full address or anything from the page), the last theme used there and whether theming failed there; this list is kept in the extension's own storage, is deleted automatically for a site not themed for 30 days, is never sent anywhere and is not synced through iCloud. The app also keeps whether Darc is unlocked or was bought as a paid app, so it works offline, and your answers in Google's consent form. If iCloud is on, settings and site rules also sync through your iCloud account (see the table). This data can be part of your iCloud or computer backup, which Apple's own policy covers.</p><p><strong>How to remove it:</strong> in Darc, open a site and choose Reset site to remove its rule; deleting the app removes the data on the device. Turning iCloud off for Darc stops syncing; a copy that is already in your iCloud account stays there under Apple's policy.</p>",
+   "ro": "<p><strong>Extensia Safari.</strong> Ca să recoloreze o pagină, extensia are nevoie de permisiunea Safari de a accesa site-urile (este declarată pentru toate site-urile, cu permisiunile storage, scripting, tabs, activeTab și native messaging). Rulează în fiecare pagină pe care o deschizi în Safari, inclusiv în cadrele încorporate, din momentul în care pagina începe să se încarce, și citește culorile și stilurile paginii și adresa ei ca să decidă cum o tematizează. Poate încărca din nou foile de stil ale paginii de la site-ul care le servește; acele cereri merg către site-ul pe care îl vizitezi, niciodată către noi. Nu trimite câmpuri de formular sau parole și nu trimite conținutul paginilor, adresele sau istoricul de navigare nici nouă, nici altcuiva. Extensia nu are cod de rețea propriu și vorbește doar cu aplicația Darc de pe dispozitiv. Când apeși Raportează o problemă, se deschide un email completat, pe care îl citești și îl trimiți singur, cu numele gazdei site-ului (nu adresa completă), modul și motorul folosit de Darc, dacă site-ul era deja întunecat, versiunea Darc și platforma.</p><p><strong>Păstrate pe dispozitiv.</strong> Darc păstrează în spațiul de stocare al extensiei Safari și într-un grup de aplicații partajat cu aplicația Darc: modul general, programul întunecat, valorile de reglaj fin și regulile de site (numele fiecărui site pentru care ai o regulă, modul și reglajul lui fin), plus date mici de stare, precum când a fost tematizată ultima pagină și dacă introducerea a fost parcursă. Ca să deschidă fiecare site în tema potrivită fără licărire albă, extensia reține și, pentru fiecare site tematizat, numele gazdei (nu adresa completă sau ceva din pagină), ultima temă folosită acolo și dacă tematizarea a eșuat; lista se păstrează în spațiul propriu al extensiei, se șterge automat pentru un site netematizat de 30 de zile, nu este trimisă nicăieri și nu se sincronizează prin iCloud. Aplicația mai păstrează dacă Darc este deblocat sau a fost cumpărat ca aplicație plătită, ca să funcționeze offline, și răspunsurile tale din formularul de consimțământ Google. Dacă iCloud este activat, setările și regulile de site se sincronizează și prin contul tău iCloud (vezi tabelul). Aceste date pot face parte din copia de siguranță iCloud sau de pe computer, acoperită de politica Apple.</p><p><strong>Cum le elimini:</strong> în Darc, deschide un site și alege Resetează site-ul ca să îi elimini regula; ștergerea aplicației elimină datele de pe dispozitiv. Dezactivarea iCloud pentru Darc oprește sincronizarea; o copie aflată deja în contul tău iCloud rămâne acolo, conform politicii Apple.</p>"
+  },
+  "privacy.consent": {
+   "en": "<p>On iPhone and iPad, in the EEA, the UK and Switzerland, the app first shows Google's consent form (a certified consent management platform under the IAB Transparency and Consent Framework). Until you answer it, no ad is requested and no usage statistics are sent. If you refuse personalised ads, you still get limited, non-personalised ads.</p><p>On iPhone and iPad the App Tracking Transparency prompt comes after the consent form. Ads load only once it is answered.</p><p>Change your choice anytime: in the app, Help, Privacy, Ad Privacy Settings (shown only where the consent form applies). Also Settings, Privacy &amp; Security, Tracking.</p><p>Analytics in those regions also need your consent to storing information on the device and to measuring performance; if you do not give it, analytics stays off. Where no consent regime applies, usage statistics run without a form.</p><p>The Mac app shows no ads and has no consent form; it measures usage only when the App Store country is outside the EEA, the UK and Switzerland. Unlocking Darc removes the ads and the consent form on iPhone and iPad.</p>",
+   "ro": "<p>Pe iPhone și iPad, în SEE, Regatul Unit și Elveția, aplicația arată întâi formularul de consimțământ Google (platformă certificată în IAB Transparency and Consent Framework). Până nu răspunzi, nu se cere nicio reclamă și nu se trimit statistici de utilizare. Dacă refuzi reclamele personalizate, primești totuși reclame limitate, nepersonalizate.</p><p>Pe iPhone și iPad, întrebarea App Tracking Transparency vine după formularul de consimțământ. Reclamele se încarcă doar după ce îi răspunzi.</p><p>Îți poți schimba oricând alegerea: în aplicație, Ajutor, Confidențialitate, Confidențialitatea reclamelor (apare doar acolo unde se aplică formularul). De asemenea, din Setări, Confidențialitate și securitate, Urmărire.</p><p>Statisticile din acele regiuni cer și acordul tău pentru stocarea informațiilor pe dispozitiv și pentru măsurarea performanței; dacă nu îl dai, statisticile rămân oprite. Unde nu se aplică niciun regim de consimțământ, statisticile de utilizare rulează fără formular.</p><p>Aplicația pentru Mac nu afișează reclame și nu are formular de consimțământ; măsoară utilizarea doar când țara App Store este în afara SEE, a Regatului Unit și a Elveției. Deblocarea Darc elimină reclamele și formularul de consimțământ pe iPhone și iPad.</p>"
+  },
+  "privacy.retention": {
+   "en": "<p>Data on your device stays until you remove a site rule with Reset site or delete the app. Deleting the app does not by itself remove a copy already kept in your iCloud account. Data held by the services above is kept for the period listed in the table. We do not keep copies of our own. Emails you send us, including Report issue emails, are kept as long as needed to answer, and at most 2 years.</p>",
+   "ro": "<p>Datele de pe dispozitiv rămân până elimini o regulă de site cu Resetează site-ul sau ștergi aplicația. Ștergerea aplicației nu elimină singură o copie aflată deja în contul tău iCloud. Datele aflate la serviciile de mai sus se păstrează cât scrie în tabel. Nu păstrăm copii proprii. Emailurile trimise nouă, inclusiv cele din Raportează o problemă, se păstrează cât e nevoie pentru răspuns, cel mult 2 ani.</p>"
+  },
+  "privacy.rights": {
+   "en": "<p>You have the right to access, correct and delete your data, to restrict or object to processing (including to object at any time to processing based on legitimate interest), to data portability, and to withdraw consent at any time without affecting earlier processing.</p><p>Because the app has no account, we usually cannot tell which data at Google or RevenueCat is yours. Write to <a href=\"mailto:iosallapps@gmail.com\">iosallapps@gmail.com</a> and, if you can, include an Apple order number for a purchase, and we will forward the request to the provider. You can remove the data on the device by deleting the app.</p><p>You can complain to the supervisory authority where you live or work, or to ours: Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal (ANSPDCP), <a href=\"https://www.dataprotection.ro\" rel=\"noopener\">www.dataprotection.ro</a>. The list of EU authorities: <a href=\"https://www.edpb.europa.eu/about-edpb/about-edpb/members_en\" rel=\"noopener\">edpb.europa.eu</a>.</p>",
+   "ro": "<p>Ai dreptul de acces, rectificare și ștergere, de restricționare și de opoziție (inclusiv opoziție oricând la prelucrarea bazată pe interes legitim), la portabilitate și dreptul de a-ți retrage oricând consimțământul, fără a afecta prelucrarea anterioară.</p><p>Pentru că aplicația nu are cont, de obicei nu putem ști care date de la Google sau RevenueCat sunt ale tale. Scrie la <a href=\"mailto:iosallapps@gmail.com\">iosallapps@gmail.com</a> și, dacă poți, include numărul comenzii Apple pentru o achiziție, iar noi trimitem cererea furnizorului. Poți elimina datele de pe dispozitiv ștergând aplicația.</p><p>Poți depune plângere la autoritatea de supraveghere din țara în care locuiești sau lucrezi, ori la a noastră: Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal (ANSPDCP), <a href=\"https://www.dataprotection.ro\" rel=\"noopener\">www.dataprotection.ro</a>. Lista autorităților din UE: <a href=\"https://www.edpb.europa.eu/about-edpb/about-edpb/members_en\" rel=\"noopener\">edpb.europa.eu</a>.</p>"
+  },
+  "terms.ip": {
+   "en": "<p>The app, its name, design and code belong to Darius Cirjan, except the open source Dark Reader engine, which stays under its own MIT licence.</p>",
+   "ro": "<p>Aplicația, numele, designul și codul ei aparțin lui Darius Cirjan, cu excepția motorului open source Dark Reader, care rămâne sub propria licență MIT.</p>"
+  }
+ },
+ "website": {
+  "en": "darcapp.com is hosted on GitHub Pages (GitHub, Inc., USA), which records the IP address of visitors in server logs for security. The site sets no cookies, uses no analytics or ads, loads no third-party scripts or fonts, and stores nothing in your browser. Its links to the App Store lead to Apple's own pages.",
+  "ro": "darcapp.com este găzduit pe GitHub Pages (GitHub, Inc., SUA), care înregistrează adresa IP a vizitatorilor în jurnalele serverului, pentru securitate. Site-ul nu setează cookie-uri, nu folosește statistici sau reclame, nu încarcă scripturi sau fonturi de la terți și nu păstrează nimic în browserul tău. Linkurile către App Store duc la paginile Apple."
+ },
+ "_website_src": "Darc-Website: no gtag/GA/cookie/localStorage (site.js is the compare slider and fade only); CNAME darcapp.com. GitHub Pages hosting assumed from CNAME + repo iosallapps/darc-app-website (hosting not verified via API).",
+ "_overrides_src": "Shared wording was false or iOS-only for Darc: intro lists platforms; glance/consent must cover the Mac (no ads, storefront-based measurement, ConsentRegions.swift MacMeasurementConsent); local = what the Safari extension reads (manifest.json, web/src); retention/rights adjusted: no in-app 'delete all data' exists (only Reset site, SiteDetailView.swift:75-78), iCloud KVS copy outlives the app; no RevenueCat ID is shown in the app (not found in Shared (App)); terms.ip: no map imagery in Darc."
+}

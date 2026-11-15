@@ -1,0 +1,170 @@
+{
+ "slug": "appsrank",
+ "name": "AppsRank",
+ "site": "https://appsrankapp.com",
+ "updated": "2026-11-15",
+ "platforms": [
+  "ios"
+ ],
+ "src": {
+  "ios": "~/Developer/appsrank-app (1.4, bundle iosallapps.AppsRanking)"
+ },
+ "services": [
+  "admob",
+  "ump",
+  "firebase_analytics",
+  "crashlytics",
+  "firebase_performance",
+  "firebase_remote_config",
+  "revenuecat",
+  "apple_store",
+  "apple_charts"
+ ],
+ "_services_src": "AppRanker.xcodeproj/project.pbxproj SPM: firebase-ios-sdk (FirebaseAnalytics, FirebaseCrashlytics, FirebasePerformance, FirebaseRemoteConfig), purchases-ios (RevenueCat, RevenueCatUI), swift-package-manager-google-mobile-ads, google-user-messaging-platform, lottie-ios (local animation only). Hosts called by code: only https://itunes.apple.com (Core/Constants/AppConstants.swift:9-11) plus Apple artwork URLs returned by it (AppRankerWidget/Timeline/WidgetIconLoader.swift); https://appsrankapp.com/privacy and /terms are opened in an in-app browser (SettingsView.swift). No own backend, no API key. FirebasePerformance is linked and never imported or switched off in code (grep), so its automatic traces run; PrivacyInfo.xcprivacy declares PerformanceData. Crashlytics is never gated on consent (FirebaseBootstrap.swift only disables it in DEBUG). Remote Config fetches at launch (RemoteConfigService.swift:51), keys onboarding_default_plan and onboarding_paywall_style only.",
+ "extra_services": {
+  "firebase_performance": {
+   "name": "Firebase Performance Monitoring",
+   "who": "Google Ireland Ltd / Google LLC",
+   "link": "https://firebase.google.com/support/privacy",
+   "en": {
+    "data": "App start and screen timings, timings and sizes of the app's network requests, device model, OS and app version, a random Firebase installation ID, IP address.",
+    "why": "Measuring how fast the app starts and runs so we can fix slowness. Runs on its own, without waiting for the consent form."
+   },
+   "ro": {
+    "data": "Durata pornirii aplicației și a ecranelor, durata și dimensiunea cererilor de rețea ale aplicației, modelul dispozitivului, sistemul, versiunea aplicației, un ID aleatoriu al instalării Firebase, adresa IP.",
+    "why": "Măsurarea vitezei de pornire și de rulare a aplicației, ca să reparăm lentoarea. Rulează de la sine, fără să aștepte formularul de consimțământ."
+   },
+   "basis": [
+    "legit"
+   ],
+   "ret": {
+    "en": "Set by Google (see its policy).",
+    "ro": "Stabilită de Google (vezi politica sa)."
+   },
+   "transfer": true
+  },
+  "firebase_remote_config": {
+   "name": "Firebase Remote Config",
+   "who": "Google Ireland Ltd / Google LLC",
+   "link": "https://firebase.google.com/support/privacy",
+   "en": {
+    "data": "A random Firebase installation ID, app version, device model, OS, language, IP address.",
+    "why": "Fetching app settings we can change without an update, such as limits and which offer layout is shown. Runs at every launch and does not wait for the consent form."
+   },
+   "ro": {
+    "data": "Un ID aleatoriu al instalării Firebase, versiunea aplicației, modelul dispozitivului, sistemul, limba, adresa IP.",
+    "why": "Preluarea setărilor aplicației pe care le putem schimba fără actualizare, precum limitele și aspectul ofertei afișate. Rulează la fiecare pornire și nu așteaptă formularul de consimțământ."
+   },
+   "basis": [
+    "legit"
+   ],
+   "ret": {
+    "en": "Set by Google (see its policy).",
+    "ro": "Stabilită de Google (vezi politica sa)."
+   },
+   "transfer": true
+  },
+  "apple_charts": {
+   "name": "Apple iTunes Search, Lookup and RSS charts",
+   "who": "Apple Inc. (USA)",
+   "link": "https://www.apple.com/legal/privacy/",
+   "en": {
+    "data": "Your IP address, the country and chart you open, the text you type when you search for an app, and the store IDs of the apps you track (sent in batches to read their current details). The widget sends the same kind of requests. App icons are loaded from Apple's content network.",
+    "why": "Reading App Store rankings, searching for apps and refreshing the apps you track. This is the core of the app: the requests go from your device straight to Apple, never through a server of ours."
+   },
+   "ro": {
+    "data": "Adresa ta IP, țara și clasamentul pe care le deschizi, textul scris când cauți o aplicație și ID-urile din magazin ale aplicațiilor urmărite (trimise în grupuri, pentru a citi detaliile lor curente). Widgetul trimite cereri de același fel. Pictogramele aplicațiilor sunt încărcate din rețeaua de conținut Apple.",
+    "why": "Citirea clasamentelor App Store, căutarea aplicațiilor și reîmprospătarea aplicațiilor urmărite. Aceasta este esența aplicației: cererile pleacă de pe dispozitivul tău direct la Apple, niciodată printr-un server de-al nostru."
+   },
+   "basis": [
+    "contract"
+   ],
+   "ret": {
+    "en": "Set by Apple.",
+    "ro": "Stabilită de Apple."
+   },
+   "transfer": true
+  }
+ },
+ "permissions": [
+  "tracking",
+  "notifications"
+ ],
+ "_permissions_src": "Xcode build setting INFOPLIST_KEY_NSUserTrackingUsageDescription (project.pbxproj:656,706); NotificationService.swift requestAuthorization alert/badge/sound, local UNNotificationRequest with trigger nil; BGTaskScheduler refresh iosallapps.AppsRanking.refresh (Info.plist, BackgroundRefreshService.swift). No location, photos, camera, microphone, contacts, HealthKit, CloudKit, Game Center (no usage strings, entitlements hold only sandbox+network client).",
+ "extra_permissions": {
+  "notifications": {
+   "en": [
+    "Notifications",
+    "Rank Alerts only, and only if you turn them on (a paid feature). They are built on the device from the ranks the app reads and delivered locally. No push server is involved."
+   ],
+   "ro": [
+    "Notificări",
+    "Doar Alertele de clasament, și doar dacă le pornești (funcție plătită). Se construiesc pe dispozitiv din clasamentele citite de aplicație și se livrează local. Nu există server de notificări."
+   ]
+  }
+ },
+ "local_data": {
+  "en": "The apps you track, their rank history, your chosen countries and categories and your settings stay on your device.",
+  "ro": "Aplicațiile urmărite, istoricul lor de clasament, țările și categoriile alese și setările rămân pe dispozitiv."
+ },
+ "local_detail": {
+  "en": "Tracked apps (their store ID, name and icon address), the rank readings recorded for them (kept for about a month), cached charts, the countries and categories you choose and app settings are stored only on your device, in the app's own storage. We have no server that receives them and we cannot see them. To remove a tracked app and its history, press and hold it in My Apps and tap Remove. In Settings, Data & Storage, Clear Chart Cache removes cached charts that have expired. Deleting the app removes everything. The app can refresh ranks in the background and, with Rank Alerts on, post notifications built on the device from those readings; the alert text, such as an app's name and new position, is never sent to us.",
+  "ro": "Aplicațiile urmărite (ID-ul din magazin, numele și adresa pictogramei), citirile de clasament înregistrate pentru ele (păstrate aproximativ o lună), clasamentele din memoria cache, țările și categoriile alese și setările aplicației se păstrează doar pe dispozitiv, în spațiul propriu al aplicației. Nu avem server care să le primească și nu le putem vedea. Ca să elimini o aplicație urmărită și istoricul ei, ține apăsat pe ea în Aplicații și atinge Elimină. În Setări, Date și stocare, Golește memoria cache a clasamentelor șterge clasamentele expirate din cache. Ștergerea aplicației elimină tot. Aplicația poate reîmprospăta clasamentele în fundal și, cu Alertele de clasament pornite, poate afișa notificări construite pe dispozitiv din aceste citiri; textul alertei, de exemplu numele unei aplicații și noua poziție, nu ne este trimis niciodată."
+ },
+ "_local_src": "Models/Persistence (SwiftData TrackedApp, RankingSnapshot, CachedChart); AppConstants maxHistoryDays=30, pruneAfterDays=45; TrackingView.swift contextMenu Remove (RO Elimină); SettingsView.clearCache -> PersistenceService.clearExpiredCaches (only expired CachedChart rows); NotificationService.send (local, trigger nil). Labels from Localizable.xcstrings en/ro: Data & Storage / Date și stocare, Clear Chart Cache / Golește memoria cache a clasamentelor, Remove / Elimină, My Apps / Aplicații. No delete-all-data button exists.",
+ "service_notes": [
+  {
+   "en": "AppsRank has no feature that sends the apps you track, the searches you make or your rank history to us, and the analytics events carry no app name, app ID or search text: only things such as the tab you opened, the country code or category number you picked, and purchase steps. Apple does receive the store IDs of tracked apps and your search text as part of the requests that read rankings (see the table).",
+   "ro": "AppsRank nu are nicio funcție care să ne trimită aplicațiile urmărite, căutările făcute sau istoricul de clasament, iar evenimentele de statistici nu conțin numele aplicației, ID-ul ei sau textul căutat: doar lucruri precum fila deschisă, codul țării sau numărul categoriei alese și pașii achiziției. Apple primește totuși ID-urile din magazin ale aplicațiilor urmărite și textul căutat, în cererile prin care se citesc clasamentele (vezi tabelul)."
+  },
+  {
+   "en": "RevenueCat receives the Firebase app instance ID only while analytics is allowed, so that renewals and trial conversions can be counted in the statistics.",
+   "ro": "RevenueCat primește ID-ul instalării Firebase doar cât timp statisticile sunt permise, ca reînnoirile și trecerile de la probă la abonament să poată fi numărate în statistici."
+  },
+  {
+   "en": "Crash reports, performance measurements and app settings are not held back by the consent form; they are sent on the basis of our legitimate interest in a working, fast app and contain none of the data you track.",
+   "ro": "Rapoartele de erori, măsurătorile de performanță și setările aplicației nu așteaptă formularul de consimțământ; se trimit pe baza interesului nostru legitim ca aplicația să funcționeze și să fie rapidă și nu conțin datele pe care le urmărești."
+  },
+  {
+   "en": "The free version shows full-screen ads (when the app opens and at some points while you use it). AppsRank Pro shows no ads and no consent form.",
+   "ro": "Versiunea gratuită afișează reclame pe tot ecranul (la deschiderea aplicației și în unele momente din timpul folosirii). AppsRank Pro nu afișează reclame și nici formularul de consimțământ."
+  }
+ ],
+ "_notes_src": "AnalyticsEvents.swift AnalyticsParam list (no app id/name/query; country and category only); StoreKitService.setFirebaseAppInstanceID via MonetizationContainer.swift:92 after AnalyticsManager.linkAppInstanceID only when collecting; Purchases.configure anonymous (StoreKitService.swift:270); AdConsentManager.isAdFree = isPremium || isInTrial (MonetizationContainer.swift:80); Ads/ has app-open and interstitial coordinators only, no banners.",
+ "privacy_choices_path": {
+  "en": "in the app, Settings, Subscription, Ad Privacy Settings (shown only on the free version and only where the consent form applies).",
+  "ro": "în aplicație, Setări, Abonament, Confidențialitatea reclamelor (apare doar în versiunea gratuită și doar acolo unde se aplică formularul)."
+ },
+ "_privacy_src": "SettingsView.swift:291-300 (row inside the Subscription section, shown when showsAdPrivacyOptions); Localizable.xcstrings ro Setări / Abonament / Confidențialitatea reclamelor. ATT: TrackingAuthorizationGate.swift, asked after the UMP form (AdConsentManager docs).",
+ "consent_notes": [
+  {
+   "en": "Analytics in those regions also need your consent to storing information on the device and to measuring performance; if you do not give it, analytics stays off.",
+   "ro": "Statisticile din acele regiuni cer și acordul tău pentru stocarea informațiilor pe dispozitiv și pentru măsurarea performanței; dacă nu îl dai, statisticile rămân oprite."
+  }
+ ],
+ "_consent_src": "AdConsentManager.allowsFirstPartyMeasurement + measurementAllowed: TCF purpose 1 and purpose 8 or 9; AnalyticsManager.applyMeasurementVerdict sets collection off unless allowed.",
+ "purchases": {
+  "subscriptions": true,
+  "trial": true,
+  "lifetime": true,
+  "what": {
+   "en": "AppsRank is free to download. The free version lets you browse every chart, track one app in one country with 7 days of history, and shows ads. AppsRank Pro unlocks every country, the full 30-day history, more tracked apps, Compare and Rank Alerts, and removes the ads. It is sold as a weekly or monthly subscription or as a one-time lifetime purchase; a yearly subscription may be offered in a special offer. A free trial may be offered on the weekly plan to Apple Accounts that are eligible for it; the trial length is shown before you subscribe.",
+   "ro": "AppsRank se descarcă gratuit. Versiunea gratuită îți permite să răsfoiești toate clasamentele, să urmărești o aplicație într-o țară, cu 7 zile de istoric, și afișează reclame. AppsRank Pro deblochează toate țările, istoricul complet de 30 de zile, mai multe aplicații urmărite, Compararea și Alertele de clasament și elimină reclamele. Se vinde ca abonament săptămânal sau lunar ori ca achiziție unică pe viață; un abonament anual poate fi oferit într-o ofertă specială. O probă gratuită poate fi oferită pe planul săptămânal conturilor Apple eligibile; durata probei apare înainte să te abonezi."
+  }
+ },
+ "_purchases_src": "RankAccessGate.swift doc comment and AppConstants historyDays=7, maxHistoryDays=30; StoreKitService.swift SubscriptionPlan weekly/monthly + MainPaywallPlan weekly/monthly/lifetime, SpecialOfferPlan lifetime/yearly; PaywallView.swift 'weekly with its trial'; freeTrialDays read from the product's introductory offer (trial length not hardcoded); RevenueCat entitlement 'AppsRank Pro' (wiki).",
+ "website": {
+  "en": "https://appsrankapp.com is hosted on GitHub Pages (GitHub, Inc., USA), which records the IP address of visitors in server logs for security. The site sets no cookies, stores nothing in your browser and uses no analytics or ads. Fonts are served from the site itself.",
+  "ro": "https://appsrankapp.com este găzduit pe GitHub Pages (GitHub, Inc., SUA), care înregistrează adresa IP a vizitatorilor în jurnalele serverului, pentru securitate. Site-ul nu setează cookie-uri, nu stochează nimic în browserul tău și nu folosește statistici sau reclame. Fonturile sunt servite chiar de site."
+ },
+ "what": {
+  "en": "AppsRank shows the App Store charts (Top Free, Top Paid, Top Grossing) for more than 170 countries and 25 categories, records the rank of the apps you choose to track, compares apps side by side, and can send you a notification when a tracked app changes position.",
+  "ro": "AppsRank arată clasamentele App Store (Top gratuite, Top plătite, Top încasări) pentru peste 170 de țări și 25 de categorii, înregistrează poziția aplicațiilor pe care alegi să le urmărești, compară aplicații una lângă alta și îți poate trimite o notificare când o aplicație urmărită își schimbă poziția."
+ },
+ "disclaimers": [
+  {
+   "en": "Ranking data comes from Apple's public iTunes feeds and is shown as Apple provides it. Charts are limited to the positions Apple publishes (the top of each chart), so an app outside them shows as unranked, and positions can differ from what you see in the App Store at another moment. AppsRank is not affiliated with, endorsed by or sponsored by Apple Inc.; App Store and iTunes are trademarks of Apple Inc.",
+   "ro": "Datele de clasament provin din fluxurile publice iTunes ale Apple și sunt afișate așa cum le oferă Apple. Clasamentele se limitează la pozițiile pe care Apple le publică (vârful fiecărui clasament), deci o aplicație în afara lor apare ca neclasată, iar pozițiile pot diferi de ce vezi în App Store în alt moment. AppsRank nu este afiliată, susținută sau sponsorizată de Apple Inc.; App Store și iTunes sunt mărci ale Apple Inc."
+  }
+ ]
+}
