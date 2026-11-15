@@ -52,6 +52,8 @@ SERVICES = {
         "ro": {"data": "Identificatorul de publicitate (IDFA pe iOS doar dacă permiți urmărirea; ID-ul de publicitate Android), adresa IP, informații despre dispozitiv și aplicație, afișări și atingeri ale reclamelor.",
                "why": "Afișarea reclamelor în versiunea gratuită. Reclame personalizate doar cu acordul tău; altfel reclame limitate, nepersonalizate."},
         "basis": ["consent", "legit"],
+        "basis_text": {"en": "Personalised ads: consent, art. 6(1)(a) GDPR and art. 5(3) ePrivacy. Limited ads: legitimate interest in funding the free app, art. 6(1)(f) GDPR.",
+                       "ro": "Reclame personalizate: consimțământ, art. 6 alin. (1) lit. a GDPR și art. 5 alin. (3) ePrivacy. Reclame limitate: interes legitim de a finanța aplicația gratuită, art. 6 alin. (1) lit. f GDPR."},
         "ret": {"en": "Set by Google (see its policy).", "ro": "Stabilită de Google (vezi politica sa)."},
         "transfer": True,
     },
@@ -74,6 +76,8 @@ SERVICES = {
         "ro": {"data": "Un ID aleatoriu al instalării, evenimente precum ecrane deschise, funcții folosite și achiziții începute, versiunea aplicației, modelul dispozitivului, sistemul, limba, țara dedusă din adresa IP.",
                "why": "Înțelegerea funcțiilor folosite, ca să îmbunătățim aplicația. Nu trimitem nume, email sau conținutul creat de tine."},
         "basis": ["consent", "legit"],
+        "basis_text": {"en": "EEA, UK and Switzerland: consent given in the consent form, art. 6(1)(a) GDPR. Elsewhere: legitimate interest in improving the app, art. 6(1)(f) GDPR.",
+                       "ro": "SEE, Regatul Unit și Elveția: consimțământul dat în formular, art. 6 alin. (1) lit. a GDPR. În rest: interes legitim de a îmbunătăți aplicația, art. 6 alin. (1) lit. f GDPR."},
         "ret": {"en": "At most 14 months for event data.", "ro": "Cel mult 14 luni pentru datele de evenimente."},
         "transfer": True,
     },
@@ -392,7 +396,12 @@ def services_table(self, lang):
     rows = []
     for key in self.services:
         sv = SERVICES[key]
-        bases = "; ".join(BASIS[b][lang] for b in self.f.get("basis_override", {}).get(key, sv["basis"]))
+        if key in self.f.get("basis_override", {}):
+            bases = "; ".join(BASIS[b][lang] for b in self.f["basis_override"][key])
+        elif "basis_text" in sv:
+            bases = sv["basis_text"][lang]
+        else:
+            bases = "; ".join(BASIS[b][lang] for b in sv["basis"])
         tr = (" " + {"en": "Outside the EEA.", "ro": "În afara SEE."}[lang]) if sv["transfer"] else ""
         rows.append(
             f'<tr><th scope="row">{link(sv["link"], sv["name"])}<br><small>{e(sv["who"])}</small></th>'
