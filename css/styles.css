@@ -514,3 +514,15 @@ em, .accent {
   .legal-table th, .legal-table td { padding: 0; border: 0; white-space: normal; }
   .legal-table tbody th { grid-column: 1 / -1; }
 }
+
+/* Phones: plain text sections line up with the text inside cards and panels (28 px from the edge) */
+@media (max-width: 640px) {
+  .container.features { padding-left: 28px; padding-right: 28px; }
+  main.container .philosophy, main.container .guarantees, main.container .legal,
+  .story > div:last-child, .build > div:last-child, .contact-card { padding-left: 12px; padding-right: 12px; }
+  .contact-card { padding-left: 22px; padding-right: 22px; }
+  .footer-inner, .footer-legal { padding-left: 28px; padding-right: 28px; }
+  .panel--apps { margin-left: 0; margin-right: 0; }
+  .portfolio .panel-head { margin: 0 12px 16px; }
+  .page-hero .lede, .home-hero .lede { padding: 0 12px; }
+}
