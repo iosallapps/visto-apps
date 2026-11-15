@@ -311,6 +311,39 @@
     applyStrings();
   }
 
+  // ---------- top bar color + rubber-band stretch ----------
+  // The status bar takes theme-color: aurora blue at the top of the page, the
+  // scrolled header's navy once the page moves. When iOS bounces past the top
+  // (scrollY < 0) the backdrop art stretches from its bottom edge up to the
+  // screen top, so the colors follow the finger instead of leaving a flat band.
+  var THEME_TOP = "#10285a", THEME_SCROLLED = "#0a1636";
+  function bindOverscroll() {
+    var meta = document.querySelector('meta[name="theme-color"]');
+    var bd = document.querySelector(".backdrop");
+    var artH = 0, pending = false, lastTheme = "";
+    var measure = function () {
+      artH = parseFloat(getComputedStyle(document.body).getPropertyValue("--page-bg-h")) || 1312;
+    };
+    var apply = function () {
+      pending = false;
+      var y = window.scrollY;
+      var theme = y > 8 ? THEME_SCROLLED : THEME_TOP;
+      if (meta && theme !== lastTheme) { meta.setAttribute("content", theme); lastTheme = theme; }
+      if (!bd) return;
+      if (y < 0) {
+        bd.style.transformOrigin = "50% " + artH + "px";
+        bd.style.transform = "scaleY(" + ((artH - y) / artH).toFixed(4) + ")";
+      } else if (bd.style.transform) {
+        bd.style.transform = "";
+      }
+    };
+    var onScroll = function () { if (!pending) { pending = true; requestAnimationFrame(apply); } };
+    measure();
+    window.addEventListener("resize", measure, { passive: true });
+    window.addEventListener("scroll", onScroll, { passive: true });
+    apply();
+  }
+
   var backdrop = document.querySelector(".backdrop");
   if (backdrop && !backdrop.firstChild) backdrop.innerHTML = '<div class="backdrop__core"></div>';
   buildHeader();
@@ -321,6 +354,7 @@
   bindLangSwitches();
   bindCopy();
   bindReveal();
+  bindOverscroll();
   document.documentElement.classList.add("js-ready");
   // Keep CSS, JS, fonts and images on the device after the first visit.
   if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "127.0.0.1" || location.hostname === "localhost")) {

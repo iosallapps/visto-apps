@@ -220,7 +220,7 @@ def build():
         src = re.sub(r'<body([^>]*?)\s*data-title-key="[^"]*"(\s*data-desc-key="[^"]*")?', r'<body\1 ' + body_keys, src, 1)
 
         def finish(s, lang, title, desc):
-            s = s.replace('<meta name="theme-color" content="#08112b">', '<meta name="theme-color" content="#08112b">' + seo_block(lang, file, title, desc, V), 1)
+            s = s.replace('<meta name="theme-color" content="#10285a">', '<meta name="theme-color" content="#10285a">' + seo_block(lang, file, title, desc, V), 1)
             s = fill(s, "legal-privacy", legal_table("privacy", lang, V, RO))
             s = fill(s, "legal-terms", legal_table("terms", lang, V, RO))
             return s
