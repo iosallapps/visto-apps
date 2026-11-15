@@ -1,0 +1,255 @@
+{
+ "slug": "pdfino",
+ "name": "Pdfino",
+ "site": "https://pdfino.com",
+ "updated": "2026-11-15",
+ "platforms": [
+  "ios"
+ ],
+ "src": {
+  "ios": "~/Developer/Pdfino (1.58, build 25 in review; live 1.57)"
+ },
+ "services": [
+  "admob",
+  "ump",
+  "firebase_analytics",
+  "crashlytics",
+  "firebase_remote_config",
+  "revenuecat",
+  "apple_store",
+  "web_pages",
+  "apple_translation"
+ ],
+ "_services_src": "Pdfino.xcodeproj SPM refs (firebase-ios-sdk: FirebaseAnalytics, FirebaseCrashlytics, FirebaseRemoteConfig; google-mobile-ads; lottie-ios, animation only) + PremiumKit/Package.swift (purchases-ios 5.x); Core/Services/AdMobManager.swift (UMP ConsentInformation/ConsentForm); Core/Services/AppRemoteConfigService.swift; PDFConvert/Views/URLToPDFView.swift + HTMLToPDFView/ViewModel (WKWebView.load(URLRequest)); PDFConvert/Views/TranslatePDFView.swift:422 .translationPresentation. No CloudKit (xcdatamodel usedWithCloudKit=false, no .entitlements), no HealthKit, no Game Center, no own server, no AI/LLM API.",
+ "permissions": [
+  "camera",
+  "photos",
+  "contacts",
+  "notifications",
+  "files",
+  "tracking"
+ ],
+ "_permissions_src": "Pdfino/Plist/Info.plist NSCameraUsageDescription, NSPhotoLibraryUsageDescription, NSPhotoLibraryAddUsageDescription, NSContactsUsageDescription, NSUserTrackingUsageDescription; Services/NotificationService.swift (local reminders 10:00 and 16:00, Settings switch); Info.plist UISupportsDocumentBrowser + LSSupportsOpeningDocumentsInPlace; MeCardResultCardBody.swift CNSaveRequest (writes a contact the user chooses to add, reads nothing)",
+ "extra_services": {
+  "admob": {
+   "name": "Google AdMob",
+   "who": "Google Ireland Ltd / Google LLC",
+   "link": "https://policies.google.com/technologies/ads",
+   "en": {
+    "data": "Advertising identifier (IDFA, only if you allow tracking), IP address, device and app information, ad impressions and taps.",
+    "why": "Showing banner, native, interstitial, rewarded and app-open ads to free users. Personalised ads only with your consent; otherwise limited, non-personalised ads."
+   },
+   "ro": {
+    "data": "Identificatorul de publicitate (IDFA, doar dacă permiți urmărirea), adresa IP, informații despre dispozitiv și aplicație, afișări și atingeri ale reclamelor.",
+    "why": "Afișarea reclamelor banner, native, interstițiale, cu recompensă și la deschiderea aplicației pentru utilizatorii gratuiți. Reclame personalizate doar cu acordul tău; altfel reclame limitate, nepersonalizate."
+   },
+   "basis": [
+    "consent",
+    "legit"
+   ],
+   "basis_text": {
+    "en": "Personalised ads: consent, art. 6(1)(a) GDPR and art. 5(3) ePrivacy. Limited ads: legitimate interest in funding the free app, art. 6(1)(f) GDPR.",
+    "ro": "Reclame personalizate: consimțământ, art. 6 alin. (1) lit. a GDPR și art. 5 alin. (3) ePrivacy. Reclame limitate: interes legitim de a finanța aplicația gratuită, art. 6 alin. (1) lit. f GDPR."
+   },
+   "ret": {
+    "en": "Set by Google (see its policy).",
+    "ro": "Stabilită de Google (vezi politica sa)."
+   },
+   "transfer": true
+  },
+  "crashlytics": {
+   "name": "Firebase Crashlytics",
+   "who": "Google Ireland Ltd / Google LLC",
+   "link": "https://firebase.google.com/support/privacy",
+   "en": {
+    "data": "Crash reports: stack trace, device model, OS and app version, a random installation ID. The app sets no user ID.",
+    "why": "Finding and fixing crashes. Sent only while the Anonymous Analytics switch is on."
+   },
+   "ro": {
+    "data": "Rapoarte de erori: stiva apelurilor, modelul dispozitivului, versiunea sistemului și a aplicației, un ID aleatoriu al instalării. Aplicația nu setează un ID de utilizator.",
+    "why": "Găsirea și repararea erorilor. Se trimit doar cât timp comutatorul Analize anonime este pornit."
+   },
+   "basis": [
+    "consent",
+    "legit"
+   ],
+   "basis_text": {
+    "en": "EEA, UK and Switzerland: consent given in the consent form or the Anonymous Analytics switch, art. 6(1)(a) GDPR. Elsewhere: legitimate interest in a working app, art. 6(1)(f) GDPR, until you switch it off.",
+    "ro": "SEE, Regatul Unit și Elveția: consimțământul dat în formular sau prin comutatorul Analize anonime, art. 6 alin. (1) lit. a GDPR. În rest: interes legitim ca aplicația să funcționeze, art. 6 alin. (1) lit. f GDPR, până îl oprești."
+   },
+   "ret": {
+    "en": "90 days.",
+    "ro": "90 de zile."
+   },
+   "transfer": true
+  },
+  "firebase_remote_config": {
+   "name": "Firebase Remote Config",
+   "who": "Google Ireland Ltd / Google LLC",
+   "link": "https://firebase.google.com/support/privacy",
+   "en": {
+    "data": "A random app instance ID, app version, device model, OS, language and country derived from the IP address, sent when the app fetches its settings.",
+    "why": "Receiving app settings such as which onboarding and purchase screen is shown. It runs only after Firebase has started, that is, under the same consent as analytics."
+   },
+   "ro": {
+    "data": "Un ID aleatoriu al instalării, versiunea aplicației, modelul dispozitivului, sistemul, limba și țara dedusă din adresa IP, trimise când aplicația își preia setările.",
+    "why": "Primirea setărilor aplicației, de exemplu ce ecran de introducere și de achiziție se arată. Rulează doar după pornirea Firebase, adică sub același consimțământ ca statisticile."
+   },
+   "basis": [
+    "consent",
+    "legit"
+   ],
+   "basis_text": {
+    "en": "EEA, UK and Switzerland: consent, art. 6(1)(a) GDPR. Elsewhere: legitimate interest in running the app and testing its screens, art. 6(1)(f) GDPR.",
+    "ro": "SEE, Regatul Unit și Elveția: consimțământ, art. 6 alin. (1) lit. a GDPR. În rest: interes legitim de a rula aplicația și a-i testa ecranele, art. 6 alin. (1) lit. f GDPR."
+   },
+   "ret": {
+    "en": "Set by Google (see its policy).",
+    "ro": "Stabilită de Google (vezi politica sa)."
+   },
+   "transfer": true
+  },
+  "web_pages": {
+   "name": "Web pages you open (URL to PDF, HTML to PDF)",
+   "who": "The website you enter",
+   "link": "https://pdfino.com/privacy.html",
+   "en": {
+    "data": "The web address you type, your IP address and device information, as with any browser. The page may load images and files from other servers.",
+    "why": "Turning a web page into a PDF. Only when you use these two tools with a web address."
+   },
+   "ro": {
+    "data": "Adresa web introdusă de tine, adresa IP și informații despre dispozitiv, ca în orice browser. Pagina poate încărca imagini și fișiere de pe alte servere.",
+    "why": "Transformarea unei pagini web în PDF. Doar când folosești aceste două instrumente cu o adresă web."
+   },
+   "basis": [
+    "contract"
+   ],
+   "ret": {
+    "en": "Set by that website.",
+    "ro": "Stabilită de acel site."
+   },
+   "transfer": true
+  },
+  "apple_translation": {
+   "name": "Apple Translation (iOS)",
+   "who": "Apple Inc.",
+   "link": "https://www.apple.com/legal/privacy/",
+   "en": {
+    "data": "The text of the PDF that you send to the system translation sheet.",
+    "why": "Translating the text of a PDF. The sheet is provided by iOS and Apple's terms apply to it; the app does not send the text anywhere else."
+   },
+   "ro": {
+    "data": "Textul PDF-ului pe care îl trimiți către fișa de traducere a sistemului.",
+    "why": "Traducerea textului unui PDF. Fișa este oferită de iOS și i se aplică termenii Apple; aplicația nu trimite textul în altă parte."
+   },
+   "basis": [
+    "contract"
+   ],
+   "ret": {
+    "en": "Set by Apple.",
+    "ro": "Stabilită de Apple."
+   },
+   "transfer": false
+  }
+ },
+ "extra_permissions": {
+  "camera": {
+   "en": [
+    "Camera",
+    "To scan documents and QR codes. Frames are processed on the device."
+   ],
+   "ro": [
+    "Cameră",
+    "Pentru scanarea documentelor și a codurilor QR. Cadrele se procesează pe dispozitiv."
+   ]
+  },
+  "photos": {
+   "en": [
+    "Photos",
+    "To pick images and videos to compress or convert, and to save results back to your library. Processed on the device, never uploaded."
+   ],
+   "ro": [
+    "Fotografii",
+    "Pentru alegerea imaginilor și a videoclipurilor de comprimat sau convertit și pentru salvarea rezultatelor în bibliotecă. Se procesează pe dispozitiv, nu se încarcă."
+   ]
+  },
+  "contacts": {
+   "en": [
+    "Contacts",
+    "Only when you tap to save a contact card you scanned from a QR code. The app writes that one contact and does not read your address book."
+   ],
+   "ro": [
+    "Contacte",
+    "Doar când atingi pentru a salva o carte de vizită scanată dintr-un cod QR. Aplicația scrie acel contact și nu citește agenda."
+   ]
+  }
+ },
+ "local_data": {
+  "en": "Your documents, scans, photos and results are processed on your device. They are never uploaded to a Pdfino server, because there is none.",
+  "ro": "Documentele, scanările, fotografiile și rezultatele tale se procesează pe dispozitiv. Nu se încarcă niciodată pe un server Pdfino, pentru că nu există."
+ },
+ "local_detail": {
+  "en": "Files you open, scans, the results of compression, conversion and the other tools, your history (kept up to 200 MB, oldest removed first), saved signatures (up to five) and settings are stored only on your device. Compression, conversion, scanning, text recognition (OCR) and redaction run on the device; we have no server that receives your files and we cannot see them. Two tools, URL to PDF and HTML to PDF with a web address, load the page you type from its own server, as a browser does, and that site sees your IP address. Translate PDF hands the extracted text to the translation sheet of iOS, provided by Apple. To delete data: in the app, Settings, Storage, Clear History removes the history and its saved files; saved signatures are deleted one by one in E-Sign PDF; deleting the app removes everything stored by the app. Files you exported to Files or Photos, or shared, are yours and stay where you put them.",
+  "ro": "Fișierele deschise, scanările, rezultatele comprimării, conversiei și ale celorlalte instrumente, istoricul (păstrat până la 200 MB, cele mai vechi se șterg primele), semnăturile salvate (până la cinci) și setările se păstrează doar pe dispozitiv. Comprimarea, conversia, scanarea, recunoașterea textului (OCR) și redactarea rulează pe dispozitiv; nu avem server care să primească fișierele tale și nu le putem vedea. Două instrumente, URL în PDF și HTML în PDF cu o adresă web, încarcă pagina introdusă de tine de pe serverul ei, ca un browser, iar acel site îți vede adresa IP. Traducere PDF trimite textul extras către fișa de traducere din iOS, oferită de Apple. Pentru ștergere: în aplicație, Setări, Stocare, Șterge istoricul elimină istoricul și fișierele lui salvate; semnăturile salvate se șterg pe rând în Semnează PDF; ștergerea aplicației elimină tot ce păstrează aplicația. Fișierele exportate în Fișiere sau Fotografii, ori partajate, sunt ale tale și rămân unde le-ai pus."
+ },
+ "_local_src": "PDFToolHistoryService + StorageSettingsView (Views/Settings/SettingsRedesignViews.swift:283-344: 'Clear History', 200 MB cap, alert 'delete all history entries and their saved files'); ESignPDFView.swift:37-72 savedSignatures in UserDefaults, max 5; Settings label RO from Resources/Localizable.xcstrings ('Stocare', 'Șterge istoricul'); KeychainService is unused outside its own file; OCRPDFViewModel imports Vision; HTMLToPDFViewModel/URLToPDFView load URLs with WKWebView; TranslatePDFView.swift:422 translationPresentation",
+ "service_notes": [
+  {
+   "en": "RevenueCat also receives the Firebase app instance ID, so that purchases can be counted in the statistics. This happens only when analytics is allowed.",
+   "ro": "RevenueCat primește și ID-ul instalării Firebase, ca achizițiile să poată fi numărate în statistici. Se întâmplă doar când statisticile sunt permise."
+  },
+  {
+   "en": "Analytics events carry the name of the tool used, the result and purchase steps, never file names, file contents or text. The app's privacy manifest declares device ID, product interaction, other usage data, purchase history, crash and performance data, and advertising data; device ID and advertising data are declared as used for tracking by ad partners. The identifiers are pseudonymous, not anonymous, although the Settings switch is named Anonymous Analytics.",
+   "ro": "Evenimentele de statistică conțin numele instrumentului folosit, rezultatul și pașii unei achiziții, niciodată nume de fișiere, conținut sau text. Manifestul de confidențialitate al aplicației declară ID de dispozitiv, interacțiune cu produsul, alte date de utilizare, istoric de achiziții, date despre erori și performanță și date de publicitate; ID-ul de dispozitiv și datele de publicitate sunt declarate ca folosite pentru urmărire de partenerii de reclame. Identificatorii sunt pseudonimi, nu anonimi, deși comutatorul din Setări se numește Analize anonime."
+  },
+  {
+   "en": "Outside the EEA, the UK and Switzerland, where no opt-in is required, usage statistics and crash reports are on by default and you can turn them off at any time with the switch Anonymous Analytics.",
+   "ro": "În afara SEE, a Regatului Unit și a Elveției, unde nu se cere acord prealabil, statisticile de utilizare și rapoartele de erori sunt pornite implicit, iar le poți opri oricând cu comutatorul Analize anonime."
+  }
+ ],
+ "privacy_choices_path": {
+  "en": "in the app, Settings, Privacy: the switch Anonymous Analytics (always shown) and Ad Privacy Settings (shown where the consent form applies).",
+  "ro": "în aplicație, Setări, Confidențialitate: comutatorul Analize anonime (mereu afișat) și Setări de confidențialitate pentru reclame (apare acolo unde se aplică formularul)."
+ },
+ "_consent_src": "Core/Privacy/ConsentManager.swift (Firebase configured only after consent; Crashlytics enabled by the same consent; regional default in Core/Privacy/ConsentRegime.swift), Core/Services/AdMobManager.swift:207-330 (canRequestAds, npa=1 extra, privacy options form), Ads/TCFConsentSignals.swift (purposes 1 + 8 or 9), Views/Settings/SettingsRedesignViews.swift:395-416 + SettingsView.swift:542-563 (labels), Resources/Localizable.xcstrings ro ('Setări de confidențialitate pentru reclame', 'Analize anonime', 'Confidențialitate', 'Setări'); wiki pdfino.md launch order: UMP on splash, ATT on Welcome",
+ "purchases": {
+  "subscriptions": true,
+  "trial": true,
+  "lifetime": true,
+  "what": {
+   "en": "Pdfino is free to download with limited free use of the tools. A paid plan removes the limits and the ads. The paywall sells a weekly subscription (with a free trial when your account is eligible), a monthly subscription and a one-time lifetime purchase; a special offer screen sells a yearly subscription and a lifetime purchase. Watching a short ad can also unlock more uses or 24 hours of the paid features. What is free and what is paid is shown in the app, and prices in the App Store.",
+   "ro": "Pdfino se descarcă gratuit, cu utilizare gratuită limitată a instrumentelor. Un plan plătit elimină limitele și reclamele. Ecranul de achiziție oferă un abonament săptămânal (cu perioadă de probă gratuită când contul tău este eligibil), unul lunar și o achiziție unică pe viață; un ecran de ofertă specială oferă un abonament anual și o achiziție pe viață. Vizionarea unei scurte reclame poate debloca și mai multe utilizări sau 24 de ore de funcții plătite. Ce este gratuit și ce este plătit apare în aplicație, iar prețurile în App Store."
+  }
+ },
+ "_purchases_src": "Views/Onboarding/ViewModels/PaywallViewModel.swift + PaywallPlan.swift (weekly com.iosapps.pdfino.premium.weekly.01, monthly via 'Switch to monthly', lifetime card; trial only from the live introductoryOffer freeTrial, 3 days on weekly); Core/Services/SpecialOffer/SpecialOfferPolicy.swift (yearly + lifetime.02 / lifetime.offer, no trial); PremiumKit PremiumManager.swift:69 entitlement PremiumAccess; AdMobManager.swift mayRequestAds (no ads for premium or has24hPremiumTrial); Ads/Views/RewardedVideo* (24h trial)",
+ "what": {
+  "en": "Pdfino is a set of PDF tools for iPhone and iPad: it compresses PDFs, images and videos, scans documents, merges, splits and rearranges pages, signs, fills, protects and redacts PDFs, runs text recognition and translation, and converts between PDF and images, Word documents, Markdown, HTML and web pages.",
+  "ro": "Pdfino este un set de instrumente PDF pentru iPhone și iPad: comprimă PDF-uri, imagini și videoclipuri, scanează documente, îmbină, împarte și rearanjează pagini, semnează, completează, protejează și redactează PDF-uri, face recunoaștere de text și traducere și convertește între PDF și imagini, documente Word, Markdown, HTML și pagini web."
+ },
+ "disclaimers": [
+  {
+   "en": "You are responsible for backing up your original files. Compression can lower the quality of images, video and pages, and every tool changes the output you save, so check a processed file before you delete the original. We are not liable for data or quality lost through processing.",
+   "ro": "Ești responsabil de copia de siguranță a fișierelor originale. Comprimarea poate scădea calitatea imaginilor, a videoclipurilor și a paginilor, iar fiecare instrument modifică rezultatul salvat, deci verifică un fișier procesat înainte să ștergi originalul. Nu răspundem pentru date sau calitate pierdute prin procesare."
+  },
+  {
+   "en": "Text recognition (OCR), translation and QR code reading can contain mistakes. Check redacted, signed or protected documents before you share them. If you forget a password you set on a PDF, we cannot recover it, because the file never reaches us. Pdfino gives no legal advice: whether a signature drawn in the app is valid for a given document depends on the law and on the other party.",
+   "ro": "Recunoașterea textului (OCR), traducerea și citirea codurilor QR pot conține greșeli. Verifică documentele redactate, semnate sau protejate înainte să le partajezi. Dacă uiți o parolă setată pe un PDF, nu o putem recupera, pentru că fișierul nu ajunge niciodată la noi. Pdfino nu oferă consultanță juridică: valabilitatea unei semnături desenate în aplicație pentru un document depinde de lege și de cealaltă parte."
+  },
+  {
+   "en": "Use Pdfino only for files and web pages you have the right to process.",
+   "ro": "Folosește Pdfino doar pentru fișiere și pagini web pe care ai dreptul să le prelucrezi."
+  }
+ ],
+ "website": {
+  "en": "pdfino.com is hosted on GitHub Pages (GitHub, Inc., USA), which records the IP address of visitors in server logs for security. The site sets no cookies, stores nothing in your browser, and uses no analytics, ads or third-party scripts, fonts or images.",
+  "ro": "pdfino.com este găzduit pe GitHub Pages (GitHub, Inc., SUA), care înregistrează adresa IP a vizitatorilor în jurnalele serverului, pentru securitate. Site-ul nu setează cookie-uri, nu păstrează nimic în browserul tău și nu folosește statistici, reclame, scripturi, fonturi sau imagini ale terților."
+ },
+ "_website_src": "~/Developer/Pdfino-Website: Next.js static export on GitHub Pages; no gtag/GA, no cookies, no localStorage; Apple badge and fonts self-hosted after the redesign",
+ "overrides": {
+  "privacy.rights": {
+   "en": "<p>You have the right to access, correct and delete your data, to restrict or object to processing (including to object at any time to processing based on legitimate interest), to data portability, and to withdraw consent at any time without affecting earlier processing.</p><p>Because the app has no account, we usually cannot tell which data at Google or RevenueCat is yours. Write to <a href=\"mailto:iosallapps@gmail.com\">iosallapps@gmail.com</a> and include, if you can, your purchase receipt (order ID), and we will forward the request to the provider. You can always delete all data on the device by deleting the app.</p><p>You can complain to the supervisory authority where you live or work, or to ours: Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal (ANSPDCP), <a href=\"https://www.dataprotection.ro\" rel=\"noopener\">www.dataprotection.ro</a>. The list of EU authorities: <a href=\"https://www.edpb.europa.eu/about-edpb/about-edpb/members_en\" rel=\"noopener\">edpb.europa.eu</a>.</p>",
+   "ro": "<p>Ai dreptul de acces, rectificare și ștergere, de restricționare și de opoziție (inclusiv opoziție oricând la prelucrarea bazată pe interes legitim), la portabilitate și dreptul de a-ți retrage oricând consimțământul, fără a afecta prelucrarea anterioară.</p><p>Pentru că aplicația nu are cont, de obicei nu putem ști care date de la Google sau RevenueCat sunt ale tale. Scrie la <a href=\"mailto:iosallapps@gmail.com\">iosallapps@gmail.com</a> și, dacă poți, include chitanța achiziției (ID-ul comenzii), iar noi trimitem cererea furnizorului. Poți șterge oricând toate datele de pe dispozitiv ștergând aplicația.</p><p>Poți depune plângere la autoritatea de supraveghere din țara în care locuiești sau lucrezi, ori la a noastră: Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal (ANSPDCP), <a href=\"https://www.dataprotection.ro\" rel=\"noopener\">www.dataprotection.ro</a>. Lista autorităților din UE: <a href=\"https://www.edpb.europa.eu/about-edpb/about-edpb/members_en\" rel=\"noopener\">edpb.europa.eu</a>.</p>"
+  }
+ },
+ "_overrides_src": "Pdfino shows no RevenueCat ID anywhere in the app (grep originalAppUserId / appUserID: none); the shared wording said it does."
+}
