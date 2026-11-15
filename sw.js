@@ -1,5 +1,5 @@
 /* Visto Apps service worker. VERSION is written by tools/build.py on every build. */
-const VERSION = "927618afe2";
+const VERSION = "d571b4e79d";
 const CORE = "visto-core-" + VERSION;
 const RUNTIME = "visto-runtime-" + VERSION;
 const PRECACHE = [

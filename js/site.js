@@ -37,7 +37,6 @@
   }
 
   // ---------- language ----------
-  function storageGet(k) { try { return window.localStorage.getItem(k); } catch (e) { return null; } }
   function storageSet(k, v) { try { window.localStorage.setItem(k, v); } catch (e) { /* private mode */ } }
 
   // The language comes from the page itself: English at /, Romanian at /ro/.
