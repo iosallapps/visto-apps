@@ -13,20 +13,51 @@ window.VISTO = {
     { id: "professional", icon: "briefcase", label: { en: "Professional", ro: "Profesional" } }
   ],
 
-  // The eight apps shown on Home and About, in the mockup order.
-  featured: ["kupfra", "pdfino", "darc", "agrondo", "luris", "appsrank", "topoxy", "kipply"],
+  // Apps are ordered best to worst by App Store proceeds, then first downloads (2026-08-01 to 2026-11-14).
+  // The first eight are shown on Home and About.
+  featured: ["topoxy", "agrondo", "kipply", "luris", "pdfino", "darc", "shelfready", "appsrank"],
   // The three large cards in the Home hero.
-  hero: ["kupfra", "pdfino", "darc"],
+  hero: ["topoxy", "agrondo", "kipply"],
 
   apps: [
     {
-      slug: "kupfra", site: "https://kupfra.com/", privacy: "https://kupfra.com/privacy.html", terms: "https://kupfra.com/terms.html", name: "Kupfra", category: "professional",
-      colors: ["#f2853a", "#7a2f6e"],
-      store: "https://apps.apple.com/us/app/kupfra-construction-calculator/id6827716801",
-      subtitle: { en: "Construction Calculator", ro: "Calculator construcții" },
+      slug: "topoxy", site: "https://topoxyapp.com/", privacy: "https://topoxyapp.com/privacy.html", terms: "https://topoxyapp.com/terms.html", name: "TopoXY", category: "professional",
+      colors: ["#20c45a", "#0d6450"],
+      store: "https://apps.apple.com/us/app/topoxy-coordinate-converter/id6758582908",
+      subtitle: { en: "Coordinate Converter", ro: "Conversie Stereo 70" },
       text: {
-        en: "Calculators for concrete, tiles, stairs and electrical work, built on real building standards.",
-        ro: "Calcule pentru beton, gresie, scări și instalații electrice, după standardele reale de construcții."
+        en: "Convert coordinates between WGS84, Stereo 70, PUWG, UTM and other national grids, offline.",
+        ro: "Convertești coordonate între WGS84, Stereo 70, PUWG, UTM și alte sisteme naționale, offline."
+      }
+    },
+    {
+      slug: "agrondo", site: "https://agrondo.com/", privacy: "https://agrondo.com/privacy.html", terms: "https://agrondo.com/terms.html", name: "Agrondo", category: "professional",
+      colors: ["#2fbf6a", "#0e5a58"],
+      store: "https://apps.apple.com/us/app/agrondo-field-area-measure/id6775927132",
+      subtitle: { en: "Field Area Measure", ro: "Măsurare teren" },
+      text: {
+        en: "Measure field areas on the satellite map and keep records for every parcel.",
+        ro: "Măsori terenuri pe harta satelit și ții evidența fiecărei parcele."
+      }
+    },
+    {
+      slug: "kipply", site: "https://kipplyapp.com/", privacy: "https://kipplyapp.com/privacy.html", terms: "https://kipplyapp.com/terms.html", name: "Kipply", category: "lifestyle",
+      colors: ["#3a9dff", "#1d4ed0"],
+      store: "https://apps.apple.com/us/app/kipply-smart-phone-cleaner/id6756061280",
+      subtitle: { en: "Smart Phone Cleaner", ro: "Curățare poze" },
+      text: {
+        en: "Free up space by clearing duplicate, similar and unwanted photos with a swipe.",
+        ro: "Faci spațiu ștergând pozele duplicate, asemănătoare și nedorite cu o glisare."
+      }
+    },
+    {
+      slug: "luris", site: "https://lurisapp.com/", privacy: "https://lurisapp.com/privacy.html", terms: "https://lurisapp.com/terms.html", name: "Luris", category: "lifestyle",
+      colors: ["#2b8cff", "#1a3aa8"],
+      store: "https://apps.apple.com/us/app/luris-step-fitness-tracker/id6813596103",
+      subtitle: { en: "Step & Fitness Tracker", ro: "Pedometru și alergare" },
+      text: {
+        en: "Track your steps, walks, runs and rides with GPS, and follow a training plan.",
+        ro: "Urmărești pașii, plimbările, alergările și turele cu bicicleta prin GPS, cu un plan de antrenament."
       }
     },
     {
@@ -50,23 +81,13 @@ window.VISTO = {
       }
     },
     {
-      slug: "agrondo", site: "https://agrondo.com/", privacy: "https://agrondo.com/privacy.html", terms: "https://agrondo.com/terms.html", name: "Agrondo", category: "professional",
-      colors: ["#2fbf6a", "#0e5a58"],
-      store: "https://apps.apple.com/us/app/agrondo-field-area-measure/id6775927132",
-      subtitle: { en: "Field Area Measure", ro: "Măsurare teren" },
+      slug: "shelfready", site: "https://shelfreadyapp.com/", privacy: "https://shelfreadyapp.com/privacy.html", terms: "https://shelfreadyapp.com/terms.html", name: "ShelfReady", category: "productivity",
+      colors: ["#c99a6c", "#5e3d36"],
+      store: "https://apps.apple.com/us/app/shelfready-product-photos/id6818769240",
+      subtitle: { en: "Product Photos", ro: "Poze de produs" },
       text: {
-        en: "Measure field areas on the satellite map and keep records for every parcel.",
-        ro: "Măsori terenuri pe harta satelit și ții evidența fiecărei parcele."
-      }
-    },
-    {
-      slug: "luris", site: "https://lurisapp.com/", privacy: "https://lurisapp.com/privacy.html", terms: "https://lurisapp.com/terms.html", name: "Luris", category: "lifestyle",
-      colors: ["#2b8cff", "#1a3aa8"],
-      store: "https://apps.apple.com/us/app/luris-step-fitness-tracker/id6813596103",
-      subtitle: { en: "Step & Fitness Tracker", ro: "Pedometru și alergare" },
-      text: {
-        en: "Track your steps, walks, runs and rides with GPS, and follow a training plan.",
-        ro: "Urmărești pașii, plimbările, alergările și turele cu bicicleta prin GPS, cu un plan de antrenament."
+        en: "Turn a quick photo into a clean product shot on a white background, in seconds.",
+        ro: "Transformi o poză rapidă într-o fotografie de produs pe fundal alb, în câteva secunde."
       }
     },
     {
@@ -80,26 +101,6 @@ window.VISTO = {
       }
     },
     {
-      slug: "topoxy", site: "https://topoxyapp.com/", privacy: "https://topoxyapp.com/privacy.html", terms: "https://topoxyapp.com/terms.html", name: "TopoXY", category: "professional",
-      colors: ["#20c45a", "#0d6450"],
-      store: "https://apps.apple.com/us/app/topoxy-coordinate-converter/id6758582908",
-      subtitle: { en: "Coordinate Converter", ro: "Conversie Stereo 70" },
-      text: {
-        en: "Convert coordinates between WGS84, Stereo 70, PUWG, UTM and other national grids, offline.",
-        ro: "Convertești coordonate între WGS84, Stereo 70, PUWG, UTM și alte sisteme naționale, offline."
-      }
-    },
-    {
-      slug: "kipply", site: "https://kipplyapp.com/", privacy: "https://kipplyapp.com/privacy.html", terms: "https://kipplyapp.com/terms.html", name: "Kipply", category: "lifestyle",
-      colors: ["#3a9dff", "#1d4ed0"],
-      store: "https://apps.apple.com/us/app/kipply-smart-phone-cleaner/id6756061280",
-      subtitle: { en: "Smart Phone Cleaner", ro: "Curățare poze" },
-      text: {
-        en: "Free up space by clearing duplicate, similar and unwanted photos with a swipe.",
-        ro: "Faci spațiu ștergând pozele duplicate, asemănătoare și nedorite cu o glisare."
-      }
-    },
-    {
       slug: "serenity", site: "https://serenityjournalapp.com/", privacy: "https://serenityjournalapp.com/privacy.html", terms: "https://serenityjournalapp.com/terms.html", name: "Serenity", category: "lifestyle",
       colors: ["#8c55dd", "#2b2a70"],
       store: "https://apps.apple.com/us/app/serenity-ai-mood-journal/id6761684674",
@@ -110,13 +111,13 @@ window.VISTO = {
       }
     },
     {
-      slug: "shelfready", site: "https://shelfreadyapp.com/", privacy: "https://shelfreadyapp.com/privacy.html", terms: "https://shelfreadyapp.com/terms.html", name: "ShelfReady", category: "productivity",
-      colors: ["#c99a6c", "#5e3d36"],
-      store: "https://apps.apple.com/us/app/shelfready-product-photos/id6818769240",
-      subtitle: { en: "Product Photos", ro: "Poze de produs" },
+      slug: "kupfra", site: "https://kupfra.com/", privacy: "https://kupfra.com/privacy.html", terms: "https://kupfra.com/terms.html", name: "Kupfra", category: "professional",
+      colors: ["#f2853a", "#7a2f6e"],
+      store: "https://apps.apple.com/us/app/kupfra-construction-calculator/id6827716801",
+      subtitle: { en: "Construction Calculator", ro: "Calculator construcții" },
       text: {
-        en: "Turn a quick photo into a clean product shot on a white background, in seconds.",
-        ro: "Transformi o poză rapidă într-o fotografie de produs pe fundal alb, în câteva secunde."
+        en: "Calculators for concrete, tiles, stairs and electrical work, built on real building standards.",
+        ro: "Calcule pentru beton, gresie, scări și instalații electrice, după standardele reale de construcții."
       }
     }
   ]
@@ -126,8 +127,8 @@ window.VISTO = {
 // so there is one copy of every English sentence.
 window.VISTO_RO = {
   "meta.home.title": "Visto Apps | Studio de aplicații mobile utile pentru iPhone",
-  "meta.home.desc": "Visto Apps este studioul independent din spatele aplicațiilor Pdfino, Kipply, TopoXY, Kupfra, Darc, Agrondo, Luris, AppsRank, Serenity și ShelfReady.",
-  "meta.apps.title": "Aplicațiile noastre: Pdfino, Kipply, TopoXY, Kupfra | Visto Apps",
+  "meta.home.desc": "Visto Apps este studioul independent din spatele aplicațiilor TopoXY, Agrondo, Kipply, Luris, Pdfino, Darc, ShelfReady, AppsRank, Serenity și Kupfra.",
+  "meta.apps.title": "Aplicațiile noastre: TopoXY, Agrondo, Kipply, Pdfino | Visto Apps",
   "meta.apps.desc": "Toate aplicațiile Visto Apps: comprimi PDF-uri, cureți poze, convertești coordonate Stereo 70, măsori terenuri, numeri pașii și altele, pe iPhone.",
   "meta.about.title": "Despre Visto Apps | Studio independent de aplicații mobile",
   "meta.about.desc": "Visto Apps proiectează și construiește aplicații iPhone practice și sigure pentru nevoi reale. Află cum transformăm idei utile în aplicații.",
