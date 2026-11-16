@@ -238,6 +238,7 @@
       host.innerHTML = V.featured.map(function (s) { return tile(bySlug[s]); }).join("");
     });
     document.querySelectorAll("[data-app-count]").forEach(function (el) { el.textContent = String(V.apps.length); });
+    document.querySelectorAll("[data-lang-src]").forEach(function (el) { el.src = el.getAttribute("data-lang-src").replace("{lang}", lang); });
   }
 
   // Apps page: filters + search

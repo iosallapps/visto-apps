@@ -28,7 +28,7 @@ SCHEMA_CATEGORY = {
     "kupfra": "UtilitiesApplication", "pdfino": "UtilitiesApplication", "darc": "UtilitiesApplication",
     "agrondo": "BusinessApplication", "luris": "HealthApplication", "appsrank": "DeveloperApplication",
     "topoxy": "TravelApplication", "kipply": "UtilitiesApplication", "serenity": "HealthApplication",
-    "shelfready": "MultimediaApplication",
+    "shelfready": "MultimediaApplication", "jinglemoon": "EntertainmentApplication",
 }
 
 GEN_SEO = re.compile(r"\s*<!--gen:seo-->.*?<!--/gen:seo-->", re.S)

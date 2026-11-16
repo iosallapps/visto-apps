@@ -21,6 +21,16 @@ window.VISTO = {
 
   apps: [
     {
+      slug: "jinglemoon", site: "https://jinglemoon.com/", privacy: "https://jinglemoon.com/privacy.html", terms: "https://jinglemoon.com/terms.html", name: "JingleMoon", category: "lifestyle",
+      colors: ["#d23a3f", "#6a1218"],
+      store: "https://apps.apple.com/us/app/jinglemoon-santa-tracker/id6829834796",
+      subtitle: { en: "Santa Tracker & Video Call", ro: "Moș Crăciun și apel video" },
+      text: {
+        en: "Follow Santa's sleigh on a 3D globe, chat with Santa, write him a letter and get a video call from him.",
+        ro: "Urmărești sania lui Moș Crăciun pe un glob 3D, vorbești cu Moșul, îi scrii o scrisoare și primești un apel video de la el."
+      }
+    },
+    {
       slug: "topoxy", site: "https://topoxyapp.com/", privacy: "https://topoxyapp.com/privacy.html", terms: "https://topoxyapp.com/terms.html", name: "TopoXY", category: "professional",
       colors: ["#20c45a", "#0d6450"],
       store: "https://apps.apple.com/us/app/topoxy-coordinate-converter/id6758582908",
@@ -127,7 +137,7 @@ window.VISTO = {
 // so there is one copy of every English sentence.
 window.VISTO_RO = {
   "meta.home.title": "Visto Apps | Studio de aplicații mobile utile pentru iPhone",
-  "meta.home.desc": "Visto Apps este studioul independent din spatele aplicațiilor TopoXY, Agrondo, Kipply, Luris, Pdfino, Darc, ShelfReady, AppsRank, Serenity și Kupfra.",
+  "meta.home.desc": "Visto Apps este studioul independent din spatele aplicațiilor JingleMoon, TopoXY, Agrondo, Kipply, Luris, Pdfino, Darc, ShelfReady, AppsRank, Serenity și Kupfra.",
   "meta.apps.title": "Aplicațiile noastre: TopoXY, Agrondo, Kipply, Pdfino | Visto Apps",
   "meta.apps.desc": "Toate aplicațiile Visto Apps: comprimi PDF-uri, cureți poze, convertești coordonate Stereo 70, măsori terenuri, numeri pașii și altele, pe iPhone.",
   "meta.about.title": "Despre Visto Apps | Studio independent de aplicații mobile",
@@ -153,6 +163,12 @@ window.VISTO_RO = {
   "footer.terms": "Termeni de utilizare",
   "footer.legal": "Apple, logo-ul Apple și iPhone sunt mărci comerciale ale Apple Inc.",
 
+  "home.xmas.kicker": "Lansarea de top pentru Crăciun",
+  "home.xmas.new": "Nou",
+  "home.xmas.title": "Un apel video de la <em>Moș Crăciun</em>, sania pe un glob 3D și o scrisoare la care răspunde.",
+  "home.xmas.lede": "JingleMoon aduce numărătoarea până la Crăciun acasă, pentru toată familia: vorbești cu Moșul, îi urmărești zborul în Ajun și ai totul pe ecranul de blocare. Fără reclame și fără cont.",
+  "home.xmas.cta": "Descarcă JingleMoon",
+  "home.xmas.site": "Află mai mult",
   "home.kicker": "Studio de aplicații mobile",
   "home.title": "Idei de zi cu zi.<br><em>Aplicații</em> remarcabile.",
   "home.lede": "Creăm aplicații mobile gândite atent, care fac treburile de zi cu zi<br class=\"br-wide\"> mai simple, mai inteligente și mai plăcute.",

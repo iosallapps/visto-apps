@@ -531,3 +531,60 @@ em, .accent {
   .panel--apps { background: rgba(40, 60, 150, .35); }
   .search-bar, .mobile-menu { background: rgba(14, 26, 70, .96); }
 }
+
+/* Home: featured Christmas release (JingleMoon) */
+.xmas {
+  --gold: #f6c86d; --xmas-1: #c4323a; --xmas-2: #6a1218;
+  position: relative; z-index: 3; overflow: hidden; isolation: isolate;
+  display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 32px; align-items: center;
+  margin: 26px -14px 0; padding: 44px 48px; text-align: left;
+  border-radius: var(--radius); border: 1px solid rgba(246, 200, 109, .45);
+  background: radial-gradient(120% 110% at 88% 0%, #d8454c 0%, var(--xmas-1) 38%, var(--xmas-2) 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .18), 0 30px 80px rgba(70, 8, 14, .45);
+}
+.xmas__snow {
+  position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: .55;
+  background-image:
+    radial-gradient(2px 2px at 10% 20%, #fff 50%, transparent 51%), radial-gradient(1.5px 1.5px at 30% 75%, #fff 50%, transparent 51%),
+    radial-gradient(2.5px 2.5px at 55% 30%, #fff 50%, transparent 51%), radial-gradient(1.5px 1.5px at 80% 62%, #fff 50%, transparent 51%),
+    radial-gradient(2px 2px at 92% 14%, #fff 50%, transparent 51%), radial-gradient(1.5px 1.5px at 45% 92%, #fff 50%, transparent 51%);
+  background-size: 240px 240px;
+  animation: xmas-snow 16s linear infinite;
+}
+@keyframes xmas-snow { to { background-position: 30px 240px; } }
+.xmas__kicker { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 0; font-size: 13px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); }
+.xmas__badge { padding: 4px 10px; border-radius: 999px; background: var(--gold); color: var(--xmas-2); letter-spacing: .08em; }
+.xmas__app { display: flex; align-items: center; gap: 14px; margin: 22px 0 0; }
+.xmas__app .app-icon { width: 72px; height: 72px; border-radius: 22%; box-shadow: 0 10px 28px rgba(0, 0, 0, .35); }
+.xmas__name { font-size: 28px; font-weight: 700; letter-spacing: -.01em; color: #fff; }
+.xmas__title { margin: 18px 0 0; font-family: var(--serif); font-weight: 400; font-size: clamp(32px, 3.6vw, 50px); line-height: 1.02; color: #fff; }
+.xmas__title em { color: var(--gold); }
+.xmas__lede { margin: 16px 0 0; max-width: 34em; font-size: 16px; line-height: 1.6; color: rgba(255, 241, 232, .88); }
+.xmas__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; margin: 26px 0 0; }
+.xmas__cta {
+  display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px; border-radius: 999px;
+  background: var(--gold); color: var(--xmas-2); font-weight: 700; text-decoration: none;
+  transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+}
+.xmas__cta:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(246, 200, 109, .45); }
+.xmas__more { display: inline-flex; align-items: center; gap: 8px; color: #fff; font-weight: 600; text-decoration: none; }
+.xmas__more:hover { color: var(--gold); }
+.xmas__cta:focus-visible, .xmas__more:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.xmas__cta svg, .xmas__more svg { width: 16px; height: 16px; }
+.xmas__phones { position: relative; display: flex; justify-content: center; align-items: center; min-height: 380px; }
+.xmas__phones img { width: 34%; height: auto; filter: drop-shadow(0 24px 40px rgba(0, 0, 0, .5)); transition: transform .5s var(--ease); }
+.xmas__phones img:nth-child(1) { transform: translateX(22%) rotate(-8deg) scale(.88); }
+.xmas__phones img:nth-child(2) { position: relative; z-index: 2; width: 40%; }
+.xmas__phones img:nth-child(3) { transform: translateX(-22%) rotate(8deg) scale(.88); }
+.xmas:hover .xmas__phones img:nth-child(1) { transform: translateX(14%) rotate(-10deg) scale(.88); }
+.xmas:hover .xmas__phones img:nth-child(3) { transform: translateX(-14%) rotate(10deg) scale(.88); }
+@media (max-width: 900px) {
+  .xmas { grid-template-columns: minmax(0, 1fr); padding: 30px 24px; margin: 22px 0 0; }
+  .xmas__phones { order: -1; min-height: 0; }
+}
+@media (max-width: 640px) {
+  .xmas__title { font-size: 32px; }
+  .xmas__app .app-icon { width: 56px; height: 56px; }
+  .xmas__name { font-size: 22px; }
+}
+@media (prefers-reduced-motion: reduce) { .xmas__snow { animation: none; } .xmas__phones img { transition: none; } }
